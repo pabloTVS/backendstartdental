@@ -31,9 +31,9 @@ export class BaseFormUser {
     if (errors) {
       const minlenght = errors?.minlength?.requiredLength;
       const messages = {
-        required: 'You must enter a value.',
-        pattern: 'Not a valid email.',
-        minlength: `This field must be longer than ${minlenght} characters`,
+        required: 'Debes introducir un valor.',
+        pattern: 'No es un mail válido.',
+        minlength: `Este campo tiene una longitud mínima de ${minlenght} caracteres.`,
       };
 
       const errorKey = Object.keys(errors).find(Boolean);

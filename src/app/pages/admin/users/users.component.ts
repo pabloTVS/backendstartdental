@@ -36,7 +36,7 @@ export class UsersComponent implements AfterViewInit, OnInit, OnDestroy {
     this.dataSource.sort = this.sort;
   }
   onDelete(userId: number): void {
-    if (window.confirm('Do you really want remove this user')) {
+    if (window.confirm('¿Estás seguro de borrar este usuario?.')) {
       this.userSvc
         .delete(userId)
         .pipe(takeUntil(this.destroy$))
@@ -56,7 +56,7 @@ export class UsersComponent implements AfterViewInit, OnInit, OnDestroy {
       height: '400px',
       width: '600px',
       hasBackdrop: false,
-      data: { title: 'New user', user },
+      data: { title: 'Nuevo usuario', user },
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`, typeof result);

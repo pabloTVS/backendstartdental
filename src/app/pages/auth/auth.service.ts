@@ -64,8 +64,8 @@ export class AuthService {
     localStorage.setItem('user', JSON.stringify(rest));
   }
 
-  private handlerError(err): Observable<never> {
-    let errorMessage = 'An errror occured retrienving data';
+  private handlerError(err:any): Observable<never> {
+    let errorMessage = '¡Se ha producido un error al recuperar los datos!';
     if (err) {
       errorMessage = `Error: code ${err.message}`;
     }

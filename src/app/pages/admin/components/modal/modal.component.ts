@@ -4,8 +4,8 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { BaseFormUser } from '@shared/utils/base-form-user';
 enum Action {
-  EDIT = 'edit',
-  NEW = 'new',
+  EDIT = 'editar',
+  NEW = 'nuevo',
 }
 
 @Component({
@@ -29,7 +29,7 @@ export class ModalComponent implements OnInit {
       this.showPasswordField = false;
       this.userForm.baseForm.get('password').setValidators(null);
       this.userForm.baseForm.updateValueAndValidity();
-      this.data.title = 'Edit user';
+      this.data.title = 'Editar usuario';
       this.pathFormData();
     }
   }

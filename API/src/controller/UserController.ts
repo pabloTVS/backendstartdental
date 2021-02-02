@@ -11,13 +11,13 @@ export class UserController {
     try {
       users = await userRepository.find({ select: ['id', 'username', 'role'] });
     } catch (e) {
-      res.status(404).json({ message: 'Somenthing goes wrong!' });
+      res.status(404).json({ message: '¡¡Algo ha fallado!!' });
     }
 
     if (users.length > 0) {
       res.send(users);
     } else {
-      res.status(404).json({ message: 'Not result' });
+      res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
     }
   };
 
@@ -28,7 +28,7 @@ export class UserController {
       const user = await userRepository.findOneOrFail(id);
       res.send(user);
     } catch (e) {
-      res.status(404).json({ message: 'Not result' });
+      res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
     }
   };
 
@@ -54,10 +54,10 @@ export class UserController {
       user.hashPassword();
       await userRepository.save(user);
     } catch (e) {
-      return res.status(409).json({ message: 'Username already exist' });
+      return res.status(409).json({ message: 'Usuario ya existente.' });
     }
     // All ok
-    res.send('User created');
+    res.send('Usuario creado correctamente.');
   };
 
   static edit = async (req: Request, res: Response) => {
