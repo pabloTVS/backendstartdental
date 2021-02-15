@@ -4,7 +4,7 @@
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "./distApi",
+    "outDir": "./distApi/src",
     "rootDir": "./src",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,

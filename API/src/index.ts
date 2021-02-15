@@ -7,6 +7,8 @@ import routes from './routes';
 
 const PORT = process.env.PORT || 3000;
 
+var morgan = require ('morgan');
+
 createConnection()
   .then(async () => {
     // create express app
@@ -14,6 +16,8 @@ createConnection()
     // Middlewares
     app.use(cors());
     app.use(helmet());
+    // Morgan
+    app.use(morgan('combined'));
 
     app.use(express.json());
     // Routes
