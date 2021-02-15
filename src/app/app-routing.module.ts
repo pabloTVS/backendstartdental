@@ -28,6 +28,9 @@ const routes: Routes = [
       import('./pages/auth/login/login.module').then((m) => m.LoginModule),
     canActivate: [CheckLoginGuard],
   },
+  { path: 'products', loadChildren: () => 
+  import('./pages/products/products.module').then(m => m.ProductsModule) 
+  },
 ];
 
 @NgModule({
