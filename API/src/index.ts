@@ -25,19 +25,8 @@ createConnection()
     app.use(express.json());
     // Routes
     app.use('/', routes);
-/*
-    const sslServer = https.createServer(
-      {
-        key: fs.readFileSync(path.join(__dirname, 'cert', 'privkey.pem')),
-        cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem')),
-        chain: fs.readFileSync(path.join(__dirname, 'cert', 'chain.pem')),
-      }
-    );*/
-    //console.log(__dirname);
-    //console.log(path.join(__dirname,'cert'));
 
     // start express server
     app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
-//      sslServer.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`))
   })
   .catch(error => console.log(error));
