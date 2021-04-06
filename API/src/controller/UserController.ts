@@ -72,7 +72,7 @@ export class UserController {
       user.username = username;
       user.role = role;
     } catch (e) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: 'No se ha encontrado el usuario.' });
     }
     const validationOpt = { validationError: { target: false, value: false } };
     const errors = await validate(user, validationOpt);
@@ -85,10 +85,10 @@ export class UserController {
     try {
       await userRepository.save(user);
     } catch (e) {
-      return res.status(409).json({ message: 'Username already in use' });
+      return res.status(409).json({ message: 'Username ya está en uso.' });
     }
 
-    res.status(201).json({ message: 'User update' });
+    res.status(201).json({ message: 'Cambios guardados.' });
   };
 
   static delete = async (req: Request, res: Response) => {
