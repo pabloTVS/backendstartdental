@@ -1,8 +1,10 @@
+import { productsService } from './services/products.service';
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { MatSort} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
-export interface PeriodicElement {
+/*export interface PeriodicElement {
   name: string;
   position: number;
   weight: number;
@@ -21,7 +23,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
 ];
-
+*/
 /**
  * @title Table with sorting
  */
@@ -32,27 +34,22 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class ProductsComponent implements AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-
+  displayedColumns: string[] = ['Articulo', 'Sku', 'Precio', 'IVA', 'Stock', 'Proveedor', 'Categoria', 'Subcategoria'];
+  dataSource = new MatTableDataSource();
+ 
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator; 
+
+  constructor(private viewProd: productsService) {}
+
+  ngOnInit(): void {
+    this.viewProd.getAllProducts().subscribe((products) => {
+      this.dataSource.data = products;
+    });
+  }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 }
-
-
-/*@Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
-})
-export class ProductsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}*/

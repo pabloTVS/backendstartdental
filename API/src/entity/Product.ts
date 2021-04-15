@@ -1,8 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Unique, Column, CreateDateColumn, PrimaryColumn } from 'typeorm';
-
+import { Entity, PrimaryGeneratedColumn, Unique, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { wp_postmeta } from './productDetail';
 @Entity()
+@Unique(['ID'])
 export class wp_posts {
-    @PrimaryColumn() ID: number;
+    @PrimaryGeneratedColumn() ID: number;
+    @ManyToOne(() => wp_postmeta)
+    @JoinColumn({name: "wp_postmetapost_id"})
+    postmeta: wp_postmeta;
+
     @Column() post_author: number;
     @CreateDateColumn() post_date: Date;
     @CreateDateColumn() post_date_gmt: Date;
@@ -16,8 +21,8 @@ export class wp_posts {
     @Column() post_name: string;
     @Column() to_ping: string;
     @Column() pinged: string;
-    @CreateDateColumn() post_modified: Date;
-    @CreateDateColumn() post_modified_gmt: Date;
+    @UpdateDateColumn() post_modified: Date;
+    @UpdateDateColumn() post_modified_gmt: Date;
     @Column() post_content_filtered: string;
     @Column() post_parent: number;
     @Column() guid: string;

@@ -1,31 +1,53 @@
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    'Articulo', 'Sku', 'Precio', 'IVA', 'Stock', 'Proveedor', 'Categoria', 'Subcategoria'
+    
+    <ng-container matColumnDef="Articulo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Artículo </th>
+      <td mat-cell *matCellDef="let element"> {{element.Articulo}} </td>
+    </ng-container>
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-  </ng-container>
+    <ng-container matColumnDef="Sku">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> SKU </th>
+      <td mat-cell *matCellDef="let element"> {{element.Sku}} </td>
+    </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
+    <ng-container matColumnDef="Precio">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio </th>
+      <td mat-cell *matCellDef="let element"> {{element.Precio}} </td> 
+    </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
-    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-  </ng-container>
+    <ng-container matColumnDef="IVA">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> IVA </th>
+      <td mat-cell *matCellDef="let element"> {{element.IVA}} </td>
+    </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-  </ng-container>
+    <ng-container matColumnDef="Stock">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Stock </th>
+      <td mat-cell *matCellDef="let element"> {{element.Stock}} </td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-  
+    <ng-container matColumnDef="Proveedor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Proveedor </th>
+      <td mat-cell *matCellDef="let element"> {{element.Proveedor}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Categoria">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </th>
+      <td mat-cell *matCellDef="let element"> {{element.Categoria}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Subcategoria">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Subcategoria </th>
+      <td mat-cell *matCellDef="let element"> {{element.Subcategoria}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 15, 25]" showFirstLastButtons></mat-paginator>
+</div>
+ 
   
