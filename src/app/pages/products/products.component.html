@@ -1,3 +1,8 @@
+<mat-form-field>
+  <mat-label>Búsqueda</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Dígite el texto a buscar" #input>
+</mat-form-field>
+
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     'Articulo', 'Sku', 'Precio', 'IVA', 'Stock', 'Proveedor', 'Categoria', 'Subcategoria'
@@ -47,7 +52,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 15, 25]" showFirstLastButtons></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[12, 25, 50]" showFirstLastButtons></mat-paginator>
 </div>
  
   

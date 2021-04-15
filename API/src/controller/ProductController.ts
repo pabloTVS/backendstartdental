@@ -13,7 +13,7 @@ export class ProductController {
       try {
           products = await productRepository.createQueryBuilder().select(["product.ID","product.Articulo","product.Sku","product.Precio"
           ,"product.IVA","product.Stock","product.Imagen","product.Proveedor","product.Categoria","product.Subcategoria"]).
-          from(viewProducts,"product").limit(100).getMany(); 
+          from(viewProducts,"product").limit(9000).getMany(); 
           products.length ? res.send(products) :  res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
         }  
         catch (e) {
