@@ -23,8 +23,9 @@ import { ProductsInterceptor } from '@shared/interceptors/products.interceptor'
     MaterialModule,
     SidebarModule,
     HttpClientModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
+  
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AdminInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ProductsInterceptor, multi: true },
