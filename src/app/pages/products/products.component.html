@@ -5,8 +5,14 @@
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-    'Articulo', 'Sku', 'Precio', 'IVA', 'Stock', 'Proveedor', 'Categoria', 'Subcategoria'
     
+    <ng-container matColumnDef="Imagen">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Imagen </th>
+      <td mat-cell *matCellDef="let element">
+        <img src={{element.Imagen}}  style="max-width:100%;width:auto;height:auto;"/>
+      </td>
+    </ng-container>
+
     <ng-container matColumnDef="Articulo">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Artículo </th>
       <td mat-cell *matCellDef="let element"> {{element.Articulo}} </td>

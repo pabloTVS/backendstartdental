@@ -12,10 +12,12 @@ import { SidebarModule } from '@shared/components/sidebar/sidebar.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AdminInterceptor } from '@shared/interceptors/admin-interceptor';
-import { ProductsInterceptor } from '@shared/interceptors/products.interceptor'
+import { ProductsInterceptor } from '@shared/interceptors/products.interceptor';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { SpinnerOverlayComponent } from './shared/components/spinner-overlay/spinner-overlay.component'
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, SpinnerComponent, SpinnerOverlayComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

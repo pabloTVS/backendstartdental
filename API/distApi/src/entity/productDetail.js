@@ -9,47 +9,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Users = void 0;
+exports.wp_postmeta = void 0;
 var typeorm_1 = require("typeorm");
-var class_validator_1 = require("class-validator");
-var bcrypt = require("bcryptjs");
-var Users = /** @class */ (function () {
-    function Users() {
+var wp_postmeta = /** @class */ (function () {
+    function wp_postmeta() {
     }
-    Users.prototype.hashPassword = function () {
-        var salt = bcrypt.genSaltSync(10);
-        this.password = bcrypt.hashSync(this.password, salt);
-    };
-    Users.prototype.checkPassword = function (password) {
-        return bcrypt.compareSync(password, this.password);
-    };
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], Users.prototype, "id", void 0);
+    ], wp_postmeta.prototype, "meta_id", void 0);
     __decorate([
         typeorm_1.Column(),
-        class_validator_1.MinLength(6),
-        class_validator_1.IsEmail(),
-        class_validator_1.IsNotEmpty(),
-        __metadata("design:type", String)
-    ], Users.prototype, "username", void 0);
+        __metadata("design:type", Number)
+    ], wp_postmeta.prototype, "post_id", void 0);
     __decorate([
         typeorm_1.Column(),
-        class_validator_1.MinLength(6),
-        class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
-    ], Users.prototype, "password", void 0);
+    ], wp_postmeta.prototype, "meta_key", void 0);
     __decorate([
         typeorm_1.Column(),
-        class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
-    ], Users.prototype, "role", void 0);
-    Users = __decorate([
+    ], wp_postmeta.prototype, "meta_value", void 0);
+    wp_postmeta = __decorate([
         typeorm_1.Entity(),
-        typeorm_1.Unique(['username'])
-    ], Users);
-    return Users;
+        typeorm_1.Unique(['meta_id'])
+    ], wp_postmeta);
+    return wp_postmeta;
 }());
-exports.Users = Users;
-//# sourceMappingURL=Users.js.map
+exports.wp_postmeta = wp_postmeta;
+//# sourceMappingURL=productDetail.js.map

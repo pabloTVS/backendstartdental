@@ -36,38 +36,39 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.checkRole = void 0;
+exports.ProductController = void 0;
 var typeorm_1 = require("typeorm");
-var Users_1 = require("../entity/Users");
-exports.checkRole = function (roles) {
-    return function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-        var userId, userRepository, user, e_1, role;
+//import { wp_posts } from '../entity/Product';
+var viewProducts_1 = require("../entity/viewProducts");
+var ProductController = /** @class */ (function () {
+    function ProductController() {
+    }
+    ProductController.getAllProducts = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var productRepository, type, products, e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    userId = res.locals.jwtPayload.userId;
-                    userRepository = typeorm_1.getRepository(Users_1.Users);
+                    productRepository = typeorm_1.getRepository(viewProducts_1.viewProducts);
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, userRepository.findOneOrFail(userId)];
+                    return [4 /*yield*/, productRepository.createQueryBuilder().select(["product.ID", "product.Articulo", "product.Sku", "product.Precio",
+                            "product.IVA", "product.Stock", "product.Imagen", "product.Proveedor", "product.Categoria", "product.Subcategoria"]).
+                            from(viewProducts_1.viewProducts, "product").limit(9000).getMany()];
                 case 2:
-                    user = _a.sent();
+                    products = _a.sent();
+                    products.length ? res.send(products) : res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
                     return [3 /*break*/, 4];
                 case 3:
                     e_1 = _a.sent();
-                    return [2 /*return*/, res.status(401).json({ message: '¡No autorizado!.' })];
-                case 4:
-                    role = user.role;
-                    if (roles.includes(role)) {
-                        next();
-                    }
-                    else {
-                        res.status(401).json({ message: '¡No autorizado!.' });
-                    }
-                    return [2 /*return*/];
+                    res.status(400).json({ message: e_1.message });
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
             }
         });
     }); };
-};
-//# sourceMappingURL=role.js.map
+    return ProductController;
+}());
+exports.ProductController = ProductController;
+exports.default = ProductController;
+//# sourceMappingURL=ProductController.js.map

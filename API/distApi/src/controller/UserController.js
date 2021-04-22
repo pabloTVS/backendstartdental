@@ -149,7 +149,7 @@ var UserController = /** @class */ (function () {
                     return [3 /*break*/, 4];
                 case 3:
                     e_4 = _b.sent();
-                    return [2 /*return*/, res.status(404).json({ message: 'User not found' })];
+                    return [2 /*return*/, res.status(404).json({ message: 'No se ha encontrado el usuario.' })];
                 case 4:
                     validationOpt = { validationError: { target: false, value: false } };
                     return [4 /*yield*/, class_validator_1.validate(user, validationOpt)];
@@ -167,9 +167,9 @@ var UserController = /** @class */ (function () {
                     return [3 /*break*/, 9];
                 case 8:
                     e_5 = _b.sent();
-                    return [2 /*return*/, res.status(409).json({ message: 'Username already in use' })];
+                    return [2 /*return*/, res.status(409).json({ message: 'Username ya está en uso.' })];
                 case 9:
-                    res.status(201).json({ message: 'User update' });
+                    res.status(201).json({ message: 'Cambios guardados.' });
                     return [2 /*return*/];
             }
         });

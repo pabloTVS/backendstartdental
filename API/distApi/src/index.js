@@ -44,14 +44,15 @@ var helmet = require("helmet");
 var routes_1 = require("./routes");
 var morgan = require('morgan');
 //certificado SSL
-var https = require('https');
-var path = require('path');
 var fs = require('fs');
+var https = require('https');
 //fin SSL
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 5862;
+//const PORT = process.env.PORT || 3000;
+//creamos una conexión BD, y encapsulamos la llamada https.
 typeorm_1.createConnection()
     .then(function () { return __awaiter(void 0, void 0, void 0, function () {
-    var app, sslServer;
+    var app;
     return __generator(this, function (_a) {
         app = express();
         // Middlewares
@@ -62,18 +63,38 @@ typeorm_1.createConnection()
         app.use(express.json());
         // Routes
         app.use('/', routes_1.default);
-        sslServer = https.createServer({
-            key: fs.readFileSync(path.join(__dirname, 'cert', 'privkey.pem')),
-            cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem')),
-            chain: fs.readFileSync(path.join(__dirname, 'cert', 'chain.pem')),
-        });
-        //console.log(__dirname);
-        //console.log(path.join(__dirname,'cert'));
         // start express server
         //    app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
-        sslServer.listen(PORT, function () { return console.log("Servidor corriendo en puerto " + PORT); });
+        https.createServer({
+            cert: fs.readFileSync('serve.crt'),
+            key: fs.readFileSync('serve.key')
+        }, app).listen(PORT, function () { return console.log("Servidor https corriendo en puerto " + PORT); });
+        app.get('/', function (req, res) {
+            res.send('Hola, estas en la pagina inicial');
+            console.log('Se recibio una petición get a través de https');
+        });
         return [2 /*return*/];
     });
 }); })
     .catch(function (error) { return console.log(error); });
+/*
+sin https.
+createConnection()
+  .then(async () => {
+    // create express app
+    const app = express();
+    // Middlewares
+    app.use(cors());
+    app.use(helmet());
+    // Morgan
+    app.use(morgan('combined'));
+
+    app.use(express.json());
+    // Routes
+    app.use('/', routes);
+
+    // start express server
+    app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
+  })
+  .catch(error => console.log(error));*/
 //# sourceMappingURL=index.js.map

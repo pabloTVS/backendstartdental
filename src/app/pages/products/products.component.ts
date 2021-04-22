@@ -1,5 +1,6 @@
 import { productsService } from './services/products.service';
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { SpinnerOverlayService } from './../../shared/services/spinner-overlay.service'
+import { Component, AfterViewInit, ViewChild, Input } from '@angular/core';
 import { MatSort} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -34,21 +35,29 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class ProductsComponent implements AfterViewInit {
-  displayedColumns: string[] = ['Articulo', 'Sku', 'Precio', 'IVA', 'Stock', 'Proveedor', 'Categoria', 'Subcategoria'];
+  displayedColumns: string[] = ['Imagen', 'Articulo', 'Sku', 'Precio', 'IVA', 'Stock', 'Proveedor', 'Categoria', 'Subcategoria'];
   dataSource = new MatTableDataSource();
  
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator; 
 
-  constructor(private viewProd: productsService) {}
+  @Input() imgPath:string = "https://startdental.es/wp-content/uploads/";
+  
+  constructor(private viewProd: productsService, private spinnerSvc: SpinnerOverlayService) {}
 
   ngOnInit(): void {
+    this.spinner();
     this.viewProd.getAllProducts().subscribe((products) => {
+      
       this.dataSource.data = products;
+      this.spinner();
+      
     });
+    
   }
 
   ngAfterViewInit() {
+    //this.spinnerSvc.hide();
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
@@ -60,5 +69,10 @@ export class ProductsComponent implements AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  spinner()
+  {
+      this.dataSource.data.length >0 ? this.spinnerSvc.hide() : this.spinnerSvc.show();
   }
 }
