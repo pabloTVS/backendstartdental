@@ -1,5 +1,4 @@
 import { UserResponse } from './../../models/user.interface';
-import { Router } from '@angular/router';
 import {
   Component,
   OnInit,

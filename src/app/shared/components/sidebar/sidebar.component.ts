@@ -4,6 +4,7 @@ import { AuthService } from '@auth/auth.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject  } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { UtilsService } from '../../services/utils.service'
 
 @Component({
   selector: 'app-sidebar',
@@ -16,7 +17,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<any>();
   router: any;
 
-  constructor(private authSvc: AuthService) {}
+  constructor(private authSvc: AuthService,private utilsSvc: UtilsService) {}
 
   ngOnInit(): void {  
     this.authSvc.user$
@@ -33,6 +34,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   onExit(): void {
-    //this.authSvc.logout();
+    this.authSvc.logout();
+    this.utilsSvc.openSidebar(false);
   }
 }

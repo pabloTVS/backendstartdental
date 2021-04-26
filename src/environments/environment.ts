@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://localhost:5862',
+  API_URL: 'http://localhost:5862',
   //API_URL: 'https://backend.startdental.es:5862'
 };
 
