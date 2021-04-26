@@ -9,10 +9,10 @@ const morgan = require ('morgan');
 var fs = require('fs');
 var https = require('https');
 //fin SSL
-const PORT = process.env.PORT || 5862;
-//const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT ||5862;
 
 //creamos una conexión BD, y encapsulamos la llamada https.
+/*
 createConnection()
   .then(async () => {
     // create express app
@@ -28,7 +28,7 @@ createConnection()
     app.use('/', routes);
 
     // start express server
-    //    app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
+   // app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
 
     https.createServer({
       cert: fs.readFileSync('serve.crt'),
@@ -42,9 +42,9 @@ createConnection()
     
   })
   .catch(error => console.log(error));
+*/
 
-/*
-sin https.
+//sin https.
 createConnection()
   .then(async () => {
     // create express app
@@ -62,4 +62,5 @@ createConnection()
     // start express server
     app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
   })
-  .catch(error => console.log(error));*/
+  .catch(error => console.log(error));
+  
