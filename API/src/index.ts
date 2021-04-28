@@ -61,6 +61,12 @@ createConnection()
 
     // start express server
     app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
+    // Mensaje de bienvinida
+    app.get('/', function(req, res){
+      res.send('Hola, estas en la pagina inicial');
+      console.log('Se recibio una petición get a través de http');
+    });
+    
   })
   .catch(error => console.log(error));
   

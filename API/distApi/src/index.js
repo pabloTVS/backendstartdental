@@ -96,6 +96,11 @@ typeorm_1.createConnection()
         app.use('/', routes_1.default);
         // start express server
         app.listen(PORT, function () { return console.log("Servidor corriendo en puerto " + PORT); });
+        // Mensaje de bienvinida
+        app.get('/', function (req, res) {
+            res.send('Hola, estas en la pagina inicial');
+            console.log('Se recibio una petición get a través de http');
+        });
         return [2 /*return*/];
     });
 }); })

@@ -5,17 +5,18 @@ import { environment } from '@env/environment';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 
 import { UserResponse, User, Roles } from '@shared/models/user.interface';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, take } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 const helper = new JwtHelperService();
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private user = new BehaviorSubject<UserResponse>(null);
-
+  public isLogged : boolean = false;
   constructor(private http: HttpClient, private router: Router) {
     this.checkToken();
   }
@@ -33,6 +34,7 @@ export class AuthService {
         map((user: UserResponse) => {
           this.saveLocalStorage(user);
           this.user.next(user);
+          this.isLogged = true;
           return user;
         }),
         catchError((err) => this.handlerError(err))
@@ -41,8 +43,9 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('user');
+    this.isLogged = false;
     this.user.next(null);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
   private checkToken(): void {
@@ -50,7 +53,7 @@ export class AuthService {
 
     if (user) {
       const isExpired = helper.isTokenExpired(user.token);
-
+      
       if (isExpired) {
         this.logout();
       } else {
