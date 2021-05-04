@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://backend.startdental.es:5862',
-  //API_URL: 'https://backend.startdental.es:5862'
+  //API_URL: 'http://backend.startdental.es:5862',
+  API_URL: 'https://backend.startdental.es'
 };
 
 /*
