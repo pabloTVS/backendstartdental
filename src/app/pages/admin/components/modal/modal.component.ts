@@ -26,11 +26,16 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void {
     if (this.data?.user.hasOwnProperty('id')) {
       this.actionTODO = Action.EDIT;
-      this.showPasswordField = false;
+     // this.showPasswordField = false;
       this.userForm.baseForm.get('password').setValidators(null);
       this.userForm.baseForm.updateValueAndValidity();
       this.data.title = 'Editar usuario';
       this.pathFormData();
+    }
+    else {
+      //nuevo usuario
+      this.data.title = 'Editar usuario';
+      this.userForm.baseForm.reset();
     }
   }
 
@@ -55,6 +60,7 @@ export class ModalComponent implements OnInit {
   private pathFormData(): void {
     this.userForm.baseForm.patchValue({
       username: this.data?.user?.username,
+      password: this.data?.user?.password,
       role: this.data?.user?.role,
     });
   }
