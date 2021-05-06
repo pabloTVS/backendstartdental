@@ -61,9 +61,7 @@ export class UsersComponent implements AfterViewInit, OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`, typeof result);
       // Update result after adding new user.
-      this.userSvc.getAll().subscribe((users) => {
-        this.dataSource.data = users;
-      });
+      this.userSvc.getAll().subscribe((users) => {this.dataSource.data = users;});
     });
   }
 

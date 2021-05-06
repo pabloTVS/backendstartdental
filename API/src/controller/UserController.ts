@@ -9,12 +9,13 @@ export class UserController {
     let users;
 
     try {
-      users = await userRepository.find({ select: ['id', 'username', 'role'] });
+      users = await userRepository.find({ select: ['id', 'username', 'password', 'role'] });
     } catch (e) {
       res.status(404).json({ message: '¡¡Algo ha fallado!!' });
     }
 
     if (users.length > 0) {
+     // console.log(users);
       res.send(users);
     } else {
       res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
@@ -63,13 +64,14 @@ export class UserController {
   static edit = async (req: Request, res: Response) => {
     let user;
     const { id } = req.params;
-    const { username, role } = req.body;
+    const { username, password, role } = req.body;
 
     const userRepository = getRepository(Users);
     // Try get user
     try {
       user = await userRepository.findOneOrFail(id);
       user.username = username;
+      user.password = password;
       user.role = role;
     } catch (e) {
       return res.status(404).json({ message: 'No se ha encontrado el usuario.' });
@@ -83,6 +85,8 @@ export class UserController {
 
     // Try to save user
     try {
+      //encripto clave
+      user.hashPassword();
       await userRepository.save(user);
     } catch (e) {
       return res.status(409).json({ message: 'Username ya está en uso.' });

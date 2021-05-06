@@ -1,5 +1,5 @@
 import { UsersService } from './../../services/users.service';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { BaseFormUser } from '@shared/utils/base-form-user';
@@ -13,7 +13,7 @@ enum Action {
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent implements OnInit, OnDestroy {
   actionTODO = Action.NEW;
   showPasswordField = true;
   hide = true;
@@ -22,11 +22,14 @@ export class ModalComponent implements OnInit {
     public userForm: BaseFormUser,
     private userSvc: UsersService
   ) {}
+  ngOnDestroy(): void {
+    this.userForm.baseForm.reset(); //reseteo el formulario.
+  }
 
   ngOnInit(): void {
     if (this.data?.user.hasOwnProperty('id')) {
       this.actionTODO = Action.EDIT;
-     // this.showPasswordField = false;
+    //  this.showPasswordField = false;
       this.userForm.baseForm.get('password').setValidators(null);
       this.userForm.baseForm.updateValueAndValidity();
       this.data.title = 'Editar usuario';
@@ -50,6 +53,7 @@ export class ModalComponent implements OnInit {
       this.userSvc.update(userId, formValue).subscribe((res) => {
         console.log('Update', res);
       });
+
     }
   }
 
@@ -60,8 +64,8 @@ export class ModalComponent implements OnInit {
   private pathFormData(): void {
     this.userForm.baseForm.patchValue({
       username: this.data?.user?.username,
-      password: this.data?.user?.password,
       role: this.data?.user?.role,
+      password: null,
     });
   }
 }

@@ -662,3 +662,389 @@
 [2021-04-26T18:12:39.620Z][QUERY]: COMMIT
 [2021-04-26T18:12:43.400Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
 [2021-04-26T18:12:43.518Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T17:40:35.453Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T17:40:39.136Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T17:40:39.253Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T17:41:04.149Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T17:41:04.268Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T17:41:56.275Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T17:41:59.143Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T17:41:59.258Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T17:42:15.154Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T17:42:15.272Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T17:44:23.573Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T17:44:23.691Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["12"]
+[2021-05-06T17:44:23.829Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [12]
+[2021-05-06T17:44:23.944Z][QUERY]: START TRANSACTION
+[2021-05-06T17:44:24.066Z][QUERY]: UPDATE `users` SET `password` = ? WHERE `id` IN (?) -- PARAMETERS: ["151515",12]
+[2021-05-06T17:44:24.081Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T17:44:24.182Z][QUERY]: COMMIT
+[2021-05-06T17:44:24.193Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T17:49:06.875Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T17:49:06.990Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T17:49:12.396Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T17:49:12.511Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["12"]
+[2021-05-06T17:49:12.630Z][QUERY]: DELETE FROM `users` WHERE `id` IN (?) -- PARAMETERS: ["12"]
+[2021-05-06T17:49:16.824Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T17:49:16.937Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T17:49:41.584Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T17:49:41.696Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T17:49:41.817Z][QUERY]: START TRANSACTION
+[2021-05-06T17:49:41.819Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T17:49:41.951Z][QUERY]: INSERT INTO `users`(`id`, `username`, `password`, `role`) VALUES (DEFAULT, ?, ?, ?) -- PARAMETERS: ["raquel@gmail.com","$2a$10$QruBjNNMs4nQ4ECJJxAoEOeIVMRzmp3YCsHcu0PYGw8bnzrMz2jqW","Comercial"]
+[2021-05-06T17:49:42.065Z][QUERY]: COMMIT
+[2021-05-06T17:53:04.081Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T17:53:07.049Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T17:53:07.163Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T17:53:21.436Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T17:53:21.542Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T17:53:21.664Z][QUERY]: START TRANSACTION
+[2021-05-06T17:53:21.666Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T17:53:21.779Z][QUERY]: INSERT INTO `users`(`id`, `username`, `password`, `role`) VALUES (DEFAULT, ?, ?, ?) -- PARAMETERS: ["pepe@gmail.com","$2a$10$zadsVbYmCjpZemxzLm6SKOmRKBX1lhRcAzRnEyXQfrSjeC8DuELPm","Comercial"]
+[2021-05-06T17:53:21.892Z][QUERY]: COMMIT
+[2021-05-06T17:59:54.773Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T17:59:57.378Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T17:59:57.492Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:00:01.710Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:00:01.827Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["14"]
+[2021-05-06T18:00:01.948Z][QUERY]: DELETE FROM `users` WHERE `id` IN (?) -- PARAMETERS: ["14"]
+[2021-05-06T18:00:03.241Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:00:03.357Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:00:24.341Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:00:24.796Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:00:24.909Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:08:31.334Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T18:08:34.047Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:08:34.164Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:08:42.906Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:08:43.021Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:08:43.136Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:08:43.257Z][QUERY]: START TRANSACTION
+[2021-05-06T18:08:43.372Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Suscriptor",13]
+[2021-05-06T18:08:43.386Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:08:43.485Z][QUERY]: COMMIT
+[2021-05-06T18:08:43.501Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:09:04.246Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:09:04.358Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:09:04.362Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:09:04.477Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:09:04.486Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:09:04.606Z][QUERY]: START TRANSACTION
+[2021-05-06T18:09:04.724Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Comercial",13]
+[2021-05-06T18:09:04.844Z][QUERY]: COMMIT
+[2021-05-06T18:18:03.919Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T18:18:06.748Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:18:06.865Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:18:13.877Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:18:13.994Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:18:14.115Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:18:14.231Z][QUERY]: START TRANSACTION
+[2021-05-06T18:18:14.346Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Suscriptor",13]
+[2021-05-06T18:18:14.461Z][QUERY]: COMMIT
+[2021-05-06T18:18:32.737Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:18:32.855Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:18:32.974Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:18:33.091Z][QUERY]: START TRANSACTION
+[2021-05-06T18:18:33.207Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Admin",13]
+[2021-05-06T18:18:33.322Z][QUERY]: COMMIT
+[2021-05-06T18:20:29.099Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T18:20:31.774Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:20:31.892Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:20:39.421Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:20:39.539Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:20:39.657Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:20:39.777Z][QUERY]: START TRANSACTION
+[2021-05-06T18:20:39.874Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:20:39.894Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Comercial",13]
+[2021-05-06T18:20:39.988Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:20:40.011Z][QUERY]: COMMIT
+[2021-05-06T18:22:30.025Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T18:22:32.335Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:22:32.456Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:22:38.663Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:22:38.779Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:22:38.781Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:22:38.895Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:22:38.897Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:22:39.015Z][QUERY]: START TRANSACTION
+[2021-05-06T18:22:39.131Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Admin",13]
+[2021-05-06T18:22:39.246Z][QUERY]: COMMIT
+[2021-05-06T18:27:57.401Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T18:28:07.615Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:28:07.728Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:28:13.762Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:28:13.875Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:28:13.992Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:28:14.110Z][QUERY]: START TRANSACTION
+[2021-05-06T18:28:14.210Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:28:14.224Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Comercial",13]
+[2021-05-06T18:28:14.328Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:28:14.339Z][QUERY]: COMMIT
+[2021-05-06T18:28:34.338Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:28:34.461Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:28:34.464Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:28:34.578Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:28:34.581Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:28:34.697Z][QUERY]: START TRANSACTION
+[2021-05-06T18:28:34.814Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Suscriptor",13]
+[2021-05-06T18:28:34.929Z][QUERY]: COMMIT
+[2021-05-06T18:28:42.750Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:28:42.872Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:28:42.878Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:28:42.992Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:28:42.996Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:28:49.005Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:28:49.117Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:28:49.119Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:28:49.233Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:28:49.238Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:28:49.354Z][QUERY]: START TRANSACTION
+[2021-05-06T18:28:49.470Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Admin",13]
+[2021-05-06T18:28:49.585Z][QUERY]: COMMIT
+[2021-05-06T18:29:09.514Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:29:09.632Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:29:09.646Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:29:09.750Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:29:09.765Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:29:09.868Z][QUERY]: START TRANSACTION
+[2021-05-06T18:29:09.985Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Comercial",13]
+[2021-05-06T18:29:10.100Z][QUERY]: COMMIT
+[2021-05-06T18:29:22.617Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:29:22.736Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:29:22.741Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:29:22.853Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:29:22.860Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:29:31.767Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:29:31.883Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:29:31.886Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:29:32.001Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:29:32.003Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:29:32.121Z][QUERY]: START TRANSACTION
+[2021-05-06T18:29:32.237Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Admin",13]
+[2021-05-06T18:29:32.353Z][QUERY]: COMMIT
+[2021-05-06T18:29:41.344Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:29:41.449Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:29:41.459Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:29:41.572Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:29:41.576Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:29:41.693Z][QUERY]: START TRANSACTION
+[2021-05-06T18:29:41.812Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Suscriptor",13]
+[2021-05-06T18:29:41.926Z][QUERY]: COMMIT
+[2021-05-06T18:29:48.146Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:29:48.260Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:29:48.269Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:29:48.374Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:29:48.385Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:29:53.206Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:29:53.314Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:29:53.324Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:29:53.431Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:29:53.439Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:29:53.556Z][QUERY]: START TRANSACTION
+[2021-05-06T18:29:53.673Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Comercial",13]
+[2021-05-06T18:29:53.793Z][QUERY]: COMMIT
+[2021-05-06T18:30:16.707Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:30:16.823Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:30:52.967Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:30:53.082Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:35:50.648Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:35:50.761Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:35:50.767Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:35:50.875Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:35:50.896Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:35:51.013Z][QUERY]: START TRANSACTION
+[2021-05-06T18:35:51.131Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Admin",13]
+[2021-05-06T18:35:51.246Z][QUERY]: COMMIT
+[2021-05-06T18:37:37.872Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T18:37:40.978Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:37:41.096Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:37:46.745Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:37:46.860Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:37:46.865Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:37:46.978Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:37:46.985Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:37:47.102Z][QUERY]: START TRANSACTION
+[2021-05-06T18:37:47.219Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Comercial",13]
+[2021-05-06T18:37:47.335Z][QUERY]: COMMIT
+[2021-05-06T18:38:13.690Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T18:38:16.697Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:38:16.819Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:38:24.341Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:38:24.457Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:38:24.578Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:38:24.697Z][QUERY]: START TRANSACTION
+[2021-05-06T18:38:24.815Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Admin",13]
+[2021-05-06T18:38:24.931Z][QUERY]: COMMIT
+[2021-05-06T18:38:28.338Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:38:28.454Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:38:35.347Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:38:35.464Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:38:35.585Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:38:35.703Z][QUERY]: START TRANSACTION
+[2021-05-06T18:38:35.820Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Comercial",13]
+[2021-05-06T18:38:35.940Z][QUERY]: COMMIT
+[2021-05-06T18:38:39.186Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:38:39.306Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:42:18.017Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T18:42:21.385Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:42:21.507Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:42:42.440Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:42:42.559Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:42:42.698Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:42:42.820Z][QUERY]: START TRANSACTION
+[2021-05-06T18:42:42.946Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Suscriptor",13]
+[2021-05-06T18:42:43.068Z][QUERY]: COMMIT
+[2021-05-06T18:42:44.848Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:42:44.970Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:43:07.312Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:43:07.444Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:43:07.585Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:43:07.706Z][QUERY]: START TRANSACTION
+[2021-05-06T18:43:07.829Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Comercial",13]
+[2021-05-06T18:43:07.949Z][QUERY]: COMMIT
+[2021-05-06T18:43:10.794Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:43:10.915Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:43:28.055Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:43:28.184Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:43:28.323Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:43:28.440Z][QUERY]: START TRANSACTION
+[2021-05-06T18:43:28.564Z][QUERY]: UPDATE `users` SET `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["Suscriptor",13]
+[2021-05-06T18:43:28.681Z][QUERY]: COMMIT
+[2021-05-06T18:43:29.468Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:43:29.592Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:43:45.186Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:43:45.302Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:48:42.481Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:48:42.609Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:54:06.273Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:54:06.391Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:54:06.682Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:54:06.802Z][QUERY]: START TRANSACTION
+[2021-05-06T18:54:06.926Z][QUERY]: UPDATE `users` SET `password` = ?, `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["$2a$10$5.7ysSSgDas4g4btpJS1e.4AEpoeQuORJoUzSUn0.Z7vbQhDMH5dS","Comercial",13]
+[2021-05-06T18:54:07.045Z][QUERY]: COMMIT
+[2021-05-06T18:54:09.688Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:54:09.805Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T18:54:38.996Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:54:39.113Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T18:54:39.370Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T18:54:39.487Z][QUERY]: START TRANSACTION
+[2021-05-06T18:54:39.604Z][QUERY]: UPDATE `users` SET `password` = ?, `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["$2a$10$bQ24qc6FTy2cR0j2bFLpB.2cwbMSUKlP5aOYcaS15Itaw4MExpii2","Admin",13]
+[2021-05-06T18:54:39.719Z][QUERY]: COMMIT
+[2021-05-06T18:54:40.001Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T18:54:40.118Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:01:26.736Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T19:01:30.431Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:01:30.548Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:01:50.301Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:01:50.416Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T19:01:50.684Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T19:01:50.801Z][QUERY]: START TRANSACTION
+[2021-05-06T19:01:50.923Z][QUERY]: UPDATE `users` SET `password` = ? WHERE `id` IN (?) -- PARAMETERS: ["$2a$10$eF9W3L4TOXeQO5lWyIUrLO/JKFaS2Y4JXkSiyP5YmlkKkjZUqZVrC",13]
+[2021-05-06T19:01:51.042Z][QUERY]: COMMIT
+[2021-05-06T19:01:53.695Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:01:53.812Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:02:39.646Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:02:39.762Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:02:45.341Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:02:45.456Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:03:27.446Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T19:03:30.086Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:03:30.201Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:03:39.942Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:03:40.058Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T19:03:40.310Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T19:03:40.424Z][QUERY]: START TRANSACTION
+[2021-05-06T19:03:40.539Z][QUERY]: UPDATE `users` SET `password` = ? WHERE `id` IN (?) -- PARAMETERS: ["$2a$10$JGLFkG4htgTRdiZ4F0Qho.YDCx56Lgs8Qb6C6iW.ahLNmQK2JqBAu",13]
+[2021-05-06T19:03:40.652Z][QUERY]: COMMIT
+[2021-05-06T19:03:43.374Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:03:43.492Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:03:51.533Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:03:51.650Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:07:04.113Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T19:07:06.458Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:07:06.573Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:07:15.636Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:07:15.749Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T19:07:15.994Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T19:07:16.108Z][QUERY]: START TRANSACTION
+[2021-05-06T19:07:16.223Z][QUERY]: UPDATE `users` SET `password` = ? WHERE `id` IN (?) -- PARAMETERS: ["$2a$10$DWTfDkM9aeENfobSwx5dy.bmnlTOCqq8u2pfC.fj3d3sfRHD5zmwW",13]
+[2021-05-06T19:07:16.336Z][QUERY]: COMMIT
+[2021-05-06T19:07:17.366Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:07:17.480Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:08:05.297Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T19:08:10.041Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:08:10.154Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:08:20.523Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:08:20.638Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T19:08:33.617Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:08:33.731Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:09:23.884Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T19:09:26.536Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:09:26.651Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:09:36.302Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:09:36.418Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T19:09:36.680Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T19:09:36.794Z][QUERY]: START TRANSACTION
+[2021-05-06T19:09:36.909Z][QUERY]: UPDATE `users` SET `password` = ? WHERE `id` IN (?) -- PARAMETERS: ["$2a$10$gzpz1FBZqUcSe7mwOmnLqeudE0KUQawzjKTooECTq0KF0bRnJpinG",13]
+[2021-05-06T19:09:37.023Z][QUERY]: COMMIT
+[2021-05-06T19:10:00.173Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:10:00.288Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:10:03.828Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:10:03.942Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:13:15.143Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T19:13:17.890Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:13:18.005Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:13:26.560Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:13:26.675Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T19:13:26.917Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T19:13:27.040Z][QUERY]: START TRANSACTION
+[2021-05-06T19:13:27.156Z][QUERY]: UPDATE `users` SET `password` = ? WHERE `id` IN (?) -- PARAMETERS: ["$2a$10$YtNvnJtHauMCiz/HevCTxe95ifLtJZ5mC6CshnTA3JOP/NbiOTbsC",13]
+[2021-05-06T19:13:27.271Z][QUERY]: COMMIT
+[2021-05-06T19:13:29.345Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:13:29.460Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:14:00.380Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:14:00.496Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:14:05.942Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:14:06.057Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:16:35.570Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T19:16:38.232Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:16:38.348Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:16:51.309Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:16:51.423Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T19:16:51.669Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T19:16:51.785Z][QUERY]: START TRANSACTION
+[2021-05-06T19:16:51.903Z][QUERY]: UPDATE `users` SET `password` = ?, `role` = ? WHERE `id` IN (?) -- PARAMETERS: ["$2a$10$oig7tgV83O.G2umGQ.bpKe7XXL4.dslQe6p3vLegN45VoldPQdahe","Comercial",13]
+[2021-05-06T19:16:52.020Z][QUERY]: COMMIT
+[2021-05-06T19:16:55.373Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:16:55.492Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:17:03.605Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:17:03.720Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:18:23.884Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T19:18:27.262Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:18:27.378Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:18:37.694Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:18:37.809Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T19:18:38.052Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T19:18:38.166Z][QUERY]: START TRANSACTION
+[2021-05-06T19:18:38.279Z][QUERY]: UPDATE `users` SET `password` = ? WHERE `id` IN (?) -- PARAMETERS: ["$2a$10$30NZWVrxEIK0HCa5ugE3IuQhKW08uZvEa/gSIcfmN25LXMKfHl26O",13]
+[2021-05-06T19:18:38.393Z][QUERY]: COMMIT
+[2021-05-06T19:18:45.251Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:18:45.367Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:19:05.452Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["raquel@gmail.com"]
+[2021-05-06T19:19:20.936Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`username` = ? LIMIT 1 -- PARAMETERS: ["pablo@truevaluesoft.com"]
+[2021-05-06T19:19:27.911Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:19:28.025Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:20:01.169Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:20:01.283Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: ["13"]
+[2021-05-06T19:20:01.534Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [13]
+[2021-05-06T19:20:01.648Z][QUERY]: START TRANSACTION
+[2021-05-06T19:20:01.761Z][QUERY]: UPDATE `users` SET `password` = ? WHERE `id` IN (?) -- PARAMETERS: ["$2a$10$orn6Ahjozfb.zO7p668iDuz9s6HJWg1re5mVz8MOG5sUa16PrJ1ie",13]
+[2021-05-06T19:20:01.875Z][QUERY]: COMMIT
+[2021-05-06T19:20:09.336Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:20:09.451Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:20:44.771Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:20:44.887Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:21:07.103Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:21:07.221Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`
+[2021-05-06T19:21:23.742Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users` WHERE `Users`.`id` IN (?) -- PARAMETERS: [1]
+[2021-05-06T19:21:23.858Z][QUERY]: SELECT `Users`.`id` AS `Users_id`, `Users`.`username` AS `Users_username`, `Users`.`password` AS `Users_password`, `Users`.`role` AS `Users_role` FROM `users` `Users`

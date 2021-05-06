@@ -46,7 +46,6 @@
   <button mat-button mat-dialog-close>Cancelar</button>
   <button
     mat-raised-button
-    [mat-dialog-close]="true"
     color="primary"
     (click)="onSave()"
     ckdFocusInitial
@@ -54,4 +53,5 @@
   >
   Grabar
   </button>
+  <button  mat-raised-button  [mat-dialog-close]="data">Cerrar</button>
 </mat-dialog-actions>
