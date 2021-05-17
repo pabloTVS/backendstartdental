@@ -18,7 +18,7 @@
           [type]="hide ? 'password' : 'text'"
           formControlName="password"
           matInput
-          placeholder="Password"
+          placeholder="Introduzca el nuevo password"
           required
         />
         <button mat-icon-button matSuffix (click)="hide = !hide">
@@ -28,7 +28,7 @@
           {{ userForm.errorMessage }}
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="full-width-input">
+      <mat-form-field class="full-width-input" *ngIf="!showPasswordField">
         <mat-label>Select </mat-label>
         <mat-select formControlName="role">
           <mat-option value="Admin">Admin</mat-option>
@@ -49,7 +49,7 @@
     color="primary"
     (click)="onSave()"
     ckdFocusInitial
-    [disabled]="!userForm.baseForm.valid"
+    [disabled]="userForm.baseForm.invalid"
   >
   Grabar
   </button>

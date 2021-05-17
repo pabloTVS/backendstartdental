@@ -26,10 +26,10 @@ class AuthController {
     if (!user.checkPassword(password)) {
       return res.status(400).json({ message: 'Usuario o contraseña incorrectos.' });
     }
-
     const token = jwt.sign({ userId: user.id, username: user.username }, config.jwtSecret, { expiresIn: '1h' });
 
     res.json({ message: 'OK', token, userId: user.id, role: user.role });
+    
   };
 
   static changePassword = async (req: Request, res: Response) => {

@@ -1,6 +1,5 @@
 import { FormBuilder, Validators } from '@angular/forms';
 import { Injectable } from '@angular/core';
-
 @Injectable({ providedIn: 'root' })
 export class BaseFormUser {
   private isValidEmail = /\S+@\S+\.\S+/;
@@ -19,17 +18,16 @@ export class BaseFormUser {
 
   isValidField(field: string): boolean {
     this.getErrorMessage(field);
-    return (
-      (this.baseForm.get(field).touched || this.baseForm.get(field).dirty) &&
-      !this.baseForm.get(field).valid
-    );
-  }
+    return ((this.baseForm.get(field).touched || this.baseForm.get(field).dirty) &&
+            !this.baseForm.get(field).valid);
+    }
 
   private getErrorMessage(field: string): void {
     const { errors } = this.baseForm.get(field);
 
     if (errors) {
       const minlenght = errors?.minlength?.requiredLength;
+      console.log('valor de longitud del campo ',field,' es de ',minlenght);
       const messages = {
         required: 'Debes introducir un valor.',
         pattern: 'No es un mail válido.',

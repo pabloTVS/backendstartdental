@@ -84,14 +84,14 @@ export class UserController {
     }
 
     // Try to save user
-    try {
+     try {
       //encripto clave
       user.hashPassword();
       await userRepository.save(user);
     } catch (e) {
       return res.status(409).json({ message: 'Username ya está en uso.' });
     }
-
+ 
     res.status(201).json({ message: 'Cambios guardados.' });
   };
 

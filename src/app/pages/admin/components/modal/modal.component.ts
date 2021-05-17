@@ -3,6 +3,7 @@ import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { BaseFormUser } from '@shared/utils/base-form-user';
+
 enum Action {
   EDIT = 'editar',
   NEW = 'nuevo',
@@ -29,10 +30,21 @@ export class ModalComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (this.data?.user.hasOwnProperty('id')) {
       this.actionTODO = Action.EDIT;
-    //  this.showPasswordField = false;
+      // controla si se ha activado el cambio de password
+      if (this.data?.changePassword)
+      {
+        this.showPasswordField = true;
+        this.userForm.baseForm.get('password').reset(null);
+        this.data.title = 'Cambio de password';
+      }  
+      else
+      { 
+        this.showPasswordField = false;
+        this.data.title = 'Editar usuario';
+      }  
+
       this.userForm.baseForm.get('password').setValidators(null);
       this.userForm.baseForm.updateValueAndValidity();
-      this.data.title = 'Editar usuario';
       this.pathFormData();
     }
     else {
@@ -65,7 +77,7 @@ export class ModalComponent implements OnInit, OnDestroy {
     this.userForm.baseForm.patchValue({
       username: this.data?.user?.username,
       role: this.data?.user?.role,
-      password: null,
+      password: this.data?.user?.password
     });
   }
 }

@@ -50,13 +50,13 @@ export class UsersComponent implements AfterViewInit, OnInit, OnDestroy {
     }
   }
 
-  onOpenModal(user = {}): void {
+  onOpenModal(user = {}, changePassword :boolean): void {
     console.log('User->', user);
     let dialogRef = this.dialog.open(ModalComponent, {
       height: '400px',
       width: '600px',
       hasBackdrop: false,
-      data: { title: 'Nuevo usuario', user },
+      data: { title: 'Nuevo usuario', user, changePassword },
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`, typeof result);

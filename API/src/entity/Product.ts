@@ -4,10 +4,6 @@ import { wp_postmeta } from './productDetail';
 @Unique(['ID'])
 export class wp_posts {
     @PrimaryGeneratedColumn() ID: number;
-    @ManyToOne(() => wp_postmeta)
-    @JoinColumn({name: "wp_postmetapost_id"})
-    postmeta: wp_postmeta;
-
     @Column() post_author: number;
     @CreateDateColumn() post_date: Date;
     @CreateDateColumn() post_date_gmt: Date;
