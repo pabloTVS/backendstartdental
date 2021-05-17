@@ -1,5 +1,4 @@
 import { Entity, PrimaryGeneratedColumn, Unique, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { wp_postmeta } from './productDetail';
 @Entity()
 @Unique(['ID'])
 export class wp_posts {

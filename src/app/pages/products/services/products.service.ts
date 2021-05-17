@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { environment } from '@env/environment';
 import { Injectable } from '@angular/core';
 import { viewProducts } from '@shared/models/viewProducts.interface'
+import { product } from '@shared/models/Products.interface'
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +18,14 @@ export class productsService {
     pipe(catchError(this.handlerError));
   }
 
-  getById(productId:number): Observable<viewProducts>{
-    return this.http.get<viewProducts>(`${environment.API_URL}/prod/${productId}`).
+  getById(Id:number): Observable<viewProducts>{
+    return this.http.get<viewProducts>(`${environment.API_URL}/prod/${Id}`).
     pipe(catchError(this.handlerError));
   }
 
- // updateProducts(productId:number): Observable<viewProducts>
+  updateProducts(Id:number, prod:product): Observable<product> {
+    return this.http.patch<product>(`${environment.API_URL}/prod/${Id}`,prod).pipe(catchError(this.handlerError))
+ }
 
   handlerError(error): Observable<never> {
     let errorMessage = 'Error desconocido';
