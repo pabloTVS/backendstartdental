@@ -15,7 +15,7 @@ router.get('/:Id',[checkJwt, checkRole(['Admin'])], ProductController.getById);
 //router.post('/',[checkJwt, checkRole(['Admin'])], UserController.new);
 
 // Edit product
-//router.patch('/:Id', [checkJwt, checkRole(['Admin'])], ProductController.edit);
+router.patch('/:Id', [checkJwt, checkRole(['Admin'])], ProductController.edit);
 
 // Delete
 //router.delete('/:id', [checkJwt, checkRole(['Admin'])], UserController.delete);
