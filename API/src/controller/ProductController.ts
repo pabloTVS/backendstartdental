@@ -1,6 +1,7 @@
-import { getRepository } from 'typeorm';
+import { getRepository, getConnection } from 'typeorm';
 import { Request, Response } from 'express';
 import { wp_posts } from '../entity/Product';
+import { wp_postmeta } from '../entity/productDetail';
 import { viewProducts } from '../entity/viewProducts'
 import { validate } from 'class-validator';
 
@@ -14,7 +15,7 @@ export class ProductController {
       try {
           products = await productRepository.createQueryBuilder().select(["product.ID","product.Articulo","product.Sku","product.Precio"
           ,"product.IVA","product.Stock","product.Imagen","product.Proveedor","product.Categoria","product.Subcategoria"]).
-          from(viewProducts,"product").limit(9000).getMany(); 
+          from(viewProducts,"product").limit(100).getMany(); 
           products ? res.send(products) :  res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
         }  
         catch (e) {
@@ -38,38 +39,66 @@ export class ProductController {
     };
 
     static getById = async (req: Request, res: Response) => {
-      const { Id } = req.params;
+      const {Id} = req.params;
+      const productRepository = getRepository(viewProducts);
+      
+      let products :viewProducts;
+
+      products = await productRepository.createQueryBuilder().select(["product.ID","product.Articulo","product.Sku","product.Precio"
+          ,"product.IVA","product.Stock","product.Imagen","product.Proveedor","product.Categoria","product.Subcategoria"]).
+          from(viewProducts,"product").where("product.ID = :id",{id: Id}).getOne(); 
+      
+      products ? res.send(products) :  res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
+      
+
+/*       const { Id } = req.params;
       const productRepository = getRepository(wp_posts);
       try {
         const product = await productRepository.findOneOrFail(Id);
         res.send(product);
       } catch (e) {
         res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
-      }
+      } */
+
     };
 
     static edit = async (req: Request, res: Response) => {
-      let product:wp_posts;
+      let view:viewProducts;
+
       const { Id } = req.params;
-      const {post_title} = req.body;
-      const productRepository = getRepository(wp_posts);
+      const {Articulo, Sku, Precio, Stock} = req.body;
+
+      const viewRepository = getRepository(viewProducts);
+
       try {
-        product = await productRepository.findOneOrFail(Id);
-        product.post_title = post_title;
+        view = await viewRepository.findOneOrFail(Id);
       } catch (e) {
         res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
       }
-
+ 
       const validationOpt = { validationError: { target: false, value: false } };
-      const errors = await validate(product, validationOpt);
+      const errors = await validate(view, validationOpt) ;
   
       if (errors.length > 0) {
         return res.status(400).json(errors);
       }
-  
-      // Try to save user
+   
+      // Try to save producto
        try {
-        await productRepository.save(product);
+        //actualizo el título, tabla wp_post (principal).
+        await getConnection().createQueryBuilder().update(wp_posts).set({post_title:Articulo})
+        .where("ID = :id",{id: Id}).execute();
+        //actualizo el resto, tabla detalles.
+        //Actualizamos SKU
+        await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: Sku})
+        .where("post_id = :id and meta_key = :type",{id: Id,type: '_sku'}).execute();
+        //Actualizamos Precio
+        await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: Precio})
+        .where("post_id = :id and meta_key = :type",{id: Id,type: '_price'}).execute();
+        //Actualizamos Stock
+        await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: Stock})
+        .where("post_id = :id and meta_key = :type",{id: Id,type: '_stock'}).execute();
+
       } catch (e) {
         return res.status(409).json({ message: 'Error guardando el artículo.' });
       }
