@@ -78,6 +78,6 @@ export class ModalComponent implements OnInit, OnDestroy {
       username: this.data?.user?.username,
       role: this.data?.user?.role,
       password: this.data?.user?.password
-    });
+      });
   }
 }

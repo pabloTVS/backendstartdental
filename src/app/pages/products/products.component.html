@@ -52,13 +52,28 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Subcategoria </th>
       <td mat-cell *matCellDef="let element"> {{element.Subcategoria}} </td>
     </ng-container>
-
-
+    
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="table-button-row">
+          <button mat-flat-button color="accent" (click)="onOpenModal(element)">
+            Editar
+          </button>
+        </div>
+      </td>
+    </ng-container>
+  
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
   <mat-paginator [pageSizeOptions]="[12, 25, 50]" showFirstLastButtons></mat-paginator>
+</div>
+<div>
+  <button mat-flat-button color="accent">
+    Editar
+  </button>
 </div>
  
   

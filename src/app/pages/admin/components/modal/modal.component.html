@@ -13,32 +13,48 @@
           {{ userForm.errorMessage }}
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="full-width-input" *ngIf="showPasswordField">
-        <input
-          [type]="hide ? 'password' : 'text'"
-          formControlName="password"
-          matInput
-          placeholder="Introduzca el nuevo password"
-          required
-        />
-        <button mat-icon-button matSuffix (click)="hide = !hide">
-          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-        </button>
-        <mat-error *ngIf="checkField('password')">
-          {{ userForm.errorMessage }}
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="full-width-input" *ngIf="!showPasswordField">
-        <mat-label>Select </mat-label>
-        <mat-select formControlName="role">
-          <mat-option value="Admin">Admin</mat-option>
-          <mat-option value="Comercial">Comercial</mat-option>
-          <mat-option value="Suscriptor">Suscriptor</mat-option>
-        </mat-select>
-        <mat-error *ngIf="checkField('role')">
-          {{ userForm.errorMessage }}
-        </mat-error>
-      </mat-form-field>
+      <div class="editar" *ngIf="!showPasswordField"> 
+        <mat-form-field class="full-width-input" >
+          <mat-label>Select </mat-label>
+          <mat-select formControlName="role">
+            <mat-option value="Admin">Admin</mat-option>
+            <mat-option value="Comercial">Comercial</mat-option>
+            <mat-option value="Suscriptor">Suscriptor</mat-option>
+          </mat-select>
+          <mat-error *ngIf="checkField('role')">
+            {{ userForm.errorMessage }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="full" *ngIf="showPasswordField"> 
+        <mat-form-field class="full-width-input" >
+          <input
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+            matInput
+            placeholder="Introduzca el nuevo password"
+            minlength="5"
+            required
+          />
+          <button mat-icon-button matSuffix (click)="hide = !hide">
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error *ngIf="checkField('password')">
+            {{ userForm.errorMessage }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input" >
+          <mat-label>Select </mat-label>
+          <mat-select formControlName="role">
+            <mat-option value="Admin">Admin</mat-option>
+            <mat-option value="Comercial">Comercial</mat-option>
+            <mat-option value="Suscriptor">Suscriptor</mat-option>
+          </mat-select>
+          <mat-error *ngIf="checkField('role')">
+            {{ userForm.errorMessage }}
+          </mat-error>
+        </mat-form-field>
+      </div>
     </form>
   </div>
 </mat-dialog-content>

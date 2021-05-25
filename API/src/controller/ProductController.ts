@@ -66,7 +66,7 @@ export class ProductController {
       let view:viewProducts;
 
       const { Id } = req.params;
-      const {Articulo, Sku, Precio, Stock} = req.body;
+      const {articulo, sku, precio, stock} = req.body;
 
       const viewRepository = getRepository(viewProducts);
 
@@ -86,17 +86,17 @@ export class ProductController {
       // Try to save producto
        try {
         //actualizo el título, tabla wp_post (principal).
-        await getConnection().createQueryBuilder().update(wp_posts).set({post_title:Articulo})
+        await getConnection().createQueryBuilder().update(wp_posts).set({post_title:articulo})
         .where("ID = :id",{id: Id}).execute();
         //actualizo el resto, tabla detalles.
         //Actualizamos SKU
-        await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: Sku})
+        await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: sku})
         .where("post_id = :id and meta_key = :type",{id: Id,type: '_sku'}).execute();
         //Actualizamos Precio
-        await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: Precio})
+        await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: precio})
         .where("post_id = :id and meta_key = :type",{id: Id,type: '_price'}).execute();
         //Actualizamos Stock
-        await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: Stock})
+        await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: stock})
         .where("post_id = :id and meta_key = :type",{id: Id,type: '_stock'}).execute();
 
       } catch (e) {

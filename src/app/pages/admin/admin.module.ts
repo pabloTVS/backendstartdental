@@ -6,9 +6,10 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { MaterialModule } from '@app/material.module';
+import { ProductModalComponent } from './components/modal/product.modal/product.modal.component';
 
 @NgModule({
-  declarations: [AdminComponent, ModalComponent],
+  declarations: [AdminComponent, ModalComponent, ProductModalComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

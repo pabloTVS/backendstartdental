@@ -18,8 +18,7 @@ export class BaseFormUser {
 
   isValidField(field: string): boolean {
     this.getErrorMessage(field);
-    return ((this.baseForm.get(field).touched || this.baseForm.get(field).dirty) &&
-            !this.baseForm.get(field).valid);
+    return (this.baseForm.get(field).invalid && this.baseForm.get(field).touched);
     }
 
   private getErrorMessage(field: string): void {

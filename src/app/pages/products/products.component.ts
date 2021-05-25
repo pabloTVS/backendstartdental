@@ -1,33 +1,12 @@
 import { productsService } from './services/products.service';
-import { SpinnerOverlayService } from './../../shared/services/spinner-overlay.service'
+import { SpinnerOverlayService } from '../../shared/services/spinner-overlay.service'
 import { Component, AfterViewInit, ViewChild, Input } from '@angular/core';
 import { MatSort} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductModalComponent } from './../admin/components/modal/product.modal/product.modal.component';
 
-/*export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
-*/
-/**
- * @title Table with sorting
- */
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -35,7 +14,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class ProductsComponent implements AfterViewInit {
-  displayedColumns: string[] = ['Imagen', 'Articulo', 'Sku', 'Precio', 'IVA', 'Stock', 'Proveedor', 'Categoria', 'Subcategoria'];
+  displayedColumns: string[] = ['Imagen', 'Articulo', 'Sku', 'Precio', 'IVA', 'Stock', 'Proveedor', 'Categoria', 'Subcategoria','actions'];
   dataSource = new MatTableDataSource();
  
   @ViewChild(MatSort) sort: MatSort;
@@ -43,7 +22,9 @@ export class ProductsComponent implements AfterViewInit {
 
   @Input() imgPath:string = "https://startdental.es/wp-content/uploads/";
   
-  constructor(private viewProd: productsService, private spinnerSvc: SpinnerOverlayService) {}
+  constructor(private viewProd: productsService,
+     private spinnerSvc: SpinnerOverlayService,
+     private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.spinner();
@@ -75,4 +56,20 @@ export class ProductsComponent implements AfterViewInit {
   {
       this.dataSource.data.length >0 ? this.spinnerSvc.hide() : this.spinnerSvc.show();
   }
+
+
+  onOpenModal(prod = {}): void {
+    console.log('prod->', prod);
+    let dialogRef = this.dialog.open(ProductModalComponent, {
+      height: '400px',
+      width: '600px',
+      hasBackdrop: false,
+      data: { title: 'Productos', prod },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`, typeof result);
+      // Update result after adding new user.
+      this.viewProd.getAllProducts().subscribe((prods) => {this.dataSource.data = prods;});
+    });
+  }  
 }

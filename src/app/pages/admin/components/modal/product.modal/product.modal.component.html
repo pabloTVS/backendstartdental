@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>{{ data?.title }}</h2>
+<mat-dialog-content>
+  <div class="modal-form">
+    <form [formGroup]="prodForm.productForm">
+      <mat-form-field class="full-width-input">
+        <input
+          formControlName="articulo"
+          matInput
+          placeholder="Articulo"
+          required
+        />
+        <mat-error *ngIf="checkField('articulo')">
+          {{ prodForm.errorMessage }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input
+          formControlName="sku"
+          matInput
+          placeholder="Sku"
+          required
+        />
+        <mat-error *ngIf="checkField('sku')">
+          {{ prodForm.errorMessage }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input
+          formControlName="precio"
+          matInput
+          placeholder="Precio"
+          required
+        />
+        <mat-error *ngIf="checkField('precio')">
+          {{ prodForm.errorMessage }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input
+          formControlName="stock"
+          matInput
+          placeholder="Stock"
+          required
+        />
+        <mat-error *ngIf="checkField('stock')">
+          {{ prodForm.errorMessage }}
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onSave()"
+    ckdFocusInitial
+    [disabled]="prodForm.productForm.invalid"
+  >
+  Grabar
+  </button>
+</mat-dialog-actions>
+
