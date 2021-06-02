@@ -38,13 +38,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductController = void 0;
 var typeorm_1 = require("typeorm");
-//import { wp_posts } from '../entity/Product';
+var Product_1 = require("../entity/Product");
+var productDetail_1 = require("../entity/productDetail");
 var viewProducts_1 = require("../entity/viewProducts");
+var class_validator_1 = require("class-validator");
 var ProductController = /** @class */ (function () {
     function ProductController() {
     }
     ProductController.getAllProducts = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var productRepository, type, products, e_1;
+        var productRepository, products, e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -54,16 +56,99 @@ var ProductController = /** @class */ (function () {
                     _a.trys.push([1, 3, , 4]);
                     return [4 /*yield*/, productRepository.createQueryBuilder().select(["product.ID", "product.Articulo", "product.Sku", "product.Precio",
                             "product.IVA", "product.Stock", "product.Imagen", "product.Proveedor", "product.Categoria", "product.Subcategoria"]).
-                            from(viewProducts_1.viewProducts, "product").limit(9000).getMany()];
+                            from(viewProducts_1.viewProducts, "product").limit(100).getMany()];
                 case 2:
                     products = _a.sent();
-                    products.length ? res.send(products) : res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
+                    products ? res.send(products) : res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
                     return [3 /*break*/, 4];
                 case 3:
                     e_1 = _a.sent();
                     res.status(400).json({ message: e_1.message });
                     return [3 /*break*/, 4];
                 case 4: return [2 /*return*/];
+            }
+        });
+    }); };
+    ProductController.getById = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var Id, productRepository, products;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    Id = req.params.Id;
+                    productRepository = typeorm_1.getRepository(viewProducts_1.viewProducts);
+                    return [4 /*yield*/, productRepository.createQueryBuilder().select(["product.ID", "product.Articulo", "product.Sku", "product.Precio",
+                            "product.IVA", "product.Stock", "product.Imagen", "product.Proveedor", "product.Categoria", "product.Subcategoria"]).
+                            from(viewProducts_1.viewProducts, "product").where("product.ID = :id", { id: Id }).getOne()];
+                case 1:
+                    products = _a.sent();
+                    products ? res.send(products) : res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
+                    return [2 /*return*/];
+            }
+        });
+    }); };
+    ProductController.edit = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var view, Id, _a, articulo, sku, precio, stock, viewRepository, e_2, validationOpt, errors, e_3;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    Id = req.params.Id;
+                    _a = req.body, articulo = _a.articulo, sku = _a.sku, precio = _a.precio, stock = _a.stock;
+                    viewRepository = typeorm_1.getRepository(viewProducts_1.viewProducts);
+                    _b.label = 1;
+                case 1:
+                    _b.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, viewRepository.findOneOrFail(Id)];
+                case 2:
+                    view = _b.sent();
+                    return [3 /*break*/, 4];
+                case 3:
+                    e_2 = _b.sent();
+                    res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
+                    return [3 /*break*/, 4];
+                case 4:
+                    validationOpt = { validationError: { target: false, value: false } };
+                    return [4 /*yield*/, class_validator_1.validate(view, validationOpt)];
+                case 5:
+                    errors = _b.sent();
+                    if (errors.length > 0) {
+                        return [2 /*return*/, res.status(400).json(errors)];
+                    }
+                    _b.label = 6;
+                case 6:
+                    _b.trys.push([6, 11, , 12]);
+                    //actualizo el título, tabla wp_post (principal).
+                    return [4 /*yield*/, typeorm_1.getConnection().createQueryBuilder().update(Product_1.wp_posts).set({ post_title: articulo })
+                            .where("ID = :id", { id: Id }).execute()];
+                case 7:
+                    //actualizo el título, tabla wp_post (principal).
+                    _b.sent();
+                    //actualizo el resto, tabla detalles.
+                    //Actualizamos SKU
+                    return [4 /*yield*/, typeorm_1.getConnection().createQueryBuilder().update(productDetail_1.wp_postmeta).set({ meta_value: sku })
+                            .where("post_id = :id and meta_key = :type", { id: Id, type: '_sku' }).execute()];
+                case 8:
+                    //actualizo el resto, tabla detalles.
+                    //Actualizamos SKU
+                    _b.sent();
+                    //Actualizamos Precio
+                    return [4 /*yield*/, typeorm_1.getConnection().createQueryBuilder().update(productDetail_1.wp_postmeta).set({ meta_value: precio })
+                            .where("post_id = :id and meta_key = :type", { id: Id, type: '_price' }).execute()];
+                case 9:
+                    //Actualizamos Precio
+                    _b.sent();
+                    //Actualizamos Stock
+                    return [4 /*yield*/, typeorm_1.getConnection().createQueryBuilder().update(productDetail_1.wp_postmeta).set({ meta_value: stock })
+                            .where("post_id = :id and meta_key = :type", { id: Id, type: '_stock' }).execute()];
+                case 10:
+                    //Actualizamos Stock
+                    _b.sent();
+                    return [3 /*break*/, 12];
+                case 11:
+                    e_3 = _b.sent();
+                    return [2 /*return*/, res.status(409).json({ message: 'Error guardando el artículo.' })];
+                case 12:
+                    res.status(201).json({ message: 'Cambios guardados.' });
+                    return [2 /*return*/];
             }
         });
     }); };

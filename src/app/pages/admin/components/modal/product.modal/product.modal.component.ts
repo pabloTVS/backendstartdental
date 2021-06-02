@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BaseFormProduct } from '@shared/utils/product-form';
 
@@ -10,7 +10,7 @@ import { productsService } from './../../../../products/services/products.servic
   styleUrls: ['./product.modal.component.scss']
 })
 export class ProductModalComponent implements OnInit, OnDestroy {
-
+  
   constructor(    
     @Inject(MAT_DIALOG_DATA) public data: any,
     public prodForm: BaseFormProduct,
@@ -31,9 +31,10 @@ export class ProductModalComponent implements OnInit, OnDestroy {
   onSave(): void {
     const formValue = this.prodForm.productForm.value;
       const prodId = this.data?.prod?.ID;
-      console.log(prodId);
-      console.log(formValue);
+//      console.log(prodId);
+//      console.log(formValue);
       this.prodSvc.updateProducts(prodId, formValue).subscribe((res) => {console.log('Update', res);});
+
   }
 
   checkField(field: string): boolean {

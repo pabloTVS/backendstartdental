@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 
 export class BaseFormProduct {
     errorMessage = null;
+    
 
     constructor(private fb: FormBuilder) {}
     productForm = this.fb.group({

@@ -52,7 +52,7 @@ var UserController = /** @class */ (function () {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, userRepository.find({ select: ['id', 'username', 'role'] })];
+                    return [4 /*yield*/, userRepository.find({ select: ['id', 'username', 'password', 'role'] })];
                 case 2:
                     users = _a.sent();
                     return [3 /*break*/, 4];
@@ -62,6 +62,7 @@ var UserController = /** @class */ (function () {
                     return [3 /*break*/, 4];
                 case 4:
                     if (users.length > 0) {
+                        // console.log(users);
                         res.send(users);
                     }
                     else {
@@ -131,12 +132,12 @@ var UserController = /** @class */ (function () {
         });
     }); };
     UserController.edit = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var user, id, _a, username, role, userRepository, e_4, validationOpt, errors, e_5;
+        var user, id, _a, username, password, role, userRepository, e_4, validationOpt, errors, e_5;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     id = req.params.id;
-                    _a = req.body, username = _a.username, role = _a.role;
+                    _a = req.body, username = _a.username, password = _a.password, role = _a.role;
                     userRepository = typeorm_1.getRepository(Users_1.Users);
                     _b.label = 1;
                 case 1:
@@ -145,6 +146,7 @@ var UserController = /** @class */ (function () {
                 case 2:
                     user = _b.sent();
                     user.username = username;
+                    user.password = password;
                     user.role = role;
                     return [3 /*break*/, 4];
                 case 3:
@@ -161,6 +163,8 @@ var UserController = /** @class */ (function () {
                     _b.label = 6;
                 case 6:
                     _b.trys.push([6, 8, , 9]);
+                    //encripto clave
+                    user.hashPassword();
                     return [4 /*yield*/, userRepository.save(user)];
                 case 7:
                     _b.sent();

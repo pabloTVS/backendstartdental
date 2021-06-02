@@ -34,7 +34,7 @@ export class UserController {
   };
 
   static new = async (req: Request, res: Response) => {
-    const { username, password, role } = req.body;
+    const { username, password, role} = req.body;
     const user = new Users();
 
     user.username = username;

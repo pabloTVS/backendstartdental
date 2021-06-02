@@ -51,7 +51,7 @@ export class UsersComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   onOpenModal(user = {}, changePassword :boolean): void {
-    console.log('User->', user);
+    //console.log('User->', user);
     let dialogRef = this.dialog.open(ModalComponent, {
       height: '400px',
       width: '600px',
@@ -59,7 +59,7 @@ export class UsersComponent implements AfterViewInit, OnInit, OnDestroy {
       data: { title: 'Nuevo usuario', user, changePassword },
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`, typeof result);
+      //console.log(`Dialog result: ${result}`, typeof result);
       // Update result after adding new user.
       this.userSvc.getAll().subscribe((users) => {this.dataSource.data = users;});
     });

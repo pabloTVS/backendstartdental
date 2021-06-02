@@ -59,7 +59,7 @@ export class ProductsComponent implements AfterViewInit {
 
 
   onOpenModal(prod = {}): void {
-    console.log('prod->', prod);
+   // console.log('prod->', prod);
     let dialogRef = this.dialog.open(ProductModalComponent, {
       height: '400px',
       width: '600px',
@@ -71,5 +71,5 @@ export class ProductsComponent implements AfterViewInit {
       // Update result after adding new user.
       this.viewProd.getAllProducts().subscribe((prods) => {this.dataSource.data = prods;});
     });
-  }  
+  }
 }

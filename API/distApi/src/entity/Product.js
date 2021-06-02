@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.wp_posts = void 0;
 var typeorm_1 = require("typeorm");
-var productDetail_1 = require("./productDetail");
 var wp_posts = /** @class */ (function () {
     function wp_posts() {
     }
@@ -19,11 +18,6 @@ var wp_posts = /** @class */ (function () {
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
     ], wp_posts.prototype, "ID", void 0);
-    __decorate([
-        typeorm_1.ManyToOne(function () { return productDetail_1.wp_postmeta; }),
-        typeorm_1.JoinColumn({ name: "wp_postmetapost_id" }),
-        __metadata("design:type", productDetail_1.wp_postmeta)
-    ], wp_posts.prototype, "postmeta", void 0);
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", Number)

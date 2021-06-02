@@ -26,7 +26,7 @@ export class BaseFormUser {
 
     if (errors) {
       const minlenght = errors?.minlength?.requiredLength;
-      console.log('valor de longitud del campo ',field,' es de ',minlenght);
+     // console.log('valor de longitud del campo ',field,' es de ',minlenght);
       const messages = {
         required: 'Debes introducir un valor.',
         pattern: 'No es un mail válido.',
