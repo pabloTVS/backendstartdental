@@ -9,15 +9,15 @@ const router = Router();
 router.get('/',[checkJwt], PaymentController.getAllPayment);
 
 // Get one product
-//router.get('/:IdFormaPago',[checkJwt, checkRole(['Admin'])], PaymentController.getById);
+router.get('/:IdFormaPago',[checkJwt, checkRole(['Admin'])], PaymentController.getById);
 
-// Create a new user
-//router.post('/',[checkJwt, checkRole(['Admin'])], PaymentController.new);
+// Create a new
+router.post('/',[checkJwt, checkRole(['Admin'])], PaymentController.new);
 
-// Edit product
-//router.patch('/:IdFormaPago', [checkJwt, checkRole(['Admin'])], PaymentController.edit);
+// Edit
+router.patch('/:IdFormaPago', [checkJwt, checkRole(['Admin'])], PaymentController.edit);
 
 // Delete
-//router.delete('/:IdFormaPago', [checkJwt, checkRole(['Admin'])], PaymentController.delete);
+router.delete('/:IdFormaPago', [checkJwt, checkRole(['Admin'])], PaymentController.delete);
 
 export default router;

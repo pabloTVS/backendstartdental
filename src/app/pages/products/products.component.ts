@@ -1,11 +1,11 @@
 import { productsService } from './services/products.service';
-import { SpinnerOverlayService } from '../../shared/services/spinner-overlay.service'
+import { SpinnerOverlayService } from '@shared/services/spinner-overlay.service'
 import { Component, AfterViewInit, ViewChild, Input } from '@angular/core';
 import { MatSort} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
-import { ProductModalComponent } from './../admin/components/modal/product.modal/product.modal.component';
+import { ProductModalComponent } from  './../admin/components/modal/product.modal/product.modal.component';
 
 @Component({
   selector: 'app-products',
@@ -32,7 +32,6 @@ export class ProductsComponent implements AfterViewInit {
       
       this.dataSource.data = products;
       this.spinner();
-      
     });
     
   }

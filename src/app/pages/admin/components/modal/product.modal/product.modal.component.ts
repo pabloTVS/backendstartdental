@@ -1,8 +1,8 @@
-import { Component, Inject, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BaseFormProduct } from '@shared/utils/product-form';
 
-import { productsService } from './../../../../products/services/products.service';
+import { productsService } from '@pages/products/services/products.service';
 
 @Component({
   selector: 'app-product.modal',

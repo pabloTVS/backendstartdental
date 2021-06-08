@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>{{ data?.title }}</h2>
+<mat-tab-group class="mat-tab">
+  <mat-tab label="Básicos">
+    <mat-dialog-content>
+      <div class="modal-form">
+        <form [formGroup]="custForm.customersForm">
+          <mat-form-field appearance="fill">
+            <mat-label>Input</mat-label>
+            <input formControlName="Nombre" matInput>
+          </mat-form-field> 
+        </form>  
+      </div>
+    </mat-dialog-content>
+  </mat-tab>
+  <mat-tab label="Otros">
+     Content 2 
+  </mat-tab>
+</mat-tab-group>

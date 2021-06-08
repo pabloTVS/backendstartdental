@@ -13,6 +13,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AdminInterceptor } from '@shared/interceptors/admin-interceptor';
 import { ProductsInterceptor } from '@shared/interceptors/products.interceptor';
+import { CustomersInterceptor } from '@shared/interceptors/customers.interceptor';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { SpinnerOverlayComponent } from './shared/components/spinner-overlay/spinner-overlay.component';
 import { ConfiguracionModule } from './pages/admin/configuracion/configuracion.module'
@@ -33,6 +34,7 @@ import { ConfiguracionModule } from './pages/admin/configuracion/configuracion.m
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AdminInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ProductsInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: CustomersInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
