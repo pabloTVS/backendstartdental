@@ -42,7 +42,7 @@ export class CustomersService {
       .pipe(catchError(this.handlerError));
   }
 
-  handlerError(error): Observable<never> {
+  handlerError(error: { message: any; }): Observable<never> {
     let errorMessage = 'Error desconocido.';
     if (error) {
       errorMessage = `Error ${error.message}`;

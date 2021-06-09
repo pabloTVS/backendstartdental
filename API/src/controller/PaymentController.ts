@@ -54,7 +54,7 @@ export class PaymentController {
         catch (e) {
           return res.status(409).json(e.message);
           }
-        res.send('Forma de pago creada correctamente');
+        res.status(201).json({message:'Forma de pago creada correctamente'});
       }
   
       //update
@@ -88,7 +88,7 @@ export class PaymentController {
         } catch (e) {
           return res.status(409).json({ message: 'Error guardando forma de pago.' });
         }
-        res.send('Forma de pago guardada correctamente.');
+        res.status(201).json({message:'Forma de pago guardada correctamente.'});
       }
   
       static delete = async (req: Request, res: Response) => {

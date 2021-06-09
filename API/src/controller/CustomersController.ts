@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import { Request, Response } from 'express';
+import { Request, Response, text } from 'express';
 import { validate } from 'class-validator';
 
 import { Customers  } from '../entity/Customers';
@@ -79,6 +79,7 @@ export class CustomerController {
 
     //update
     static edit = async (req: Request, res: Response) => {
+      
       const {IdCliente} = req.params;
       const {Nombre,DNINIF,Telefono1,Email1,Fax1,Movil1,CodFormaPago,RE,DtoPP,DtoComercial,CodPostal,Localidad,Provincia,Direccion,Entidad,Oficina,DC,Cuenta,IBAN,BICSWIFT,Observaciones} = req.body;
 
@@ -126,7 +127,7 @@ export class CustomerController {
       } catch (e) {
         return res.status(409).json({ message: 'Error guardando cliente.' });
       }
-      res.send('Usuario guardado correctamente.');
+      res.status(201).json({ message: 'Cliente guardado correctamente.' });
     }
 
     static delete = async (req: Request, res: Response) => {

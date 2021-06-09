@@ -68,12 +68,6 @@ export class CustomerComponent implements OnInit {
       })
    }
   }
-  
-  updatePayment(id :number){
-    console.log('Antes ',this.customer.CodFormaPago);
-    this.customer.CodFormaPago = id;
-    console.log('Después ',this.customer.CodFormaPago);
-  }
 
   onReset(): void {
     this.customersForm.reset();
