@@ -14,6 +14,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const myModules = [
   MatToolbarModule,
@@ -30,7 +31,10 @@ const myModules = [
   MatOptionModule,
   MatSelectModule,
   MatPaginatorModule,
-  MatTabsModule
+  MatTabsModule,
+  MatSelectModule,
+  FormsModule,
+  ReactiveFormsModule
 ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-export interface payment{
+export interface Payments{
     IdFormaPago: number;
     Nombre: string;
     Tipo: string;

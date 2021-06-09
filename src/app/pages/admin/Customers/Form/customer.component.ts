@@ -3,7 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { Customer } from '@shared/models/customer.interface'
+import { Payments } from '@shared/models/payments.interface'
 import { CustomersService } from '../../services/customers.service';
+import { PaymentsService} from '@pages/admin/services/payments.service'
 
 
 @Component({
@@ -17,8 +19,11 @@ export class CustomerComponent implements OnInit {
 
   custId :number;
   customer: Customer;
+  payments: Payments []=[];
+  selectedPayment: number;
 
   constructor(private custSvc: CustomersService,
+              private paymSvc: PaymentsService,
               private route: ActivatedRoute,
               private router: Router,
               private fb: FormBuilder) { }
@@ -33,6 +38,9 @@ export class CustomerComponent implements OnInit {
   
   onSubmit(): void {
     console.log('Form->' + JSON.stringify(this.customersForm.value));
+    this.custSvc.update(this.custId,this.customersForm.value).subscribe(data => {
+      console.log(Response.error.toString);
+    })
   }
   
   isValidField(name: string): boolean {
@@ -48,11 +56,25 @@ export class CustomerComponent implements OnInit {
     }).unsubscribe();
 
    if (this.custId !=0)
-    this.custSvc.getById(this.custId).subscribe(cust =>{
-      this.customer = cust;
-      this.customersForm.patchValue(this.customer);
-    })
+   {
+      this.custSvc.getById(this.custId).subscribe(cust =>{
+        this.customer = cust;
+        this.customersForm.patchValue(this.customer);
+        this.selectedPayment = cust.CodFormaPago;
+      })
+
+      this.paymSvc.getAll().subscribe(paym =>{
+        this.payments = paym;     
+      })
+   }
   }
+  
+  updatePayment(id :number){
+    console.log('Antes ',this.customer.CodFormaPago);
+    this.customer.CodFormaPago = id;
+    console.log('Después ',this.customer.CodFormaPago);
+  }
+
   onReset(): void {
     this.customersForm.reset();
   }  

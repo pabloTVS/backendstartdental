@@ -63,7 +63,16 @@
               </span>
             </div>
           </div>
-          <div class="col-md-3 mb-3">
+          <mat-form-field *ngIf = "payments" appearance="fill">
+            <mat-label>Forma de pago</mat-label>
+            <mat-select formControlName="CodFormaPago" placeholder="Selecciona forma de pago" [(value))]="selectedPayment">
+              <mat-option *ngFor="let pay of payments " [value]="pay.IdFormaPago">
+                {{pay.Nombre}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <p> Selected Payments: {{selectedPayment}} </p>
+          <!--<div class="col-md-3 mb-3">
             <label for="validationCustom04">Forma de pago</label>
             <input
               type="text"
@@ -80,7 +89,7 @@
                 Codigo code must be numberic.
               </span>
             </div>
-          </div>
+          </div>-->
           <div class="col-md-3 mb-3">
             <label for="validationCustom05">DtoPP</label>
             <input
