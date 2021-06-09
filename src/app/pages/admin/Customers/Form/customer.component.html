@@ -1,2 +1,170 @@
-<p>Edit cliente works!</p>
-<a mat-flat-button color="accent" routerLink="/clientes">Volverr</a>
+<div class="cabecera">
+  <a mat-flat-button color="accent" routerLink="/clientes" >Volver</a>
+</div>
+
+<mat-tab-group class="mat-tab">
+<mat-tab label="Básicos">
+   <div class="row">
+    <div class="col">
+      <form
+        class="needs-validation"
+        novalidate
+        [formGroup]="customersForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationCustom01">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="validationCustom01"
+              placeholder="Nombre"
+              formControlName="Nombre"
+              [ngClass]="{
+                'is-invalid': isValidField('Nombre')
+              }"
+            />
+            <div class="invalid-feedback">
+              <span *ngIf="customersForm.get('Nombre').errors?.required">
+                Por favor introduce un nombre.
+              </span>
+              <span *ngIf="customersForm.get('Nombre').errors?.minlength">
+                Name must be longer than
+                {{
+                  customersForm.get("Nombre").errors?.minlength?.requiredLength
+                }}
+                characters.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationCustom03">NIF</label>
+            <input
+              type="text"
+              class="form-control"
+              id="validationCustom03"
+              placeholder="NIF"
+              formControlName="DNINIF"
+              [ngClass]="{
+                'is-invalid': isValidField('DNINIF')
+              }"
+            />
+            <div class="invalid-feedback">
+              <span *ngIf="customersForm.get('DNINIF').errors?.required">
+                Please enter your city.
+              </span>
+              <span *ngIf="customersForm.get('DNINIF').errors?.minlength">
+                The city must be longer than
+                {{ customersForm.get("DNIFIF").errors?.minlength?.requiredLength }}
+                characters.
+              </span>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationCustom04">Forma de pago</label>
+            <input
+              type="text"
+              class="form-control"
+              id="validationCustom04"
+              placeholder="Código forma de pago"
+              formControlName="CodFormaPago"
+              [ngClass]="{
+                'is-invalid': isValidField('CodFormaPago')
+              }"
+            />
+            <div class="invalid-feedback">
+              <span *ngIf="customersForm.get('CodFormaPago').errors?.pattern">
+                Codigo code must be numberic.
+              </span>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationCustom05">DtoPP</label>
+            <input
+              type="text"
+              class="form-control"
+              id="validationCustom05"
+              placeholder="Dto. pronto pago"
+              formControlName="DtoPP"
+              [ngClass]="{
+                'is-invalid': isValidField('DtoPP')
+              }"
+              maxlength="5"
+            />
+            <div class="invalid-feedback">
+              <span *ngIf="customersForm.get('DtoPP').errors?.pattern">
+                Dto. pronto pago debe ser numerico.
+              </span>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationCustom06">Dto. comercial</label>
+            <input
+              type="text"
+              class="form-control"
+              id="validationCustom05"
+              placeholder="Dto. pronto pago"
+              formControlName="DtoComercial"
+              [ngClass]="{
+                'is-invalid': isValidField('DtoComercial')
+              }"
+            />
+            <div class="invalid-feedback">
+              <span *ngIf="customersForm.get('DtoComercial').errors?.pattern">
+                Dto. pronto pago debe ser numerico.
+              </span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="float-left">
+          <button class="btn btn-info btn-lg" (click)="onReset()">
+            Reset
+          </button>
+        </div>
+        <div class="float-right">
+          <button
+            type="submit"
+            class="btn btn-primary btn-lg"
+            [disabled]="customersForm.invalid"
+          >
+            Submit form
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <pre>
+    Dirty:
+    {{ customersForm.dirty }}
+  </pre>
+  <pre>
+    touched:
+    {{ customersForm.touched }}
+  </pre>
+  <pre>
+    Value:
+    {{ customersForm.value | json }}
+  </pre>
+  <pre>
+    Status:
+    {{ customersForm.status }}
+  </pre>
+  <pre>
+    Valid:
+    {{ customersForm.valid }}
+  </pre>
+  <pre>
+    InValid:
+    {{ customersForm.invalid }}
+  </pre>
+ </mat-tab>
+<mat-tab label="Otros">
+   Content 2 
+</mat-tab>
+</mat-tab-group>
+

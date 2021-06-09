@@ -59,9 +59,8 @@
         <td mat-cell *matCellDef="let element">
           <div class="table-button-row">
             <!--<button mat-flat-button color="accent" (click)="onOpenModal(element)">Editar</button>-->
-            <a mat-flat-button color="primary" routerLink="/clientes/Form">Editar</a>
-          </div>
-          <div class="table-button-row">
+            <a mat-flat-button color="primary" routerLink="/clientes/Form" [queryParams]="{Id: element.IdCliente}">Editar</a>
+           <!--<app-customer></app-customer>--> 
             <button mat-flat-button color="accent" (click)="onDelete(element.IdCliente)">Borrar</button>
           </div>
         </td>
