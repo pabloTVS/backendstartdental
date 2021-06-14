@@ -39,6 +39,7 @@
             </div>
           </div>
         </div>
+        <br>
         <div class="form-row">
           <div class="col-md-6 mb-3">
             <label for="validationCustom03">NIF</label>
@@ -63,6 +64,7 @@
               </span>
             </div>
           </div>
+          <br>
           <mat-form-field *ngIf = "payments" appearance="fill">
             <mat-label>Forma de pago</mat-label>
             <mat-select formControlName="CodFormaPago" placeholder="Selecciona una forma de pago" [(value))]="selectedPayment">
@@ -71,25 +73,7 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <p> Selected Payments: {{selectedPayment}} </p>
-          <!--<div class="col-md-3 mb-3">
-            <label for="validationCustom04">Forma de pago</label>
-            <input
-              type="text"
-              class="form-control"
-              id="validationCustom04"
-              placeholder="Código forma de pago"
-              formControlName="CodFormaPago"
-              [ngClass]="{
-                'is-invalid': isValidField('CodFormaPago')
-              }"
-            />
-            <div class="invalid-feedback">
-              <span *ngIf="customersForm.get('CodFormaPago').errors?.pattern">
-                Codigo code must be numberic.
-              </span>
-            </div>
-          </div>-->
+          <br>
           <div class="col-md-3 mb-3">
             <label for="validationCustom05">DtoPP</label>
             <input
@@ -109,6 +93,7 @@
               </span>
             </div>
           </div>
+          <br>
           <div class="col-md-3 mb-3">
             <label for="validationCustom06">Dto. comercial</label>
             <input
@@ -128,25 +113,20 @@
             </div>
           </div>
         </div>
-  
-        <div class="float-left">
-          <button class="btn btn-info btn-lg" (click)="onReset()">
-            Reset
-          </button>
-        </div>
+        <br>
         <div class="float-right">
-          <button
+          <button mat-flat-button color="accent"
             type="submit"
             class="btn btn-primary btn-lg"
             [disabled]="customersForm.invalid"
           >
-            Submit form
+            Grabar
           </button>
         </div>
       </form>
     </div>
   </div>
-  
+  <!--
   <pre>
     Dirty:
     {{ customersForm.dirty }}
@@ -171,6 +151,7 @@
     InValid:
     {{ customersForm.invalid }}
   </pre>
+  -->
  </mat-tab>
 <mat-tab label="Otros">
    Content 2 
