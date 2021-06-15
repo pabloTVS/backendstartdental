@@ -1,131 +1,320 @@
-<div class="cabecera">
-  <a mat-flat-button color="accent" routerLink="/clientes" >Volver</a>
-</div>
+<mat-card class="button">
+  <a mat-raised-button color="accent" routerLink="/clientes" >Listado de clientes</a>
+</mat-card>
 
 <mat-tab-group class="mat-tab">
-<mat-tab label="Básicos">
-   <div class="row">
-    <div class="col">
-      <form
-        class="needs-validation"
-        novalidate
-        [formGroup]="customersForm"
-        (ngSubmit)="onSubmit()"
-      >
-        <div class="form-row">
-          <div class="col-md-6 mb-3">
-            <label for="validationCustom01">Nombre</label>
-            <input
-              type="text"
-              class="form-control"
-              id="validationCustom01"
-              placeholder="Nombre"
-              formControlName="Nombre"
-              [ngClass]="{
-                'is-invalid': isValidField('Nombre')
-              }"
-            />
-            <div class="invalid-feedback">
-              <span *ngIf="customersForm.get('Nombre').errors?.required">
-                Por favor introduce un nombre.
-              </span>
-              <span *ngIf="customersForm.get('Nombre').errors?.minlength">
-                Name must be longer than
-                {{
-                  customersForm.get("Nombre").errors?.minlength?.requiredLength
-                }}
-                characters.
-              </span>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="form-row">
-          <div class="col-md-6 mb-3">
-            <label for="validationCustom03">NIF</label>
-            <input
-              type="text"
-              class="form-control"
-              id="validationCustom03"
-              placeholder="NIF"
-              formControlName="DNINIF"
-              [ngClass]="{
-                'is-invalid': isValidField('DNINIF')
-              }"
-            />
-            <div class="invalid-feedback">
-              <span *ngIf="customersForm.get('DNINIF').errors?.required">
-                Please enter your city.
-              </span>
-              <span *ngIf="customersForm.get('DNINIF').errors?.minlength">
-                The city must be longer than
-                {{ customersForm.get("DNIFIF").errors?.minlength?.requiredLength }}
-                characters.
-              </span>
-            </div>
-          </div>
-          <br>
-          <mat-form-field *ngIf = "payments" appearance="fill">
-            <mat-label>Forma de pago</mat-label>
-            <mat-select formControlName="CodFormaPago" placeholder="Selecciona una forma de pago" [(value))]="selectedPayment">
-              <mat-option *ngFor="let pay of payments " [value]="pay.IdFormaPago">
-                {{pay.Nombre}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <br>
-          <div class="col-md-3 mb-3">
-            <label for="validationCustom05">DtoPP</label>
-            <input
-              type="text"
-              class="form-control"
-              id="validationCustom05"
-              placeholder="Dto. pronto pago"
-              formControlName="DtoPP"
-              [ngClass]="{
-                'is-invalid': isValidField('DtoPP')
-              }"
-              maxlength="5"
-            />
-            <div class="invalid-feedback">
-              <span *ngIf="customersForm.get('DtoPP').errors?.pattern">
-                Dto. pronto pago debe ser numerico.
-              </span>
-            </div>
-          </div>
-          <br>
-          <div class="col-md-3 mb-3">
-            <label for="validationCustom06">Dto. comercial</label>
-            <input
-              type="text"
-              class="form-control"
-              id="validationCustom05"
-              placeholder="Dto. pronto pago"
-              formControlName="DtoComercial"
-              [ngClass]="{
-                'is-invalid': isValidField('DtoComercial')
-              }"
-            />
-            <div class="invalid-feedback">
-              <span *ngIf="customersForm.get('DtoComercial').errors?.pattern">
-                Dto. pronto pago debe ser numerico.
-              </span>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="float-right">
-          <button mat-flat-button color="accent"
-            type="submit"
-            class="btn btn-primary btn-lg"
-            [disabled]="customersForm.invalid"
-          >
-            Grabar
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
+  <mat-tab label="Información comercial">
+    <form
+      class="needs-validation"
+      novalidate
+      [formGroup]="customersForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <mat-card>
+          <mat-card-content>
+            <section>  
+              <mat-form-field class="inputSmall" hintLabel="Max. 20 caracteres" appearance="fill">
+                <mat-label>NIF</mat-label>
+                <input formControlName="DNINIF" matInput #input1 maxlength="20" [ngClass]="{'is-invalid': isValidField('DNINIF')}">
+                <mat-hint align="end">{{input1.value?.length || 0}}/20</mat-hint>
+                <div class="invalid-feedback">
+                  <span class="span-errors" *ngIf="customersForm.get('DNINIF').errors?.required">
+                      El nombre es obligatorio.
+                  </span>
+                  <span class="span-errors" *ngIf="customersForm.get('DNINIF').errors?.pattern">
+                      Caracteres no válidos.
+                  </span>
+                  <span class="span-errors" *ngIf="customersForm.get('DNINIF').errors?.minlength">
+                    Longitud mínima es de 
+                    {{ customersForm.get("DNINIF").errors?.minlength?.requiredLength }}
+                    caracteres.
+                  </span>
+                </div>
+              </mat-form-field>              
+              <mat-form-field class="inputBig" hintLabel="Max. 100 caracteres" appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input formControlName="Nombre" matInput #input maxlength="100" [ngClass]="{'is-invalid': isValidField('Nombre')}">
+                <mat-hint align="end">{{input.value?.length || 0}}/100</mat-hint>
+                <div class="invalid-feedback">
+                  <span class="span-errors" *ngIf="customersForm.get('Nombre').errors?.required">
+                      El nombre es obligatorio.
+                  </span>
+                  <span class="span-errors" *ngIf="customersForm.get('Nombre').errors?.pattern">
+                      Caracteres no válidos.
+                  </span>
+                  <span class="span-errors" *ngIf="customersForm.get('Nombre').errors?.minlength">
+                    Longitud mínima es de 
+                    {{ customersForm.get("Nombre").errors?.minlength?.requiredLength }}
+                    caracteres.
+                  </span>
+                </div>
+              </mat-form-field>
+            </section>
+          </mat-card-content>
+          <mat-card-content>
+              <section>
+                <mat-form-field class="inputSmall" hintLabel="Max. 5 caracteres" appearance="fill">
+                  <mat-label>Código postal</mat-label>
+                  <input formControlName="CodPostal" matInput #input3 maxlength="5" [ngClass]="{'is-invalid': isValidField('CodPostal')}">
+                  <mat-hint align="end">{{input3.value?.length || 0}}/5</mat-hint>
+                  <div class="invalid-feedback">
+                    <span class="span-errors" *ngIf="customersForm.get('CodPostal').errors?.required">
+                        El nombre es obligatorio.
+                    </span>
+                    <span class="span-errors" *ngIf="customersForm.get('CodPostal').errors?.pattern">
+                        Caracteres no válidos.
+                    </span>
+                    <span class="span-errors" *ngIf="customersForm.get('CodPostal').errors?.minlength">
+                      Longitud mínima es de 
+                      {{ customersForm.get("CodPostal").errors?.minlength?.requiredLength }}
+                      caracteres.
+                    </span>
+                  </div>
+                </mat-form-field>
+                <mat-form-field hintLabel="Max. 30 caracteres" appearance="fill">
+                  <mat-label>Localidad</mat-label>
+                  <input formControlName="Localidad" matInput #input4 maxlength="30" [ngClass]="{'is-invalid': isValidField('Localidad')}">
+                  <mat-hint align="end">{{input4.value?.length || 0}}/30</mat-hint>
+                  <div class="invalid-feedback">
+                    <span class="span-errors" *ngIf="customersForm.get('Localidad').errors?.required">
+                        El nombre es obligatorio.
+                    </span>
+                    <span class="span-errors" *ngIf="customersForm.get('Localidad').errors?.pattern">
+                        Caracteres no válidos.
+                    </span>
+                    <span class="span-errors" *ngIf="customersForm.get('Localidad').errors?.minlength">
+                      Longitud mínima es de 
+                      {{ customersForm.get("Localidad").errors?.minlength?.requiredLength }}
+                      caracteres.
+                    </span>
+                  </div>
+                </mat-form-field>        
+                <mat-form-field hintLabel="Max. 30 caracteres" appearance="fill">
+                  <mat-label>Provincia</mat-label>
+                  <input formControlName="Provincia" matInput #input5 maxlength="30" [ngClass]="{'is-invalid': isValidField('Provincia')}">
+                  <mat-hint align="end">{{input5.value?.length || 0}}/30</mat-hint>
+                  <div class="invalid-feedback">
+                    <span class="span-errors" *ngIf="customersForm.get('Provincia').errors?.required">
+                        El nombre es obligatorio.
+                    </span>
+                    <span class="span-errors" *ngIf="customersForm.get('Provincia').errors?.pattern">
+                        Caracteres no válidos.
+                    </span>
+                    <span class="span-errors" *ngIf="customersForm.get('Provincia').errors?.minlength">
+                      Longitud mínima es de 
+                      {{ customersForm.get("Provincia").errors?.minlength?.requiredLength }}
+                      caracteres.
+                    </span>
+                  </div>
+                </mat-form-field>  
+                <mat-form-field class="inputBig" hintLabel="Max. 50 caracteres" appearance="fill">
+                  <mat-label>Dirección</mat-label>
+                  <input formControlName="Direccion" matInput #input6 maxlength="30" [ngClass]="{'is-invalid': isValidField('Direccion')}">
+                  <mat-hint align="end">{{input6.value?.length || 0}}/50</mat-hint>
+                  <div class="invalid-feedback">
+                    <span class="span-errors" *ngIf="customersForm.get('Direccion').errors?.required">
+                        El nombre es obligatorio.
+                    </span>
+                    <span class="span-errors" *ngIf="customersForm.get('Direccion').errors?.minlength">
+                      Longitud mínima es de 
+                      {{ customersForm.get("Direccion").errors?.minlength?.requiredLength }}
+                      caracteres.
+                    </span>
+                  </div>
+                </mat-form-field> 
+              </section>
+          </mat-card-content> 
+          <mat-card-content>
+            <section>
+              <mat-form-field class="inputSmall" hintLabel="Max. 15 caracteres" appearance="fill">
+                <mat-label>Teléfono fijo</mat-label>
+                <input formControlName="Telefono1" matInput #input7 maxlength="15" [ngClass]="{'is-invalid': isValidField('Telefono1')}">
+                <mat-hint align="end">{{input7.value?.length || 0}}/15</mat-hint>
+                <div class="invalid-feedback">
+                  <span class="span-errors" *ngIf="customersForm.get('Telefono1').errors?.minlength">
+                    Longitud mínima es de 
+                    {{ customersForm.get("Telefono1").errors?.minlength?.requiredLength }}
+                    caracteres.
+                  </span>
+                  <span class="span-errors" *ngIf="customersForm.get('Telefono1').errors?.pattern">
+                    Caracteres no válidos.
+                  </span>
+                </div>
+              </mat-form-field>
+              <mat-form-field class="inputSmall" hintLabel="Max. 15 caracteres" appearance="fill">
+                <mat-label>Fax</mat-label>
+                <input formControlName="Fax1" matInput #input8 maxlength="15" [ngClass]="{'is-invalid': isValidField('Fax1')}">
+                <mat-hint align="end">{{input8.value?.length || 0}}/15</mat-hint>
+                <div class="invalid-feedback">
+                  <span class="span-errors" *ngIf="customersForm.get('Fax1').errors?.minlength">
+                    Longitud mínima es de 
+                    {{ customersForm.get("Fax1").errors?.minlength?.requiredLength }}
+                    caracteres.
+                  </span>
+                  <span class="span-errors" *ngIf="customersForm.get('Fax1').errors?.pattern">
+                    Caracteres no válidos.
+                  </span>
+                </div>
+              </mat-form-field>
+              <mat-form-field class="inputSmall" hintLabel="Max. 15 caracteres" appearance="fill">
+                <mat-label>Fax</mat-label>
+                <input formControlName="Movil1" matInput #input9 maxlength="15" [ngClass]="{'is-invalid': isValidField('Movil1')}">
+                <mat-hint align="end">{{input9.value?.length || 0}}/15</mat-hint>
+                <div class="invalid-feedback">
+                  <span class="span-errors" *ngIf="customersForm.get('Movil1').errors?.minlength">
+                    Longitud mínima es de 
+                    {{ customersForm.get("Fax1").errors?.minlength?.requiredLength }}
+                    caracteres.
+                  </span>
+                  <span class="span-errors" *ngIf="customersForm.get('Movil1').errors?.pattern">
+                    Caracteres no válidos.
+                  </span>
+                </div>
+              </mat-form-field>
+              <mat-form-field class="inputBig" hintLabel="Max. 50 caracteres" appearance="fill">
+                <mat-label>Mail</mat-label>
+                <input formControlName="Email1" matInput #input10 maxlength="50" [ngClass]="{'is-invalid': isValidField('Email1')}">
+                <mat-hint align="end">{{input10.value?.length || 0}}/50</mat-hint>
+                <div class="invalid-feedback">
+                  <span class="span-errors" *ngIf="customersForm.get('Email1').errors?.required">
+                    El nombre es obligatorio.
+                  </span>
+                  <span class="span-errors" *ngIf="customersForm.get('Email1').errors?.pattern">
+                    Caracteres no válidos.
+                  </span>
+                </div>
+              </mat-form-field>
+
+
+            </section>
+          </mat-card-content> 
+      </mat-card>
+      
+      <mat-card>
+        <mat-card-content>
+          <section>
+            <mat-form-field class="inputBig" *ngIf = "payments" appearance="fill"  >
+              <mat-label>Forma de pago</mat-label>
+              <mat-select formControlName="CodFormaPago" placeholder="Selecciona una forma de pago" [(value))]="selectedPayment">
+                <mat-option *ngFor="let pay of payments " [value]="pay.IdFormaPago">
+                  {{pay.Nombre}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="inputSmall" appearance="fill">
+              <mat-label>Dto. pronto pago</mat-label>
+              <input matInput 
+                formControlName="DtoPP" type="number" min=0 max=100 step=0.01 [ngClass]="{'is-invalid': isValidField('DtoPP')}">
+                <div class="invalid-feedback">
+                <span class="span-errors" *ngIf="customersForm.get('DtoPP').errors?.required">
+                  El nombre es obligatorio.
+                </span>
+                <span class="span-errors" *ngIf="customersForm.get('DtoPP').errors?.pattern">
+                  Caracteres no válidos.
+                </span>
+              </div>
+            </mat-form-field>
+            <mat-form-field class="inputSmall" appearance="fill">
+              <mat-label>Dto. comercial</mat-label>
+              <input matInput 
+                formControlName="DtoComercial" type="number" min=0 max=100 step=0.01 [ngClass]="{'is-invalid': isValidField('DtoComercial')}">
+                <div class="invalid-feedback">
+                  <span class="span-errors" *ngIf="customersForm.get('DtoComercial').errors?.required">
+                    El nombre es obligatorio.
+                  </span>
+                  <span class="span-errors" *ngIf="customersForm.get('DtoComercial').errors?.pattern">
+                    Caracteres no válidos.
+                  </span>
+                </div>
+            </mat-form-field>
+          </section>            
+        </mat-card-content>
+      </mat-card>  
+      <mat-card>
+        <mat-card-content>
+          <section>
+            <mat-form-field class="inputVerySmall" hintLabel="Max. 4 caracteres" appearance="fill">
+              <mat-label>Entidad</mat-label>
+              <input formControlName="Entidad" matInput #input11 maxlength="4" [ngClass]="{'is-invalid': isValidField('Entidad')}">
+              <mat-hint align="end">{{input11.value?.length || 0}}/4</mat-hint>
+              <div class="invalid-feedback">
+                <span class="span-errors" *ngIf="customersForm.get('Entidad').errors?.maxlength">
+                  Longitud máxima es de 
+                  {{ customersForm.get("Entidad").errors?.maxlength?.requiredLength }}
+                  caracteres.
+                </span>
+                <span class="span-errors" *ngIf="customersForm.get('Entidad').errors?.pattern">
+                  Caracteres no válidos.
+                </span>
+              </div>
+            </mat-form-field>
+
+            <mat-form-field class="inputVerySmall" hintLabel="Max. 4 caracteres" appearance="fill">
+              <mat-label>Entidad</mat-label>
+              <input formControlName="Oficina" matInput #input12 maxlength="4" [ngClass]="{'is-invalid': isValidField('Oficina')}">
+              <mat-hint align="end">{{input12.value?.length || 0}}/4</mat-hint>
+              <div class="invalid-feedback">
+                <span class="span-errors" *ngIf="customersForm.get('Oficina').errors?.maxlength">
+                  Longitud máxima es de 
+                  {{ customersForm.get("Oficina").errors?.maxlength?.requiredLength }}
+                  caracteres.
+                </span>
+                <span class="span-errors" *ngIf="customersForm.get('Oficina').errors?.pattern">
+                  Caracteres no válidos.
+                </span>
+              </div>
+            </mat-form-field>
+            <mat-form-field class="inputVerySmall" hintLabel="Max. 2 caracteres" appearance="fill">
+              <mat-label>DC</mat-label>
+              <input formControlName="Entidad" matInput #input13 maxlength="2" [ngClass]="{'is-invalid': isValidField('DC')}">
+              <mat-hint align="end">{{input13.value?.length || 0}}/2</mat-hint>
+              <div class="invalid-feedback">
+                <span class="span-errors" *ngIf="customersForm.get('DC').errors?.maxlength">
+                  Longitud máxima es de 
+                  {{ customersForm.get("DC").errors?.maxlength?.requiredLength }}
+                  caracteres.
+                </span>
+                <span class="span-errors" *ngIf="customersForm.get('DC').errors?.pattern">
+                  Caracteres no válidos.
+                </span>
+              </div>
+            </mat-form-field>
+            <mat-form-field class="inputSmall" hintLabel="Max. 10 caracteres" appearance="fill">
+              <mat-label>Cuenta</mat-label>
+              <input formControlName="Cuenta" matInput #input14 maxlength="10" [ngClass]="{'is-invalid': isValidField('Cuenta')}">
+              <mat-hint align="end">{{input14.value?.length || 0}}/10</mat-hint>
+              <div class="invalid-feedback">
+                <span class="span-errors" *ngIf="customersForm.get('Cuenta').errors?.maxlength">
+                  Longitud máxima es de 
+                  {{ customersForm.get("Cuenta").errors?.maxlength?.requiredLength }}
+                  caracteres.
+                </span>
+                <span class="span-errors" *ngIf="customersForm.get('Cuenta').errors?.pattern">
+                  Caracteres no válidos.
+                </span>
+              </div>
+            </mat-form-field>
+
+
+
+          </section>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="button">
+        <button mat-raised-button color="primary"
+          type="submit"
+          class="btn btn-primary btn-lg"
+          [disabled]="customersForm.invalid"
+        >
+          Grabar
+        </button>
+      </mat-card>
+    </form>
+ </mat-tab>
+  <mat-tab label="Otros">
+    Content 2 
+  </mat-tab>
+</mat-tab-group>
   <!--
   <pre>
     Dirty:
@@ -152,9 +341,3 @@
     {{ customersForm.invalid }}
   </pre>
   -->
- </mat-tab>
-<mat-tab label="Otros">
-   Content 2 
-</mat-tab>
-</mat-tab-group>
-

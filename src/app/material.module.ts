@@ -16,6 +16,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 const myModules = [
   MatToolbarModule,
   MatSidenavModule,
@@ -34,7 +35,8 @@ const myModules = [
   MatTabsModule,
   MatSelectModule,
   FormsModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  MatCardModule
 ];
 
 @NgModule({

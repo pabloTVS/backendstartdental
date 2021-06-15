@@ -15,7 +15,7 @@ import { PaymentsService} from '@pages/admin/services/payments.service'
 })
 export class CustomerComponent implements OnInit {
   
-  //private isValidEmail = /\S+@\S+\.\S+/;
+  private isValidEmail = /\S+@\S+\.\S+/;
 
   custId :number;
   customer: Customer;
@@ -28,19 +28,35 @@ export class CustomerComponent implements OnInit {
               private router: Router,
               private fb: FormBuilder) { }
 
-  customersForm = this.fb.group({
-    Nombre: ['',[Validators.required,Validators.minLength(3),Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$')]],
-    DNINIF: ['', [Validators.required,Validators.minLength(8),Validators.pattern('^[A-Za-z0-9]+$')]],
-    CodFormaPago: [1,[Validators.required,Validators.pattern('^[0-9]+$')]],
-    DtoPP: [0,[Validators.pattern('^[0-9.]+$')]],
-    DtoComercial: [0,[Validators.pattern('^[0-9.]+$')]]
-  })
+              customersForm = this.fb.group({
+                Nombre: ['',[Validators.required,Validators.minLength(3),Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$')]],
+                DNINIF: ['', [Validators.required,Validators.minLength(8),Validators.pattern('^[A-Z0-9]+$')]],
+                CodPostal:['',[Validators.required,Validators.minLength(4),Validators.pattern('^[0-9]+$')]],
+                Localidad:['',[Validators.required,Validators.minLength(3),Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$')]],
+                Provincia:['',[Validators.required,Validators.minLength(3),Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$')]],
+                Direccion:['',[Validators.required,Validators.minLength(3)]],
+                Telefono1: ['',[Validators.minLength(9),Validators.pattern('^[0-9]+$')]],
+                Movil1: ['',[Validators.minLength(9),Validators.pattern('^[0-9]+$')]],
+                Fax1: ['',[Validators.minLength(9),Validators.pattern('^[0-9]+$')]],
+                Email1: ['',[Validators.required,Validators.pattern(this.isValidEmail)]],
+                CodFormaPago: [1,[Validators.required,Validators.pattern('^[0-9]+$')]],
+                DtoPP: [0,[Validators.required,Validators.pattern('^[0-9.]+$')]],
+                DtoComercial: [0,[Validators.required,Validators.pattern('^[0-9.]+$')]],
+                Entidad: ['',[Validators.maxLength(4),Validators.pattern('^[0-9]+$')]],
+                Oficina: ['',[Validators.maxLength(4),Validators.pattern('^[0-9]+$')]],
+                DC: ['',[Validators.maxLength(2),Validators.pattern('^[0-9]+$')]],
+                Cuenta: ['',[Validators.maxLength(10),Validators.pattern('^[0-9]+$')]],
+               // IBAN: ['',[Validators.maxLength(23),Validators.pattern('^[A-Z0-9]+$')]]
+              })
   
   onSubmit(): void {
-    console.log('Form->' + JSON.stringify(this.customersForm.value));
-    this.custSvc.update(this.custId,this.customersForm.value).subscribe(data => {
-      console.log(Response.error.toString);
-    })
+    try {
+      this.custSvc.update(this.custId,this.customersForm.value).subscribe();
+      window.alert('Cambios guardados correctamente.')
+        
+    } catch (error) {
+      console.log('Error guardandado cambios.')
+    }
   }
   
   isValidField(name: string): boolean {
@@ -50,23 +66,27 @@ export class CustomerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   this.route.queryParams.subscribe(params => {
-      // Defaults to 0 if no query param provided.
-      this.custId = +params['Id'] || 0;
-    }).unsubscribe();
-
-   if (this.custId !=0)
-   {
-      this.custSvc.getById(this.custId).subscribe(cust =>{
-        this.customer = cust;
-        this.customersForm.patchValue(this.customer);
-        this.selectedPayment = cust.CodFormaPago;
-      })
-
-      this.paymSvc.getAll().subscribe(paym =>{
-        this.payments = paym;     
-      })
-   }
+    try {
+      this.route.queryParams.subscribe(params => {
+        // Defaults to 0 if no query param provided.
+        this.custId = +params['Id'] || 0;
+      });
+      if (this.custId !=0)
+      {
+         this.custSvc.getById(this.custId).subscribe(cust =>{
+           console.log(cust);
+           this.customer = cust;
+           this.customersForm.patchValue(this.customer);
+           this.selectedPayment = cust.CodFormaPago;
+         })
+   
+         this.paymSvc.getAll().subscribe(paym =>{
+           this.payments = paym;     
+         })
+      }
+    } catch (e) {
+      console.log(e.message); 
+    }
   }
 
   onReset(): void {
