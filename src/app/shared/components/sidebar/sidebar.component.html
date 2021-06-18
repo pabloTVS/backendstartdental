@@ -1,5 +1,5 @@
 <mat-nav-list>
-  <ng-container *ngIf="isAdmin === 'Admin'">
+  <ng-container *ngIf="isAdmin === 'Admin' || isAdmin ==='Comercial'">
     <a mat-list-item routerLink="/configuracion">
       <mat-icon>settings</mat-icon>
       <span class="nav-link">Configuracion</span>
@@ -11,7 +11,7 @@
       <mat-icon>people</mat-icon>
       <span class="nav-link">Usuarios</span>
     </a>
-    <a mat-list-item routerLink="/clientes">
+    <a  mat-list-item routerLink="/clientes">
       <mat-icon>sentiment_satisfied_alt</mat-icon>
       <span class="nav-link">Clientes</span>
     </a>

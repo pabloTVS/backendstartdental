@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import { Users } from '../entity/Users';
 
 export const checkRole = (roles: Array<string>) => {
+  
   return async (req: Request, res: Response, next: NextFunction) => {
     const { userId } = res.locals.jwtPayload;
     const userRepository = getRepository(Users);

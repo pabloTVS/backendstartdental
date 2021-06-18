@@ -32,7 +32,8 @@ export class AuthService {
       .post<UserResponse>(`${environment.API_URL}/auth/login`, authData)
       .pipe(
         map((user: UserResponse) => {
-          this.saveLocalStorage(user);
+         // this.saveLocalStorage(user); not save
+         
           this.user.next(user);
           this.isLogged = true;
           return user;

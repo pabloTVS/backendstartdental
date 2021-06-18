@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { UserResponse } from './../../models/user.interface';
+import { UserResponse } from '@shared/models/user.interface';
 import { AuthService } from '@auth/auth.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject  } from 'rxjs';

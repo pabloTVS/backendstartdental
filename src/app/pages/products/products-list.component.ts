@@ -4,27 +4,24 @@ import { Component, AfterViewInit, ViewChild, Input } from '@angular/core';
 import { MatSort} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatDialog } from '@angular/material/dialog';
-import { ProductModalComponent } from  './../admin/components/modal/product.modal/product.modal.component';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  selector: 'app-products-list',
+  templateUrl: './products-list.component.html',
+  styleUrls: ['./products-list.component.scss']
 })
 
-export class ProductsComponent implements AfterViewInit {
-  displayedColumns: string[] = ['Imagen', 'Articulo', 'Sku', 'Precio', 'IVA', 'Stock', 'Proveedor', 'Categoria', 'Subcategoria','actions'];
+export class ProductsListComponent implements AfterViewInit {
+  displayedColumns: string[] = ['Imagen', 'Articulo', 'Sku', 'Proveedor', 'Categoria', 'Subcategoria','actions'];
   dataSource = new MatTableDataSource();
  
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator; 
 
-  @Input() imgPath:string = "https://startdental.es/wp-content/uploads/";
+  //@Input() imgPath:string = "https://startdental.es/wp-content/uploads/";
   
   constructor(private viewProd: productsService,
-     private spinnerSvc: SpinnerOverlayService,
-     private dialog: MatDialog) {}
+     private spinnerSvc: SpinnerOverlayService) {}
 
   ngOnInit(): void {
     this.spinner();
@@ -57,7 +54,7 @@ export class ProductsComponent implements AfterViewInit {
   }
 
 
-  onOpenModal(prod = {}): void {
+ /* onOpenModal(prod = {}): void {
    // console.log('prod->', prod);
     let dialogRef = this.dialog.open(ProductModalComponent, {
       height: '400px',
@@ -70,5 +67,5 @@ export class ProductsComponent implements AfterViewInit {
       // Update result after adding new user.
       this.viewProd.getAllProducts().subscribe((prods) => {this.dataSource.data = prods;});
     });
-  }
+  }*/
 }

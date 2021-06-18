@@ -11,7 +11,10 @@ router.get('/',[checkJwt], ProductController.getAllProducts);
 // Get one product
 router.get('/:Id',[checkJwt, checkRole(['Admin'])], ProductController.getById);
 
-// Create a new user
+// Get by search
+router.get('/search/:Art',[checkJwt, checkRole(['Admin'])], ProductController.getBySearch);
+
+// Create a new product
 //router.post('/',[checkJwt, checkRole(['Admin'])], UserController.new);
 
 // Edit product

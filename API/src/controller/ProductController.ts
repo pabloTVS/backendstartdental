@@ -10,12 +10,12 @@ export class ProductController {
     {
       const productRepository = getRepository(viewProducts);
       
-      let products:any;
+      let products:viewProducts[];
       
       try {
-          products = await productRepository.createQueryBuilder().select(["product.ID","product.Articulo","product.Sku","product.Precio"
-          ,"product.IVA","product.Stock","product.Imagen","product.Proveedor","product.Categoria","product.Subcategoria"]).
-          from(viewProducts,"product").limit(100).getMany(); 
+          products = await productRepository.createQueryBuilder().select(["product.ID","product.Articulo","product.Sku","product.Imagen","product.Proveedor","product.Categoria","product.Subcategoria"]).
+          from(viewProducts,"product").limit(10000).getMany(); 
+
           products ? res.send(products) :  res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
         }  
         catch (e) {
@@ -60,6 +60,20 @@ export class ProductController {
         res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
       } */
 
+    };
+    
+    static getBySearch = async (req: Request, res: Response) => {
+      const {Art,Prov,Cat,Sub} = req.params;
+      const productRepository = getRepository(viewProducts);
+      
+      let products :viewProducts[];
+
+      products = await productRepository.createQueryBuilder().select(["product.ID","product.Articulo","product.Sku","product.Precio"
+          ,"product.IVA","product.Stock","product.Imagen","product.Proveedor","product.Categoria","product.Subcategoria"]).
+          from(viewProducts,"product").where("product.Articulo like :art",{art: `%${Art}%`}).getMany();
+          //where("product.Articulo like ('%':art'%')",{art: Art}).getMany(); 
+      
+      products ? res.send(products) :  res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
     };
 
     static edit = async (req: Request, res: Response) => {
