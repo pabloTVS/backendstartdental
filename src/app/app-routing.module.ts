@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CheckLoginGuard } from '@shared/guards/check-login.guard';
 import { CheckLoggedGuard } from '@shared/guards/check-logged.guard';
 import { AdminGuard } from '@shared/guards/admin.guard';
 import { ComercialGuard } from '@shared/guards/comer.guard';
