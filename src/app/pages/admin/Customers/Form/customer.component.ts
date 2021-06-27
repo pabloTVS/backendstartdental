@@ -1,10 +1,10 @@
 import { Component, OnInit} from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { Customer } from '@shared/models/customer.interface'
 import { Payments } from '@shared/models/payments.interface'
-import { CustomersService } from '../../services/customers.service';
+import { CustomersService } from '@pages/admin/services/customers.service';
 import { PaymentsService} from '@pages/admin/services/payments.service'
 
 
@@ -25,7 +25,6 @@ export class CustomerComponent implements OnInit {
   constructor(private custSvc: CustomersService,
               private paymSvc: PaymentsService,
               private route: ActivatedRoute,
-              private router: Router,
               private fb: FormBuilder) { }
 
               customersForm = this.fb.group({
