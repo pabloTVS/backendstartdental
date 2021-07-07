@@ -9,43 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.viewProducts = void 0;
+exports.wp_term_relationships = void 0;
 var typeorm_1 = require("typeorm");
-var viewProducts = /** @class */ (function () {
-    function viewProducts() {
+var wp_term_relationships = /** @class */ (function () {
+    function wp_term_relationships() {
     }
     __decorate([
         typeorm_1.PrimaryColumn(),
         __metadata("design:type", Number)
-    ], viewProducts.prototype, "ID", void 0);
+    ], wp_term_relationships.prototype, "object_id", void 0);
     __decorate([
         typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], viewProducts.prototype, "Articulo", void 0);
+        __metadata("design:type", Number)
+    ], wp_term_relationships.prototype, "term_taxonomy_id", void 0);
     __decorate([
         typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], viewProducts.prototype, "Sku", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], viewProducts.prototype, "Imagen", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], viewProducts.prototype, "Proveedor", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], viewProducts.prototype, "Categoria", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], viewProducts.prototype, "Subcategoria", void 0);
-    viewProducts = __decorate([
+        __metadata("design:type", Number)
+    ], wp_term_relationships.prototype, "term_order", void 0);
+    wp_term_relationships = __decorate([
         typeorm_1.Entity()
-    ], viewProducts);
-    return viewProducts;
+    ], wp_term_relationships);
+    return wp_term_relationships;
 }());
-exports.viewProducts = viewProducts;
-//# sourceMappingURL=viewProducts.js.map
+exports.wp_term_relationships = wp_term_relationships;
+//# sourceMappingURL=wpTermRelation.js.map

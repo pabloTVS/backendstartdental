@@ -9,43 +9,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.viewProducts = void 0;
+exports.wp_term_taxonomy = void 0;
 var typeorm_1 = require("typeorm");
-var viewProducts = /** @class */ (function () {
-    function viewProducts() {
+var wp_term_taxonomy = /** @class */ (function () {
+    function wp_term_taxonomy() {
     }
     __decorate([
-        typeorm_1.PrimaryColumn(),
+        typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], viewProducts.prototype, "ID", void 0);
+    ], wp_term_taxonomy.prototype, "term_taxonomy_id", void 0);
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], wp_term_taxonomy.prototype, "term_id", void 0);
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], viewProducts.prototype, "Articulo", void 0);
+    ], wp_term_taxonomy.prototype, "taxonomy", void 0);
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], viewProducts.prototype, "Sku", void 0);
+    ], wp_term_taxonomy.prototype, "description", void 0);
     __decorate([
         typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], viewProducts.prototype, "Imagen", void 0);
+        __metadata("design:type", Number)
+    ], wp_term_taxonomy.prototype, "parent", void 0);
     __decorate([
         typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], viewProducts.prototype, "Proveedor", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], viewProducts.prototype, "Categoria", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], viewProducts.prototype, "Subcategoria", void 0);
-    viewProducts = __decorate([
-        typeorm_1.Entity()
-    ], viewProducts);
-    return viewProducts;
+        __metadata("design:type", Number)
+    ], wp_term_taxonomy.prototype, "count", void 0);
+    wp_term_taxonomy = __decorate([
+        typeorm_1.Entity(),
+        typeorm_1.Unique(['term_taxonomy_id'])
+    ], wp_term_taxonomy);
+    return wp_term_taxonomy;
 }());
-exports.viewProducts = viewProducts;
-//# sourceMappingURL=viewProducts.js.map
+exports.wp_term_taxonomy = wp_term_taxonomy;
+//# sourceMappingURL=wpTermTaxonomy.js.map

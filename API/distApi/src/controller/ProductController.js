@@ -42,6 +42,7 @@ var Product_1 = require("../entity/Product");
 var productDetail_1 = require("../entity/productDetail");
 var viewProducts_1 = require("../entity/viewProducts");
 var class_validator_1 = require("class-validator");
+var wpTermRelation_1 = require("../entity/wpTermRelation");
 var ProductController = /** @class */ (function () {
     function ProductController() {
     }
@@ -54,9 +55,8 @@ var ProductController = /** @class */ (function () {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, productRepository.createQueryBuilder().select(["product.ID", "product.Articulo", "product.Sku", "product.Precio",
-                            "product.IVA", "product.Stock", "product.Imagen", "product.Proveedor", "product.Categoria", "product.Subcategoria"]).
-                            from(viewProducts_1.viewProducts, "product").limit(100).getMany()];
+                    return [4 /*yield*/, productRepository.createQueryBuilder().select(["product.ID", "product.Articulo", "product.Sku", "product.Imagen", "product.Proveedor", "product.Categoria", "product.Subcategoria"]).
+                            from(viewProducts_1.viewProducts, "product").limit(10000).getMany()];
                 case 2:
                     products = _a.sent();
                     products ? res.send(products) : res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
@@ -70,29 +70,65 @@ var ProductController = /** @class */ (function () {
         });
     }); };
     ProductController.getById = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var Id, productRepository, products;
+        var Id, product, producto;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     Id = req.params.Id;
+                    product = /** @class */ (function () {
+                        function product() {
+                        }
+                        return product;
+                    }());
+                    return [4 /*yield*/, typeorm_1.getManager().createQueryBuilder(Product_1.wp_posts, "prod").select(["prod.ID", "prod.post_title Articulo", "prod.post_name Url",
+                            "prod.post_content DescLarga", "prod.post_excerpt DescCorta", "prod.post_status Estado"])
+                            .addSelect(["det.Sku sku", "det.Categoria", "det.Proveedor", "det.Subcategoria", "det.Imagen"])
+                            .innerJoin(viewProducts_1.viewProducts, "det", "prod.ID=det.ID")
+                            .addSelect("det1.meta_value precio")
+                            .innerJoin(productDetail_1.wp_postmeta, "det1", "prod.ID=det1.post_id and det1.meta_key='_price'")
+                            .addSelect("det2.meta_value stock")
+                            .innerJoin(productDetail_1.wp_postmeta, "det2", "prod.ID=det2.post_id and det2.meta_key='_stock'")
+                            .addSelect("det3.meta_value iva")
+                            .innerJoin(productDetail_1.wp_postmeta, "det3", "prod.ID=det3.post_id and det3.meta_key='_tax_class'")
+                            .addSelect("det4.term_taxonomy_id IdProveedor")
+                            .innerJoin(wpTermRelation_1.wp_term_relationships, "det4", "prod.ID=det4.object_id and det4.term_taxonomy_id in (select term_id FROM wp_term_taxonomy WHERE parent = 23 )")
+                            .addSelect("det5.term_taxonomy_id IdCategoria")
+                            .innerJoin(wpTermRelation_1.wp_term_relationships, "det5", "prod.ID=det5.object_id and det5.term_taxonomy_id in (select term_id FROM wp_term_taxonomy WHERE parent = 24 )")
+                            .addSelect("det6.term_taxonomy_id IdSubCategoria")
+                            .innerJoin(wpTermRelation_1.wp_term_relationships, "det6", "prod.ID=det6.object_id and det6.term_taxonomy_id in (select term_id FROM wp_term_taxonomy WHERE parent > 24 )")
+                            .where("prod.ID=:id", { id: Id }).getRawOne()];
+                case 1:
+                    producto = _a.sent();
+                    producto ? res.send(producto) : res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
+                    return [2 /*return*/];
+            }
+        });
+    }); };
+    ProductController.getBySearch = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var _a, Art, Prov, Cat, Sub, productRepository, products;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    _a = req.params, Art = _a.Art, Prov = _a.Prov, Cat = _a.Cat, Sub = _a.Sub;
                     productRepository = typeorm_1.getRepository(viewProducts_1.viewProducts);
                     return [4 /*yield*/, productRepository.createQueryBuilder().select(["product.ID", "product.Articulo", "product.Sku", "product.Precio",
                             "product.IVA", "product.Stock", "product.Imagen", "product.Proveedor", "product.Categoria", "product.Subcategoria"]).
-                            from(viewProducts_1.viewProducts, "product").where("product.ID = :id", { id: Id }).getOne()];
+                            from(viewProducts_1.viewProducts, "product").where("product.Articulo like :art", { art: "%" + Art + "%" }).getMany()];
                 case 1:
-                    products = _a.sent();
+                    products = _b.sent();
+                    //where("product.Articulo like ('%':art'%')",{art: Art}).getMany(); 
                     products ? res.send(products) : res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
                     return [2 /*return*/];
             }
         });
     }); };
     ProductController.edit = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var view, Id, _a, articulo, sku, precio, stock, viewRepository, e_2, validationOpt, errors, e_3;
+        var view, Id, _a, articulo, DescLarga, DescCorta, Url, sku, precio, stock, viewRepository, e_2, validationOpt, errors, e_3;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     Id = req.params.Id;
-                    _a = req.body, articulo = _a.articulo, sku = _a.sku, precio = _a.precio, stock = _a.stock;
+                    _a = req.body, articulo = _a.articulo, DescLarga = _a.DescLarga, DescCorta = _a.DescCorta, Url = _a.Url, sku = _a.sku, precio = _a.precio, stock = _a.stock;
                     viewRepository = typeorm_1.getRepository(viewProducts_1.viewProducts);
                     _b.label = 1;
                 case 1:
@@ -117,7 +153,7 @@ var ProductController = /** @class */ (function () {
                 case 6:
                     _b.trys.push([6, 11, , 12]);
                     //actualizo el título, tabla wp_post (principal).
-                    return [4 /*yield*/, typeorm_1.getConnection().createQueryBuilder().update(Product_1.wp_posts).set({ post_title: articulo })
+                    return [4 /*yield*/, typeorm_1.getConnection().createQueryBuilder().update(Product_1.wp_posts).set({ post_title: articulo, post_content: DescLarga, post_excerpt: DescCorta, post_name: Url })
                             .where("ID = :id", { id: Id }).execute()];
                 case 7:
                     //actualizo el título, tabla wp_post (principal).

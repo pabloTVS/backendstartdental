@@ -17,7 +17,7 @@ export class ProductController {
       
       try {
           products = await productRepository.createQueryBuilder().select(["product.ID","product.Articulo","product.Sku","product.Imagen","product.Proveedor","product.Categoria","product.Subcategoria"]).
-          from(viewProducts,"product").limit(10000).getMany(); 
+          from(viewProducts,"product").limit(30000).getMany(); 
 
           products ? res.send(products) :  res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
         }  

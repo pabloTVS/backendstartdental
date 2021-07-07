@@ -9,43 +9,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.viewProducts = void 0;
+exports.Payments = void 0;
 var typeorm_1 = require("typeorm");
-var viewProducts = /** @class */ (function () {
-    function viewProducts() {
+var Payments = /** @class */ (function () {
+    function Payments() {
     }
     __decorate([
-        typeorm_1.PrimaryColumn(),
+        typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], viewProducts.prototype, "ID", void 0);
+    ], Payments.prototype, "IdFormaPago", void 0);
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], viewProducts.prototype, "Articulo", void 0);
+    ], Payments.prototype, "Nombre", void 0);
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], viewProducts.prototype, "Sku", void 0);
+    ], Payments.prototype, "Tipo", void 0);
     __decorate([
         typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], viewProducts.prototype, "Imagen", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], viewProducts.prototype, "Proveedor", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], viewProducts.prototype, "Categoria", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], viewProducts.prototype, "Subcategoria", void 0);
-    viewProducts = __decorate([
-        typeorm_1.Entity()
-    ], viewProducts);
-    return viewProducts;
+        __metadata("design:type", Number)
+    ], Payments.prototype, "NumPagos", void 0);
+    Payments = __decorate([
+        typeorm_1.Entity(),
+        typeorm_1.Unique(['IdFormaPago'])
+    ], Payments);
+    return Payments;
 }());
-exports.viewProducts = viewProducts;
-//# sourceMappingURL=viewProducts.js.map
+exports.Payments = Payments;
+//# sourceMappingURL=Payment.js.map
