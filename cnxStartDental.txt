@@ -1,0 +1,19 @@
+Ip:		185.50.197.187
+
+bd: 		startden_bdweb
+usuario: 	startden_dekorativa
+pass:		xS$pwL?1_I?P 
+
+usuario FTP: 	dekorativa@startdental.es
+pass:		!uYR&JBJG_Tr
+
+wp-admin:	Truevalue
+pass:		DffgyRJ2XEJyDfl%zNU8T^nu
+
+Entorno de pruebas
+  "host": "single-2040.banahosting.com",
+  "port": 3306,
+  "username": "uqvqtwhl_pablo",
+  "password": ")sTWos4GLA0U",
+  "database": "uqvqtwhl_pruebas"
+vscode://vscode.github-authentication/did-authenticate?windowid=1&code=32bffd1a5c930b523475&state=3132ae55-b1d6-4c79-b91c-e49d365bb8a5
