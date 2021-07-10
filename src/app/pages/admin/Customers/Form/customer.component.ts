@@ -21,6 +21,7 @@ export class CustomerComponent implements OnInit {
   customer: Customer;
   payments: Payments []=[];
   selectedPayment: number;
+  newCustomer: boolean = false;
 
   constructor(private custSvc: CustomersService,
               private paymSvc: PaymentsService,
@@ -39,22 +40,36 @@ export class CustomerComponent implements OnInit {
                 Fax1: ['',[Validators.minLength(9),Validators.pattern('^[0-9]+$')]],
                 Email1: ['',[Validators.required,Validators.pattern(this.isValidEmail)]],
                 CodFormaPago: [1,[Validators.required,Validators.pattern('^[0-9]+$')]],
-                DtoPP: [0,[Validators.required,Validators.pattern('^[0-9.]+$')]],
-                DtoComercial: [0,[Validators.required,Validators.pattern('^[0-9.]+$')]],
+                DtoPP: [0,[Validators.min(0),Validators.max(100),Validators.required,Validators.pattern('^[0-9.]+$')]],
+                DtoComercial: [0,[Validators.min(0),Validators.max(100),Validators.required,Validators.pattern('^[0-9.]+$')]],
                 Entidad: ['',[Validators.maxLength(4),Validators.pattern('^[0-9]+$')]],
                 Oficina: ['',[Validators.maxLength(4),Validators.pattern('^[0-9]+$')]],
                 DC: ['',[Validators.maxLength(2),Validators.pattern('^[0-9]+$')]],
                 Cuenta: ['',[Validators.maxLength(10),Validators.pattern('^[0-9]+$')]],
+                Observaciones: ['']
                // IBAN: ['',[Validators.maxLength(23),Validators.pattern('^[A-Z0-9]+$')]]
               })
   
   onSubmit(): void {
-    try {
-      this.custSvc.update(this.custId,this.customersForm.value).subscribe();
-      window.alert('Cambios guardados correctamente.')
-        
-    } catch (error) {
-      console.log('Error guardandado cambios.')
+    if (!this.newCustomer)
+    {
+      try {
+        this.custSvc.update(this.custId,this.customersForm.value).subscribe();
+        window.alert('Cambios guardados correctamente.')
+          
+      } catch (error) {
+        console.log('Error guardandado cambios.')
+      }
+    }
+    else {
+      try {
+        this.custSvc.new(this.customersForm.value).subscribe();
+        window.alert('Cliente creado correctamente.')
+          
+      } catch (error) {
+        console.log('Error creando cliente.')
+      }
+
     }
   }
   
@@ -83,6 +98,7 @@ export class CustomerComponent implements OnInit {
            this.payments = paym;     
          })
       }
+      else this.newCustomer = true;
     } catch (e) {
       console.log(e.message); 
     }

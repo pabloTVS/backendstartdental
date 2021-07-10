@@ -74,7 +74,7 @@ export class CustomerController {
       catch (e) {
         return res.status(409).json(e.message);
         }
-      res.send('Cliente creado correctamente');
+        res.status(201).json({ message: 'Cliente creado correctamente.' });  
     }
 
     //update

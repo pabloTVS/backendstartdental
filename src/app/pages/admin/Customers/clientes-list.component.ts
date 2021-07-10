@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, AfterViewInit,ViewChild } from '@angular/core';
-import { CustomersService } from '../services/customers.service';
+
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CustomersModalComponent } from '@pages/admin/components/modal/customers.modal/customers.modal.component'
 import { takeUntil } from 'rxjs/operators';
 
+import { CustomersService } from '../services/customers.service';
 
 @Component({
   selector: 'app-clientes',
@@ -16,6 +17,7 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./clientes-list.component.scss']
 })
 export class CustomersListComponent implements AfterViewInit, OnInit, OnDestroy {
+ 
   displayedColumns: string[] = ['IdCliente', 'Nombre', 'DNINIF','Telefono1','Email1', 'Movil1','CodPostal','Localidad','Provincia','Direccion', 'Acciones'];
   
   DSCustomer = new MatTableDataSource();

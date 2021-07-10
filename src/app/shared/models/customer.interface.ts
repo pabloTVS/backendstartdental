@@ -8,7 +8,7 @@ export interface Customer{
     Fax1: string;
     Movil1: string;
     CodFormaPago: number;
-    RE: boolean;
+    RE: number;
     DtoPP: number;
     DtoComercial: number;
     CodPostal: string;
@@ -20,4 +20,5 @@ export interface Customer{
     DC: string;
     Cuenta: string;
     IBAN: string;
+    Observaciones: string;
 }

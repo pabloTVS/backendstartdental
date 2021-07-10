@@ -206,13 +206,19 @@
               <input matInput 
                 formControlName="DtoPP" type="number" min=0 max=100 step=0.01 [ngClass]="{'is-invalid': isValidField('DtoPP')}">
                 <div class="invalid-feedback">
-                <span class="span-errors" *ngIf="customersForm.get('DtoPP').errors?.required">
-                  El nombre es obligatorio.
-                </span>
-                <span class="span-errors" *ngIf="customersForm.get('DtoPP').errors?.pattern">
-                  Caracteres no válidos.
-                </span>
-              </div>
+                  <span class="span-errors" *ngIf="customersForm.get('DtoPP').errors?.required">
+                    Dto. proto pago es obligatorio.
+                  </span>
+                  <span class="span-errors" *ngIf="customersForm.get('DtoPP').errors?.pattern">
+                    Caracteres no válidos.
+                  </span>
+                  <span class="span-errors" *ngIf="customersForm.get('DtoPP').errors?.min">
+                    Valor mínimo permitido 0.
+                  </span>
+                  <span class="span-errors" *ngIf="customersForm.get('DtoPP').errors?.max">
+                    Valor máximo permitido 100.
+                  </span>
+                </div>
             </mat-form-field>
             <mat-form-field class="inputSmall" appearance="fill">
               <mat-label>Dto. comercial</mat-label>
@@ -220,10 +226,16 @@
                 formControlName="DtoComercial" type="number" min=0 max=100 step=0.01 [ngClass]="{'is-invalid': isValidField('DtoComercial')}">
                 <div class="invalid-feedback">
                   <span class="span-errors" *ngIf="customersForm.get('DtoComercial').errors?.required">
-                    El nombre es obligatorio.
+                    Dto. comercial es obligatorio.
                   </span>
                   <span class="span-errors" *ngIf="customersForm.get('DtoComercial').errors?.pattern">
                     Caracteres no válidos.
+                  </span>
+                  <span class="span-errors" *ngIf="customersForm.get('DtoComercial').errors?.min">
+                    Valor mínimo permitido 0.
+                  </span>
+                  <span class="span-errors" *ngIf="customersForm.get('DtoComercial').errors?.max">
+                    Valor máximo permitido 100.
                   </span>
                 </div>
             </mat-form-field>
@@ -294,12 +306,23 @@
                 </span>
               </div>
             </mat-form-field>
-
-
-
           </section>
         </mat-card-content>
       </mat-card>
+      <mat-card>
+        <mat-card-content>
+          <section>
+            <mat-form-field class="textarea-full-width" appearance="fill">
+              <mat-label>Observaciones</mat-label>
+              <textarea formControlName="Observaciones" matInput
+               cdkTextareaAutosize
+               cdkAutosizeMinRows="1"
+               cdkAutosizeMaxRows="50"> </textarea>
+            </mat-form-field>
+          </section>
+        </mat-card-content>
+      </mat-card>
+
       <mat-card class="button">
         <button mat-raised-button color="primary"
           type="submit"

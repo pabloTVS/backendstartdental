@@ -19,10 +19,13 @@
   margin-bottom: 18px;
   box-shadow: none;
 }
-
+.textarea-full-width {
+  width : 400px;
+}
 .mat-card .mat-form-field + .mat-form-field {
   margin-left: 8px;
 }
+
 //errors
 .inputBig{
   width: 400px;
