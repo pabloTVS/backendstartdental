@@ -9,18 +9,18 @@ import { wp_term_taxonomy } from '../entity/wpTermTaxonomy';
 import { wp_terms } from '../entity/wpTerms';
 
 export class ProductController {
-    static getAllProducts = async (req: Request, res: Response) => 
+    static getAllProducts = async (req: Request, res: Response) =>
     {
       const productRepository = getRepository(viewProducts);
-      
+
       let products:viewProducts[];
-      
+
       try {
           products = await productRepository.createQueryBuilder().select(["product.ID","product.Articulo","product.Sku","product.Imagen","product.Proveedor","product.Categoria","product.Subcategoria"]).
-          from(viewProducts,"product").limit(30000).getMany(); 
+          from(viewProducts,"product").limit(30000).getMany();
 
           products ? res.send(products) :  res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
-        }  
+        }
         catch (e) {
           res.status(400).json({message: e.message })
         }
@@ -28,14 +28,14 @@ export class ProductController {
      /* const productRepository = getRepository(wp_posts);
       let type:any;
       let products:any;
-      
+
       try {
           products = await productRepository.createQueryBuilder().
           select(["product.ID","product.post_date","product.post_title","product.post_name","product.guid"]).
-          from(wp_posts,"product").where("product.post_type = :type",{type: 'product'}).limit(5).getMany(); 
+          from(wp_posts,"product").where("product.post_type = :type",{type: 'product'}).limit(5).getMany();
 
           products.length ? res.send(products) :  res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
-        }  
+        }
         catch (e) {
           res.status(400).json({message: '¡¡Algo ha fallado!!'})
         }*/
@@ -52,10 +52,11 @@ export class ProductController {
         Estado: string;
         sku: string;
         precio: string;
+        precioRebajado: string;
         stock: string;
         iva: string;
       }
-      
+
       let producto: product;
       producto = await getManager().createQueryBuilder(wp_posts, "prod").select(["prod.ID", "prod.post_title Articulo", "prod.post_name Url",
         "prod.post_content DescLarga", "prod.post_excerpt DescCorta", "prod.post_status Estado"])
@@ -73,20 +74,22 @@ export class ProductController {
         .innerJoin(wp_term_relationships,"det5","prod.ID=det5.object_id and det5.term_taxonomy_id in (select term_id FROM wp_term_taxonomy WHERE parent = 24 )")
         .addSelect("det6.term_taxonomy_id IdSubCategoria")
         .innerJoin(wp_term_relationships,"det6","prod.ID=det6.object_id and det6.term_taxonomy_id in (select term_id FROM wp_term_taxonomy WHERE parent > 24 )")
+        .addSelect("det7.meta_value precioRebajado")
+        .innerJoin(wp_postmeta,"det7","prod.ID=det7.post_id and det7.meta_key='_sale_price'")
         .where("prod.ID=:id",{id: Id}).getRawOne();
-      
+
         producto ? res.send(producto) : res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
       /*
       const productRepository = getRepository(viewProducts);
-      
+
       let products :viewProducts;
 
       products = await productRepository.createQueryBuilder().select(["product.ID","product.Articulo","product.Sku","product.Precio"
           ,"product.IVA","product.Stock","product.Imagen","product.Proveedor","product.Categoria","product.Subcategoria"]).
-          from(viewProducts,"product").where("product.ID = :id",{id: Id}).getOne(); 
-      
+          from(viewProducts,"product").where("product.ID = :id",{id: Id}).getOne();
+
       products ? res.send(products) :  res.status(404).json({ message: 'No se ha devuelto ningún valor.' });*/
-      
+
 
 /*       const { Id } = req.params;
       const productRepository = getRepository(wp_posts);
@@ -98,18 +101,18 @@ export class ProductController {
       } */
 
     };
-    
+
     static getBySearch = async (req: Request, res: Response) => {
       const {Art,Prov,Cat,Sub} = req.params;
       const productRepository = getRepository(viewProducts);
-      
+
       let products :viewProducts[];
 
       products = await productRepository.createQueryBuilder().select(["product.ID","product.Articulo","product.Sku","product.Precio"
           ,"product.IVA","product.Stock","product.Imagen","product.Proveedor","product.Categoria","product.Subcategoria"]).
           from(viewProducts,"product").where("product.Articulo like :art",{art: `%${Art}%`}).getMany();
-          //where("product.Articulo like ('%':art'%')",{art: Art}).getMany(); 
-      
+          //where("product.Articulo like ('%':art'%')",{art: Art}).getMany();
+
       products ? res.send(products) :  res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
     };
 
@@ -126,14 +129,14 @@ export class ProductController {
       } catch (e) {
         res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
       }
- 
+
       const validationOpt = { validationError: { target: false, value: false } };
       const errors = await validate(view, validationOpt) ;
-  
+
       if (errors.length > 0) {
         return res.status(400).json(errors);
       }
-   
+
       // Try to save producto
        try {
         //actualizo el título, tabla wp_post (principal).
@@ -153,9 +156,9 @@ export class ProductController {
       } catch (e) {
         return res.status(409).json({ message: 'Error guardando el artículo.' });
       }
-   
+
       res.status(201).json({ message: 'Cambios guardados.' });
-  
+
     };
 }
 

@@ -1,1 +1,40 @@
-<p>products works!</p>
+<mat-card class="button">
+  <a mat-raised-button color="accent" routerLink="/products" >Listado de productos</a>
+</mat-card>
+
+<mat-tab-group class="mat-tab">
+  <mat-tab label="Información de producto">
+    <form
+    class="needs-validation"
+    novalidate
+    [formGroup]="productForm"
+    (ngSubmit)="onSubmit()"
+    >
+      <mat-card>
+        <mat-card-content>
+          <section>
+            <mat-form-field class="inputBig" hintLabel="Max. 20 caracteres" appearance="fill">
+              <mat-label>Articulo</mat-label>
+              <input formControlName="Articulo" matInput #input1 maxlength="20" [ngClass]="{'is-invalid': isValidField('Articulo')}">
+              <mat-hint align="end">{{input1.value?.length || 0}}/20</mat-hint>
+              <div class="invalid-feedback">
+                <span class="span-errors" *ngIf="productForm.get('Articulo').errors?.required">
+                    El nombre es obligatorio.
+                </span>
+                <span class="span-errors" *ngIf="productForm.get('Articulo').errors?.pattern">
+                    Caracteres no válidos.
+                </span>
+                <span class="span-errors" *ngIf="productForm.get('Articulo').errors?.minlength">
+                  Longitud mínima es de
+                  {{ customersForm.get("Articulo").errors?.minlength?.requiredLength }}
+                  caracteres.
+                </span>
+              </div>
+            </mat-form-field>
+          </section>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </mat-tab>
+  <mat-tab label="Otros"></mat-tab>
+</mat-tab-group>
