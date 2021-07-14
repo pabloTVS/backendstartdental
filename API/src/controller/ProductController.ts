@@ -17,7 +17,7 @@ export class ProductController {
 
       try {
           products = await productRepository.createQueryBuilder().select(["product.ID","product.Articulo","product.Sku","product.Imagen","product.Proveedor","product.Categoria","product.Subcategoria"]).
-          from(viewProducts,"product").limit(30000).getMany();
+          from(viewProducts,"product").limit(100).getMany();
 
           products ? res.send(products) :  res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
         }
@@ -63,7 +63,7 @@ export class ProductController {
         .addSelect(["det.Sku sku","det.Categoria","det.Proveedor","det.Subcategoria","det.Imagen"])
         .innerJoin(viewProducts,"det","prod.ID=det.ID")
         .addSelect("det1.meta_value precio")
-        .innerJoin(wp_postmeta,"det1","prod.ID=det1.post_id and det1.meta_key='_price'")
+        .innerJoin(wp_postmeta,"det1","prod.ID=det1.post_id and det1.meta_key='_regular_price'")
         .addSelect("det2.meta_value stock")
         .innerJoin(wp_postmeta,"det2","prod.ID=det2.post_id and det2.meta_key='_stock'")
         .addSelect("det3.meta_value iva")

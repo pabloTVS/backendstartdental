@@ -10,6 +10,12 @@ pass:		!uYR&JBJG_Tr
 wp-admin:	Truevalue
 pass:		DffgyRJ2XEJyDfl%zNU8T^nu
 
+Ventur:	www.portalodontologico.es
+administracion@startdental.es
+exitoseguro
+
+	
+
 Entorno de pruebas
   "host": "single-2040.banahosting.com",
   "port": 3306,

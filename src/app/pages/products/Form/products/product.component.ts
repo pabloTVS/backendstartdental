@@ -1,4 +1,3 @@
-import { product } from '@shared/models/Products.interface';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -6,6 +5,14 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { viewProducts } from '@shared/models/viewProducts.interface'
 import { productsService} from '@pages/products/services/products.service'
 
+export interface typesOfVat {
+    value: string;
+    viewValue: string;
+}
+export interface productStatus {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -14,7 +21,23 @@ import { productsService} from '@pages/products/services/products.service'
 export class ProductComponent implements OnInit {
   custProduct: number;
   product: viewProducts;
+  selectedState: string; //valor del estado
+  selectedVat: string; //valor del IVA.
+  imagen: string;
   //newProduct: boolean=false;
+
+  productStatus: productStatus[] =
+  [
+    {value: 'publish', viewValue: 'Publicado'},
+    {value: 'pending', viewValue: 'Pendiente'}
+  ];
+
+  typeVat: typesOfVat[] = 
+  [
+    {value: '', viewValue: '21%'},
+    {value: 'tasa-reducida', viewValue: '10%'}
+  ];
+
 
   constructor(
     private route: ActivatedRoute,
@@ -23,15 +46,16 @@ export class ProductComponent implements OnInit {
   ) { }
 
   productForm = this.fb.group({
-    Articulo: ['',[Validators.required,Validators.minLength(3),Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$')]],
-    Url: ['',[Validators.required,Validators.minLength(3),Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$')]],
+    Articulo: ['',[Validators.required,Validators.minLength(3),Validators.pattern('^[A-Za-z0-9.-ñÑáéíóúÁÉÍÓÚ ]+$')]],
+    Url: ['',[Validators.required,Validators.minLength(3),Validators.pattern('^[A-Za-z0-9-_ñÑáéíóúÁÉÍÓÚ]+$')]],
     DescCorta: [''],
-    estado: ['',[Validators.required]],
+    Estado: [''],
     sku: ['',[Validators.required]],
     iva: [''],
     precio: [0,[Validators.required,Validators.pattern('^[A-Z0-9,.]+$')]],
     precioRebajado: [0,[Validators.required,Validators.pattern('^[A-Z0-9,.]+$')]],
-    stock: [0,[Validators.pattern('^[0-9]+$')]]
+    stock: [0,[Validators.pattern('^[0-9]+$')]],
+    det_Imagen: ['']
   })
 
   ngOnInit(): void {
@@ -46,6 +70,9 @@ export class ProductComponent implements OnInit {
            console.log(prod);
            this.product = prod;
            this.productForm.patchValue(this.product);
+           this.selectedState = prod.Estado;
+           this.selectedVat = prod.IVA;
+           this.imagen = prod.det_Imagen;
          })
       }
       //else this.newProduct = true;

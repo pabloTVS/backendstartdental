@@ -4,10 +4,12 @@ export interface viewProducts {
     Sku: string;
     Precio: string;
     PrecioRebajado: string;
-    IVA: number;
+    IVA: string;
     Stock: string;
-    Imagen: string;
+    det_Imagen: string;
     Proveedor: string;
     Categoria: string;
     Subcategoria: string;
+    Estado: string;
+    Url: string;
 }
