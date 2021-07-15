@@ -35,7 +35,8 @@ export class ProductComponent implements OnInit {
   typeVat: typesOfVat[] = 
   [
     {value: '', viewValue: '21%'},
-    {value: 'tasa-reducida', viewValue: '10%'}
+    {value: 'tasa-reducida', viewValue: '10%'},
+    {value: 'tasa-superreducida', viewValue: '4%'}
   ];
 
 
@@ -46,15 +47,15 @@ export class ProductComponent implements OnInit {
   ) { }
 
   productForm = this.fb.group({
-    Articulo: ['',[Validators.required,Validators.minLength(3),Validators.pattern('^[A-Za-z0-9.-ñÑáéíóúÁÉÍÓÚ ]+$')]],
+    Articulo: ['',[Validators.required,Validators.minLength(3)]],
     Url: ['',[Validators.required,Validators.minLength(3),Validators.pattern('^[A-Za-z0-9-_ñÑáéíóúÁÉÍÓÚ]+$')]],
     DescCorta: [''],
     Estado: [''],
     sku: ['',[Validators.required]],
     iva: [''],
-    precio: [0,[Validators.required,Validators.pattern('^[A-Z0-9,.]+$')]],
-    precioRebajado: [0,[Validators.required,Validators.pattern('^[A-Z0-9,.]+$')]],
-    stock: [0,[Validators.pattern('^[0-9]+$')]],
+    precio: [0,[Validators.min(0),Validators.required,Validators.pattern('^[A-Z0-9.]+$')]],
+    precioRebajado: [0,[Validators.min(0),Validators.required,Validators.pattern('^[A-Z0-9.]+$')]],
+    stock: [0,[Validators.min(0),Validators.pattern('^[0-9]+$')]],
     det_Imagen: ['']
   })
 

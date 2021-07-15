@@ -12,4 +12,5 @@ export interface viewProducts {
     Subcategoria: string;
     Estado: string;
     Url: string;
+    DescCorta: string;
 }

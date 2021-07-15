@@ -120,7 +120,7 @@ export class ProductController {
       let view:viewProducts;
 
       const { Id } = req.params;
-      const {articulo,DescLarga,DescCorta,Url,sku,precio,stock} = req.body;
+      const {Articulo,DescCorta,Url,sku,precio,precioRebajado,iva,Estado,stock} = req.body;
 
       const viewRepository = getRepository(viewProducts);
 
@@ -140,19 +140,35 @@ export class ProductController {
       // Try to save producto
        try {
         //actualizo el título, tabla wp_post (principal).
-        await getConnection().createQueryBuilder().update(wp_posts).set({post_title:articulo,post_content:DescLarga,post_excerpt:DescCorta,post_name:Url})
+        await getConnection().createQueryBuilder().update(wp_posts).set({post_title:Articulo,post_excerpt:DescCorta,post_name:Url,post_status:Estado})
         .where("ID = :id",{id: Id}).execute();
         //actualizo el resto, tabla detalles.
         //Actualizamos SKU
         await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: sku})
         .where("post_id = :id and meta_key = :type",{id: Id,type: '_sku'}).execute();
+        //compruebo precioRebajado, si es cero borro. En caso contrario actualizo el precio.
+        if (precioRebajado === "0") //si me pasa cero pongo el registro en blanco
+        {
+          await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: ''})
+          .where("post_id = :id and meta_key = :type",{id: Id,type: '_sale_price'}).execute();
+          await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: precio})
+          .where("post_id = :id and meta_key = :type",{id: Id,type: '_price'}).execute();
+        }
+        else {
+          await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: precioRebajado})
+          .where("post_id = :id and meta_key = :type",{id: Id,type: '_sale_price'}).execute();
+          await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: precioRebajado})
+          .where("post_id = :id and meta_key = :type",{id: Id,type: '_price'}).execute();
+        }
         //Actualizamos Precio
         await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: precio})
-        .where("post_id = :id and meta_key = :type",{id: Id,type: '_price'}).execute();
-        //Actualizamos Stock
+        .where("post_id = :id and meta_key = :type",{id: Id,type: '_regular_price'}).execute();
+        //Actualizamos VAT
+        await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: iva})
+        .where("post_id = :id and meta_key = :type",{id: Id,type: '_tax_class'}).execute();
+        //Actualizamos stock
         await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: stock})
         .where("post_id = :id and meta_key = :type",{id: Id,type: '_stock'}).execute();
-
       } catch (e) {
         return res.status(409).json({ message: 'Error guardando el artículo.' });
       }

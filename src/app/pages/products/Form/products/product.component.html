@@ -44,13 +44,13 @@
                 <span class="span-errors" *ngIf="productForm.get('Url').errors?.required">
                     El nombre es obligatorio.
                 </span>
-                <span class="span-errors" *ngIf="productForm.get('Url').errors?.pattern">
-                    Caracteres no válidos.
-                </span>
                 <span class="span-errors" *ngIf="productForm.get('Url').errors?.minlength">
                   Longitud mínima es de
                   {{ customersForm.get("Url").errors?.minlength?.requiredLength }}
                   caracteres.
+                </span>
+                <span class="span-errors" *ngIf="productForm.get('Url').errors?.pattern">
+                  Caracteres no válidos.
                 </span>
               </div>
             </mat-form-field>  
@@ -62,9 +62,6 @@
                 <span class="span-errors" *ngIf="productForm.get('Articulo').errors?.required">
                     El nombre es obligatorio.
                 </span>
-                <span class="span-errors" *ngIf="productForm.get('Articulo').errors?.pattern">
-                    Caracteres no válidos.
-                </span>
                 <span class="span-errors" *ngIf="productForm.get('Articulo').errors?.minlength">
                   Longitud mínima es de
                   {{ customersForm.get("Articulo").errors?.minlength?.requiredLength }}
@@ -72,6 +69,12 @@
                 </span>
               </div>
             </mat-form-field>
+          </section>
+        </mat-card-content>  
+      </mat-card>
+      <mat-card>
+        <mat-card-content>
+          <section>
             <mat-form-field class="inputSmall" appearance="fill">
               <mat-label>Tipo de IVA</mat-label>
               <mat-select formControlName="iva" placeholder="Selecciona IVA" [(value)]="selectedVat">
@@ -82,30 +85,48 @@
             </mat-form-field> 
             <mat-form-field class="inputSmall" appearance="fill">
               <mat-label>Precio</mat-label>
-              <input formControlName="precio" matInput [ngClass]="{'is-invalid': isValidField('precio')}">
+              <input formControlName="precio" min="0" matInput [ngClass]="{'is-invalid': isValidField('precio')}">
               <div class="invalid-feedback">
                 <span class="span-errors" *ngIf="productForm.get('precio').errors?.required">
-                    El nombre es obligatorio.
+                    Precio obligatorio (defecto 0).
                 </span>
                 <span class="span-errors" *ngIf="productForm.get('precio').errors?.pattern">
                     Caracteres no válidos.
+                </span>
+                <span class="span-errors" *ngIf="productForm.get('precio').errors?.min">
+                    El valor mínimo es 0.
                 </span>
               </div>
             </mat-form-field>
             <mat-form-field class="inputSmall" appearance="fill">
               <mat-label>Precio oferta</mat-label>
-              <input formControlName="precioRebajado" matInput [ngClass]="{'is-invalid': isValidField('precioRebajado')}">
+              <input formControlName="precioRebajado" min="0" matInput [ngClass]="{'is-invalid': isValidField('precioRebajado')}">
               <div class="invalid-feedback">
                 <span class="span-errors" *ngIf="productForm.get('precioRebajado').errors?.required">
-                    El nombre es obligatorio.
+                    Precio obligatorio (defecto 0).
                 </span>
                 <span class="span-errors" *ngIf="productForm.get('precioRebajado').errors?.pattern">
-                    Caracteres no válidos.
+                  Caracteres no válidos.
+                </span>
+                <span class="span-errors" *ngIf="productForm.get('precioRebajado').errors?.min">
+                  El valor mínimo es 0.
+                </span>
+              </div>
+            </mat-form-field>
+            <mat-form-field class="inputSmall" appearance="fill">
+              <mat-label>Stock</mat-label>
+              <input formControlName="stock" min="0" matInput [ngClass]="{'is-invalid': isValidField('stock')}">
+              <div class="invalid-feedback">
+                <span class="span-errors" *ngIf="productForm.get('stock').errors?.pattern">
+                  Caracteres no válidos.
+                </span>
+                <span class="span-errors" *ngIf="productForm.get('stock').errors?.min">
+                  El valor mínimo es 0.
                 </span>
               </div>
             </mat-form-field>
           </section>
-        </mat-card-content>  
+        </mat-card-content>
       </mat-card>
       <mat-card>
         <mat-card-content>
@@ -135,7 +156,7 @@
   <mat-tab label="Otros"></mat-tab>
 </mat-tab-group>
 
-<!--
+
 <pre>
   Dirty:
   {{ productForm.dirty }}
@@ -160,4 +181,3 @@
   InValid:
   {{ productForm.invalid }}
 </pre>
--->
