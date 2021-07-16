@@ -35,7 +35,7 @@
                     El nombre es obligatorio.
                 </span>
               </div>
-            </mat-form-field>  
+            </mat-form-field>
             <mat-form-field class="inputBig" hintLabel="Max. 150 caracteres" appearance="fill">
               <mat-label>Url</mat-label>
               <input formControlName="Url" matInput #input2 maxlength="150" [ngClass]="{'is-invalid': isValidField('Url')}">
@@ -53,7 +53,7 @@
                   Caracteres no válidos.
                 </span>
               </div>
-            </mat-form-field>  
+            </mat-form-field>
             <mat-form-field class="inputBig" hintLabel="Max. 150 caracteres" appearance="fill">
               <mat-label>Articulo</mat-label>
               <input formControlName="Articulo" matInput #input3 maxlength="150" [ngClass]="{'is-invalid': isValidField('Articulo')}">
@@ -70,7 +70,7 @@
               </div>
             </mat-form-field>
           </section>
-        </mat-card-content>  
+        </mat-card-content>
       </mat-card>
       <mat-card>
         <mat-card-content>
@@ -82,7 +82,7 @@
                   {{vat.viewValue}}
                 </mat-option>
               </mat-select>
-            </mat-form-field> 
+            </mat-form-field>
             <mat-form-field class="inputSmall" appearance="fill">
               <mat-label>Precio</mat-label>
               <input formControlName="precio" min="0" matInput [ngClass]="{'is-invalid': isValidField('precio')}">
@@ -138,18 +138,18 @@
                   {{supp.name}}
                 </mat-option>
               </mat-select>
-            </mat-form-field>  
+            </mat-form-field>
             <mat-form-field class="inputMedium" appearance="fill">
               <mat-label>Subcategorias</mat-label>
               <mat-select formControlName="IdSubCategoria" (selectionChange)="onChangeSubcategory($event)" placeholder="Selecciona una subcategoría" [(value)]="selectedSubcat">
                 <mat-option *ngFor="let subcat of subcategory" [value]="subcat.ter_term_id">
                   {{subcat.ter_name}}
-                </mat-option>         
-                             
+                </mat-option>
+
               </mat-select>
-            </mat-form-field>  
-  
-  
+            </mat-form-field>
+
+
 
           </section>
         </mat-card-content>
@@ -162,7 +162,7 @@
               <textarea formControlName="DescCorta" matInput
                cdkTextareaAutosize
                cdkAutosizeMinRows="1"
-               cdkAutosizeMaxRows="50"> 
+               cdkAutosizeMaxRows="50">
               </textarea>
             </mat-form-field>
           </section>
@@ -182,7 +182,7 @@
   <mat-tab label="Otros"></mat-tab>
 </mat-tab-group>
 
-
+<!--
 <pre>
   Dirty:
   {{ productForm.dirty }}
@@ -207,3 +207,4 @@
   InValid:
   {{ productForm.invalid }}
 </pre>
+-->
