@@ -26,10 +26,6 @@ var wp_terms = /** @class */ (function () {
         typeorm_1.Column(),
         __metadata("design:type", String)
     ], wp_terms.prototype, "slug", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", Number)
-    ], wp_terms.prototype, "term_group", void 0);
     wp_terms = __decorate([
         typeorm_1.Entity(),
         typeorm_1.Unique(['term_id'])

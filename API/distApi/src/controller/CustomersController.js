@@ -137,7 +137,7 @@ var CustomerController = /** @class */ (function () {
                     e_3 = _b.sent();
                     return [2 /*return*/, res.status(409).json(e_3.message)];
                 case 5:
-                    res.send('Cliente creado correctamente');
+                    res.status(201).json({ message: 'Cliente creado correctamente.' });
                     return [2 /*return*/];
             }
         });
