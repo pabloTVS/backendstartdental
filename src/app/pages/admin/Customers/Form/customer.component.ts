@@ -88,7 +88,7 @@ export class CustomerComponent implements OnInit {
       if (this.custId !=0)
       {
          this.custSvc.getById(this.custId).subscribe(cust =>{
-           console.log(cust);
+           //console.log(cust);
            this.customer = cust;
            this.customersForm.patchValue(this.customer);
            this.selectedPayment = cust.CodFormaPago;

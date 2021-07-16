@@ -1,12 +1,11 @@
 import { getRepository, getConnection, getManager } from 'typeorm';
 import { Request, Response } from 'express';
+import { validate } from 'class-validator';
+
+import { viewProducts } from '../entity/viewProducts';
 import { wp_posts } from '../entity/Product';
 import { wp_postmeta } from '../entity/productDetail';
-import { viewProducts } from '../entity/viewProducts'
-import { validate } from 'class-validator';
 import { wp_term_relationships } from '../entity/wpTermRelation';
-import { wp_term_taxonomy } from '../entity/wpTermTaxonomy';
-import { wp_terms } from '../entity/wpTerms';
 
 export class ProductController {
     static getAllProducts = async (req: Request, res: Response) =>
@@ -120,7 +119,7 @@ export class ProductController {
       let view:viewProducts;
 
       const { Id } = req.params;
-      const {Articulo,DescCorta,Url,sku,precio,precioRebajado,iva,Estado,stock} = req.body;
+      const {Articulo,DescCorta,Url,sku,precio,precioRebajado,iva,Estado,stock,IdCategoria,IdSubCategoria,IdProveedor} = req.body;
 
       const viewRepository = getRepository(viewProducts);
 
@@ -169,6 +168,20 @@ export class ProductController {
         //Actualizamos stock
         await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: stock})
         .where("post_id = :id and meta_key = :type",{id: Id,type: '_stock'}).execute();
+        //Actualizamos proveedor
+        await getConnection().createQueryBuilder().update(wp_term_relationships).set({term_taxonomy_id: IdProveedor})
+        .where("object_id = :id and term_taxonomy_id in (select term_id from wp_term_taxonomy where parent = 23)",{id:Id})
+        .execute();
+        //Actualizamos categoria
+        await getConnection().createQueryBuilder().update(wp_term_relationships).set({term_taxonomy_id: IdCategoria})
+        .where("object_id = :id and term_taxonomy_id in (select term_id from wp_term_taxonomy where parent = 24)",{id:Id})
+        .execute();
+        //Actualizamos subcategoria
+        await getConnection().createQueryBuilder().update(wp_term_relationships).set({term_taxonomy_id: IdSubCategoria})
+        .where("object_id = :id and term_taxonomy_id in (select term_id from wp_term_taxonomy where parent > 24)",{id:Id})
+        .execute();
+
+
       } catch (e) {
         return res.status(409).json({ message: 'Error guardando el artículo.' });
       }

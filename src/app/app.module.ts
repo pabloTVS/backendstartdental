@@ -15,6 +15,9 @@ import { AdminInterceptor } from '@shared/interceptors/admin-interceptor';
 import { ProductsInterceptor } from '@shared/interceptors/products.interceptor';
 import { CustomersInterceptor } from '@shared/interceptors/customers.interceptor';
 import { PaymentsInterceptor } from '@shared/interceptors/payments-interceptors';
+import { CategoryInterceptor } from '@shared/interceptors/category-interceptor';
+import { SubcategoryInterceptor } from '@shared/interceptors/subcategory-interceptor';
+import { SupplierInterceptor } from '@shared/interceptors/supplier-interceptor';
 
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { SpinnerOverlayComponent } from './shared/components/spinner-overlay/spinner-overlay.component';
@@ -38,6 +41,9 @@ import { ConfiguracionModule } from './pages/admin/configuracion/configuracion.m
     { provide: HTTP_INTERCEPTORS, useClass: ProductsInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: CustomersInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: PaymentsInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: CategoryInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: SubcategoryInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: SupplierInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

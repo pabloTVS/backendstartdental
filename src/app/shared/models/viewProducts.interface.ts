@@ -13,4 +13,7 @@ export interface viewProducts {
     Estado: string;
     Url: string;
     DescCorta: string;
+    IdProveedor: string;
+    IdCategoria: string;
+    IdSubCategoria: string;
 }

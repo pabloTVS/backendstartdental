@@ -25,8 +25,8 @@
                   {{state.viewValue}}
                 </mat-option>
               </mat-select>
-            </mat-form-field>  
-              <mat-form-field class="inputSmall" hintLabel="Max. 30 caracteres" appearance="fill">
+            </mat-form-field>
+            <mat-form-field class="inputSmall" hintLabel="Max. 30 caracteres" appearance="fill">
               <mat-label>SKU</mat-label>
               <input formControlName="sku" matInput #input1 maxlength="30" [ngClass]="{'is-invalid': isValidField('sku')}">
               <mat-hint align="end">{{input1.value?.length || 0}}/30</mat-hint>
@@ -125,6 +125,32 @@
                 </span>
               </div>
             </mat-form-field>
+          </section>
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+        <mat-card-content>
+          <section>
+            <mat-form-field class="inputMedium" appearance="fill">
+              <mat-label>Proveedor</mat-label>
+              <mat-select formControlName="IdProveedor" placeholder="Selecciona un proveedor" [(value)]="selectedProve">
+                <mat-option *ngFor="let supp of supplier" [value]="supp.term_id">
+                  {{supp.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>  
+            <mat-form-field class="inputMedium" appearance="fill">
+              <mat-label>Subcategorias</mat-label>
+              <mat-select formControlName="IdSubCategoria" (selectionChange)="onChangeSubcategory($event)" placeholder="Selecciona una subcategoría" [(value)]="selectedSubcat">
+                <mat-option *ngFor="let subcat of subcategory" [value]="subcat.ter_term_id">
+                  {{subcat.ter_name}}
+                </mat-option>         
+                             
+              </mat-select>
+            </mat-form-field>  
+  
+  
+
           </section>
         </mat-card-content>
       </mat-card>
