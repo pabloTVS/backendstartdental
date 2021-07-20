@@ -163,10 +163,14 @@ var UserController = /** @class */ (function () {
                     _b.label = 6;
                 case 6:
                     _b.trys.push([6, 8, , 9]);
+                    // Check password, si la han cambiado la actualizo, en caso contrario no hago nada.
                     //encripto clave
-                    user.hashPassword();
+                    //        user.hashPassword();
                     return [4 /*yield*/, userRepository.save(user)];
                 case 7:
+                    // Check password, si la han cambiado la actualizo, en caso contrario no hago nada.
+                    //encripto clave
+                    //        user.hashPassword();
                     _b.sent();
                     return [3 /*break*/, 9];
                 case 8:
@@ -199,6 +203,42 @@ var UserController = /** @class */ (function () {
                     // Remove user
                     userRepository.delete(id);
                     res.status(201).json({ message: ' User deleted' });
+                    return [2 /*return*/];
+            }
+        });
+    }); };
+    UserController.changePassword = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var id, password, userRepository, user, e_7, validationOps, errors;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    id = req.params.id;
+                    password = req.body.password;
+                    userRepository = typeorm_1.getRepository(Users_1.Users);
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, userRepository.findOneOrFail(id)];
+                case 2:
+                    user = _a.sent();
+                    user.password = password;
+                    return [3 /*break*/, 4];
+                case 3:
+                    e_7 = _a.sent();
+                    res.status(400).json({ message: '¡¡Algo ha fallado!!' });
+                    return [3 /*break*/, 4];
+                case 4:
+                    validationOps = { validationError: { target: false, value: false } };
+                    return [4 /*yield*/, class_validator_1.validate(user, validationOps)];
+                case 5:
+                    errors = _a.sent();
+                    if (errors.length > 0) {
+                        return [2 /*return*/, res.status(400).json(errors)];
+                    }
+                    // Hash password
+                    user.hashPassword();
+                    userRepository.save(user);
+                    res.status(201).json({ message: 'Contraseña actualizada correctamente.' });
                     return [2 /*return*/];
             }
         });

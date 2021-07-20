@@ -17,6 +17,7 @@ enum Action {
 export class ModalComponent implements OnInit, OnDestroy {
   actionTODO = Action.NEW;
   showPasswordField = true;
+  nuevoUsuario = false;
   oldPassword:string;
   hide = true;
   constructor(
@@ -37,18 +38,21 @@ export class ModalComponent implements OnInit, OnDestroy {
       {
         this.oldPassword = this.data?.user.password;
         this.showPasswordField = true;
+        this.nuevoUsuario = false;
         this.userForm.baseForm.get('password').reset(null);
         this.data.title = 'Cambio de password';
       }  
       else
       { 
         this.showPasswordField = false;
+        this.nuevoUsuario = false;
         this.data.title = 'Editar usuario';
       }   
     }
     else {
       //nuevo usuario
-      this.data.title = 'Editar usuario';
+      this.data.title = 'Alta de usuario';
+      this.nuevoUsuario = true;
       this.userForm.baseForm.reset();
     }
   }

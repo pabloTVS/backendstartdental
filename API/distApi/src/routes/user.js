@@ -16,5 +16,7 @@ router.post('/', [jwt_1.checkJwt, role_1.checkRole(['Admin'])], UserController_1
 router.patch('/:id', [jwt_1.checkJwt, role_1.checkRole(['Admin'])], UserController_1.UserController.edit);
 // Delete
 router.delete('/:id', [jwt_1.checkJwt, role_1.checkRole(['Admin'])], UserController_1.UserController.delete);
+// change password
+router.patch('/change/:id', [jwt_1.checkJwt, role_1.checkRole(['Admin'])], UserController_1.UserController.changePassword);
 exports.default = router;
 //# sourceMappingURL=user.js.map
