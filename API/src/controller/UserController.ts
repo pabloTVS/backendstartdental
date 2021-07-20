@@ -2,6 +2,7 @@ import { getRepository } from 'typeorm';
 import { Request, Response } from 'express';
 import { Users } from '../entity/Users';
 import { validate } from 'class-validator';
+import { CLIENT_RENEG_WINDOW } from 'node:tls';
 
 export class UserController {
   static getAll = async (req: Request, res: Response) => {
@@ -63,6 +64,7 @@ export class UserController {
 
   static edit = async (req: Request, res: Response) => {
     let user;
+
     const { id } = req.params;
     const { username, password, role } = req.body;
 
@@ -85,8 +87,9 @@ export class UserController {
 
     // Try to save user
      try {
-      //encripto clave
-      user.hashPassword();
+          // Check password, si la han cambiado la actualizo, en caso contrario no hago nada.
+        //encripto clave
+//        user.hashPassword();
       await userRepository.save(user);
     } catch (e) {
       return res.status(409).json({ message: 'Username ya está en uso.' });
@@ -110,6 +113,38 @@ export class UserController {
     userRepository.delete(id);
     res.status(201).json({ message: ' User deleted' });
   };
+
+  static changePassword = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const { password } = req.body;
+
+    const userRepository = getRepository(Users);
+    let user: Users;
+
+    try {
+      user = await userRepository.findOneOrFail(id);
+      user.password = password;
+    } catch (e) {
+      res.status(400).json({ message: '¡¡Algo ha fallado!!' });
+    }
+
+    const validationOps = { validationError: { target: false, value: false } };
+    const errors = await validate(user, validationOps);
+
+    if (errors.length > 0) {
+      return res.status(400).json(errors);
+    }
+
+    // Hash password
+    user.hashPassword();
+    userRepository.save(user);
+    res.status(201).json({ message: 'Contraseña actualizada correctamente.'  });
+  };
+
+
+
+
+  static oldPas: any;
 }
 
 export default UserController;

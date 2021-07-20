@@ -41,6 +41,13 @@ export class UsersService {
       .pipe(catchError(this.handlerError));
   }
 
+  changePassword(userId: number, user: User)
+  {
+    return this.http
+      .patch<User>(`${environment.API_URL}/users/change/${userId}`, user)
+      .pipe(catchError(this.handlerError));
+  }
+
   handlerError(error): Observable<never> {
     let errorMessage = 'Error desconocido.';
     if (error) {

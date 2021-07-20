@@ -17,6 +17,7 @@ enum Action {
 export class ModalComponent implements OnInit, OnDestroy {
   actionTODO = Action.NEW;
   showPasswordField = true;
+  oldPassword:string;
   hide = true;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -30,9 +31,11 @@ export class ModalComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (this.data?.user.hasOwnProperty('id')) {
       this.actionTODO = Action.EDIT;
+      this.pathFormData();
       // controla si se ha activado el cambio de password
       if (this.data?.changePassword)
       {
+        this.oldPassword = this.data?.user.password;
         this.showPasswordField = true;
         this.userForm.baseForm.get('password').reset(null);
         this.data.title = 'Cambio de password';
@@ -41,11 +44,7 @@ export class ModalComponent implements OnInit, OnDestroy {
       { 
         this.showPasswordField = false;
         this.data.title = 'Editar usuario';
-      }  
-
-      this.userForm.baseForm.get('password').setValidators(null);
-      this.userForm.baseForm.updateValueAndValidity();
-      this.pathFormData();
+      }   
     }
     else {
       //nuevo usuario
@@ -58,13 +57,21 @@ export class ModalComponent implements OnInit, OnDestroy {
     const formValue = this.userForm.baseForm.value;
     if (this.actionTODO === Action.NEW) {
       this.userSvc.new(formValue).subscribe((res) => {
-        console.log('New ', res);
+        console.log('New user', res);
       });
     } else {
       const userId = this.data?.user?.id;
+      if (this.showPasswordField){
+        //cambio de password.
+        this.userSvc.changePassword(userId, formValue).subscribe((res) => {
+          console.log('Update password', res);
+        });
+      }
+      else {
       this.userSvc.update(userId, formValue).subscribe((res) => {
-        console.log('Update', res);
+        console.log('Update user', res);
       });
+    }
 
     }
   }
