@@ -52,7 +52,7 @@
               </mat-form-field>
               <mat-form-field class="inputBig" hintLabel="Max. 100 caracteres" appearance="fill">
                 <mat-label>Nombre comercial</mat-label>
-                <input formControlName="NombreComerical" matInput #input17 maxlength="100" [ngClass]="{'is-invalid': isValidField('NombreComercial')}">
+                <input formControlName="NombreComercial" matInput #input17 maxlength="100" [ngClass]="{'is-invalid': isValidField('NombreComercial')}">
                 <mat-hint align="end">{{input17.value?.length || 0}}/100</mat-hint>
                 <div class="invalid-feedback">
                   <span class="span-errors" *ngIf="customersForm.get('NombreComercial').errors?.pattern">
@@ -65,11 +65,15 @@
                   </span>
                 </div>
               </mat-form-field>
-              <mat-form-field class="inputMedium" appearance="fill">
+              <mat-form-field class="inputMedium" appearance="fill"  [ngStyle]="{'background-color': selectedState === 1 ? 'green' : (selectedState === 2 ? 'orange' : 'orangered') }">
                 <mat-label>Estado del cliente</mat-label>
                 <mat-select formControlName="EstadoCliente" placeholder="Situación del cliente" [(value)]="selectedState">
-                  <mat-option *ngFor="let stat of stateCustomer" [value]="supp.value">
-                    {{supp.viewValue}}
+                  <mat-option *ngFor="let stat of stateCustomer" [value]="stat.value">
+                    <mat-ul [ngSwitch] = "stat.value">
+                      <mat-li *ngSwitchCase="1" style="color: green">{{stat.viewValue}}</mat-li>
+                      <mat-li *ngSwitchCase="2" style="color:orange">{{stat.viewValue}}</mat-li>
+                      <mat-li *ngSwitchCase="3" style="color: orangered">{{stat.viewValue}}</mat-li>
+                    </mat-ul>
                   </mat-option>
                 </mat-select>
               </mat-form-field>
@@ -391,7 +395,7 @@
     Content 2
   </mat-tab>
 </mat-tab-group>
-  <!--
+  
   <pre>
     Dirty:
     {{ customersForm.dirty }}
@@ -416,4 +420,4 @@
     InValid:
     {{ customersForm.invalid }}
   </pre>
-  -->
+ 

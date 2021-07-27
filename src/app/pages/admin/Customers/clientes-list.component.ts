@@ -6,7 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Subject } from 'rxjs';
 import { SpinnerOverlayService } from '@shared/services/spinner-overlay.service'
 import { MatDialog } from '@angular/material/dialog';
-import { CustomersModalComponent } from '@pages/admin/components/modal/customers.modal/customers.modal.component'
+// import { CustomersModalComponent } from '@pages/admin/components/modal/customers.modal/customers.modal.component'
 import { takeUntil } from 'rxjs/operators';
 
 import { CustomersService } from '../services/customers.service';
@@ -18,7 +18,7 @@ import { CustomersService } from '../services/customers.service';
 })
 export class CustomersListComponent implements AfterViewInit, OnInit, OnDestroy {
  
-  displayedColumns: string[] = ['IdCliente', 'Nombre', 'DNINIF','Telefono1','Email1', 'Movil1','CodPostal','Localidad','Provincia','Direccion', 'Acciones'];
+  displayedColumns: string[] = ['IdCliente' ,'EstadoCliente', 'Nombre', 'DNINIF','Telefono1','Email1', 'Movil1','CodPostal','Localidad','Provincia','Direccion', 'Acciones'];
   
   DSCustomer = new MatTableDataSource();
 
@@ -52,7 +52,7 @@ export class CustomersListComponent implements AfterViewInit, OnInit, OnDestroy 
   {
       this.DSCustomer.data.length >0 ? this.spinnerSvc.hide() : this.spinnerSvc.show();
   }
- 
+ /*
   onOpenModal(customer = {}): void {
     // console.log('prod->', prod);
      let dialogRef = this.dialog.open(CustomersModalComponent, {
@@ -66,7 +66,7 @@ export class CustomersListComponent implements AfterViewInit, OnInit, OnDestroy 
        // Update result after adding new user.
        this.custSvc.getAll().subscribe((customer) => {this.DSCustomer.data = customer;});
      });
-  }
+  }*/
  
   onDelete(custId: number) :void{
     if (window.confirm('¿Estás seguro de borrar este cliente?.')) {

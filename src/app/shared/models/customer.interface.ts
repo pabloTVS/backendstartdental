@@ -24,6 +24,6 @@ export interface Customer{
     Cuenta: string;
     IBAN: string;
     Observaciones: string;
-    CodComercial: string;
-    EstadoCliente: string;
+    CodComercial: number;
+    EstadoCliente: number;
 }

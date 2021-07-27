@@ -8,13 +8,13 @@ import { CustomersService } from '@pages/admin/services/customers.service';
 import { PaymentsService} from '@pages/admin/services/payments.service'
 
 export interface statesCustomers {
-  value: string;
+  value: number;
   viewValue: string;
 }
 
 //temporal
 export interface commercial {
-  value: string;
+  value: number;
   viewValue: string;
 }
 
@@ -33,19 +33,19 @@ export class CustomerComponent implements OnInit {
   selectedPayment: number;
   newCustomer: boolean = false;
 
-  selectedState: string;
-  selectedCommercial: string;
+  selectedState: number;
+  selectedCommercial: number;
 
   stateCustomer: statesCustomers [] = [
-    {value: '1', viewValue: 'Correcto'},
-    {value: '2', viewValue: 'En riesgo'},
-    {value: '3', viewValue: 'Moroso'}
+    {value: 1, viewValue: 'Correcto'},
+    {value: 2, viewValue: 'En riesgo'},
+    {value: 3, viewValue: 'Moroso'}
   ]
 
   commercial: commercial [] = [
-    {value: '0', viewValue: 'Administracion'},
-    {value: '1', viewValue: 'José Luis Gras Soriano'},
-    {value: '2', viewValue: 'Antonio Zamora Mateos'}
+    {value: 0, viewValue: 'Administracion'},
+    {value: 1, viewValue: 'José Luis Gras Soriano'},
+    {value: 2, viewValue: 'Antonio Zamora Mateos'}
   ]
 
   constructor(private custSvc: CustomersService,
@@ -75,8 +75,8 @@ export class CustomerComponent implements OnInit {
                 DC: ['',[Validators.maxLength(2),Validators.pattern('^[0-9]+$')]],
                 Cuenta: ['',[Validators.maxLength(10),Validators.pattern('^[0-9]+$')]],
                 Observaciones: [''],
-                CodComercial: ['0', [Validators.required,Validators.pattern('^[0-9]+$')]],
-                EstadoCliente: ['1', [Validators.required,Validators.pattern('^[0-9]+$')]]
+                CodComercial: [0, [Validators.required,Validators.pattern('^[0-9]+$')]],
+                EstadoCliente: [1, [Validators.required,Validators.pattern('^[0-9]+$')]]
 
                // IBAN: ['',[Validators.maxLength(23),Validators.pattern('^[A-Z0-9]+$')]]
               })
