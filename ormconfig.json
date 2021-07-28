@@ -1,0 +1,19 @@
+{
+  "type": "mysql",
+  "host": "185.50.197.187",
+  "port": 3306,
+  "username": "startden_dekorativa",
+  "password": "xS$pwL?1_I?P",
+  "database": "startden_bdweb",
+  "synchronize": false, 
+  "logging": true,
+  "logger": "file",
+  "entities": ["entity/*.js"],
+  "migrations": ["src/migration/**/*.ts"],
+  "subscribers": ["src/subscriber/**/*.ts"],
+  "cli": {
+    "entitiesDir": "entity",
+    "migrationsDir": "src/migration",
+    "subscribersDir": "src/subscriber"
+  }
+}
