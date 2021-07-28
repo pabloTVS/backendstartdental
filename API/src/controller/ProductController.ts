@@ -54,6 +54,8 @@ export class ProductController {
         precioRebajado: string;
         stock: string;
         iva: string;
+        refproveedor: string;
+        precioCoste:string;
       }
 
       let producto: product;
@@ -75,6 +77,10 @@ export class ProductController {
         .innerJoin(wp_term_relationships,"det6","prod.ID=det6.object_id and det6.term_taxonomy_id in (select term_id FROM wp_term_taxonomy WHERE parent > 24 )")
         .addSelect("det7.meta_value precioRebajado")
         .innerJoin(wp_postmeta,"det7","prod.ID=det7.post_id and det7.meta_key='_sale_price'")
+        .addSelect("case when substring(det8.meta_value,1,3) ='<b>' then substring(det8.meta_value,24,length(det8.meta_value)) else det8.meta_value end refproveedor")
+        .innerJoin(wp_postmeta,"det8","prod.ID=det8.post_id and det8.meta_key='refproveedor'")
+        .addSelect("det9.meta_value precioCoste")
+        .innerJoin(wp_postmeta,"det9","prod.ID=det9.post_id and det9.meta_key='pcoste'")
         .where("prod.ID=:id",{id: Id}).getRawOne();
 
         producto ? res.send(producto) : res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
@@ -117,10 +123,13 @@ export class ProductController {
 
     static edit = async (req: Request, res: Response) => {
       let view:viewProducts;
+      let valorRefProv:string;
 
       const { Id } = req.params;
-      const {Articulo,DescCorta,Url,sku,precio,precioRebajado,iva,Estado,stock,IdCategoria,IdSubCategoria,IdProveedor} = req.body;
-
+      const {Articulo,DescCorta,Url,sku,precio,precioRebajado,iva,Estado,stock,IdCategoria,IdSubCategoria,IdProveedor,refproveedor,precioCoste} = req.body;
+      
+      valorRefProv = '<b>Ref.Fabricante: </b>'+ refproveedor;
+      
       const viewRepository = getRepository(viewProducts);
 
       try {
@@ -168,6 +177,12 @@ export class ProductController {
         //Actualizamos stock
         await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: stock})
         .where("post_id = :id and meta_key = :type",{id: Id,type: '_stock'}).execute();
+        //Actualizamos refproveedor
+        await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: valorRefProv})
+        .where("post_id = :id and meta_key = :type",{id: Id,type: 'refproveedor'}).execute();
+        //Actualizamos pcoste
+        await getConnection().createQueryBuilder().update(wp_postmeta).set({meta_value: precioCoste})
+        .where("post_id = :id and meta_key = :type",{id: Id,type: 'pcoste'}).execute();
         //Actualizamos proveedor
         await getConnection().createQueryBuilder().update(wp_term_relationships).set({term_taxonomy_id: IdProveedor})
         .where("object_id = :id and term_taxonomy_id in (select term_id from wp_term_taxonomy where parent = 23)",{id:Id})

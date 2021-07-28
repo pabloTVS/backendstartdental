@@ -114,6 +114,19 @@
               </div>
             </mat-form-field>
             <mat-form-field class="inputSmall" appearance="fill">
+              <mat-label>Precio de coste</mat-label>
+              <input formControlName="precioCoste" min="0" matInput [ngClass]="{'is-invalid': isValidField('precioCoste')}">
+              <div class="invalid-feedback">
+                <span class="span-errors" *ngIf="productForm.get('precioCoste').errors?.pattern">
+                  Caracteres no válidos.
+                </span>
+                <span class="span-errors" *ngIf="productForm.get('precioCoste').errors?.min">
+                  El valor mínimo es 0.
+                </span>
+              </div>
+            </mat-form-field>
+
+            <mat-form-field class="inputSmall" appearance="fill">
               <mat-label>Stock</mat-label>
               <input formControlName="stock" min="0" matInput [ngClass]="{'is-invalid': isValidField('stock')}">
               <div class="invalid-feedback">
@@ -131,6 +144,10 @@
       <mat-card>
         <mat-card-content>
           <section>
+            <mat-form-field class="inputSmall" appearance="fill">
+              <mat-label>Referencia proveedor</mat-label>
+              <input formControlName="refproveedor" matInput>
+            </mat-form-field>  
             <mat-form-field class="inputMedium" appearance="fill">
               <mat-label>Proveedor</mat-label>
               <mat-select formControlName="IdProveedor" placeholder="Selecciona un proveedor" [(value)]="selectedProve">
