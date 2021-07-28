@@ -117,6 +117,9 @@
               <mat-label>Precio de coste</mat-label>
               <input formControlName="precioCoste" min="0" matInput [ngClass]="{'is-invalid': isValidField('precioCoste')}">
               <div class="invalid-feedback">
+                <span class="span-errors" *ngIf="productForm.get('precioCoste').errors?.required">
+                  Precio obligatorio (defecto 0).
+                </span>
                 <span class="span-errors" *ngIf="productForm.get('precioCoste').errors?.pattern">
                   Caracteres no válidos.
                 </span>

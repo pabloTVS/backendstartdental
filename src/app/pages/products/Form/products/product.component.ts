@@ -80,7 +80,7 @@ export class ProductComponent implements OnInit {
     iva: [''],
     precio: [0,[Validators.min(0),Validators.required,Validators.pattern('^[A-Z0-9.]+$')]],
     precioRebajado: [0,[Validators.min(0),Validators.required,Validators.pattern('^[A-Z0-9.]+$')]],
-    precioCoste: [0,[Validators.min(0),Validators.pattern('^[A-Z0-9.]+$')]],
+    precioCoste: [0,[Validators.min(0),Validators.required,Validators.pattern('^[A-Z0-9.]+$')]],
     stock: [0,[Validators.min(0),Validators.pattern('^[0-9]+$')]],
     det_Imagen: [''],
     IdProveedor: ['',[Validators.required]],
@@ -97,7 +97,7 @@ export class ProductComponent implements OnInit {
       if (this.custProduct !=0)
       {
          this.prodSvc.getById(this.custProduct).subscribe(prod =>{
-           console.log(prod);
+          // console.log(prod);
            this.product = prod;
            this.productForm.patchValue(this.product);
            this.selectedState = prod.Estado;
