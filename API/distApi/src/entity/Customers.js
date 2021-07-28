@@ -23,6 +23,10 @@ var Customers = /** @class */ (function () {
         __metadata("design:type", String)
     ], Customers.prototype, "Nombre", void 0);
     __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Customers.prototype, "NombreComercial", void 0);
+    __decorate([
         typeorm_1.CreateDateColumn(),
         __metadata("design:type", Date)
     ], Customers.prototype, "FechaAlta", void 0);
@@ -38,6 +42,14 @@ var Customers = /** @class */ (function () {
         typeorm_1.Column(),
         __metadata("design:type", String)
     ], Customers.prototype, "Email1", void 0);
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Customers.prototype, "Email2", void 0);
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", String)
+    ], Customers.prototype, "Email3", void 0);
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
@@ -106,6 +118,14 @@ var Customers = /** @class */ (function () {
         typeorm_1.Column(),
         __metadata("design:type", String)
     ], Customers.prototype, "Observaciones", void 0);
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], Customers.prototype, "CodComercial", void 0);
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], Customers.prototype, "EstadoCliente", void 0);
     Customers = __decorate([
         typeorm_1.Entity(),
         typeorm_1.Unique(['IdCliente'])

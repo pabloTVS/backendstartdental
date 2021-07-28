@@ -44,30 +44,52 @@ var CustomerController = /** @class */ (function () {
     function CustomerController() {
     }
     CustomerController.getAllCustomer = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var customerRepository, customer, e_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
+        var _a, CodComercial, Role, customerRepository, customer, e_1, customer, e_2;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
+                    _a = req.params, CodComercial = _a.CodComercial, Role = _a.Role;
                     customerRepository = typeorm_1.getRepository(Customers_1.Customers);
-                    _a.label = 1;
+                    if (!(CodComercial === 'null' || Role === 'Admin')) return [3 /*break*/, 5];
+                    customer = void 0;
+                    _b.label = 1;
                 case 1:
-                    _a.trys.push([1, 3, , 4]);
+                    _b.trys.push([1, 3, , 4]);
                     return [4 /*yield*/, customerRepository.find()];
                 case 2:
-                    customer = _a.sent();
+                    customer = _b.sent();
                     res.send(customer);
                     return [3 /*break*/, 4];
                 case 3:
-                    e_1 = _a.sent();
+                    e_1 = _b.sent();
                     res.status(404).json({ message: e_1.message });
                     return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
+                case 4: return [3 /*break*/, 9];
+                case 5:
+                    customer = void 0;
+                    _b.label = 6;
+                case 6:
+                    _b.trys.push([6, 8, , 9]);
+                    return [4 /*yield*/, customerRepository.createQueryBuilder().
+                            select(["cust.IdCliente", "cust.Nombre", "cust.NombreComercial", "cust.FechaAlta", "cust.DNINIF", "cust.Telefono1", "cust.Email1", "cust.Email2",
+                            "cust.Email3", "cust.Fax1", "cust.Movil1", "cust.CodFormaPago", "cust.RE", "cust.DtoPP", "cust.DtoComercial", "cust.CodPostal", "cust.Localidad",
+                            "cust.Provincia", "cust.Direccion", "cust.Entidad", "cust.Oficina", "cust.DC", "cust.Cuenta", "cust.IBAN", "cust.BICSWIFT", "cust.CodComercial", "cust.EstadoCliente"]).
+                            from(Customers_1.Customers, "cust").where("cust.CodComercial =:com ", { com: CodComercial }).getMany()];
+                case 7:
+                    customer = _b.sent();
+                    customer ? res.send(customer) : res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
+                    return [3 /*break*/, 9];
+                case 8:
+                    e_2 = _b.sent();
+                    res.status(400).json({ message: e_2.message });
+                    return [3 /*break*/, 9];
+                case 9: return [2 /*return*/];
             }
         });
     }); };
     //only customer
     CustomerController.getById = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var IdCliente, customerRepository, customer, e_2;
+        var IdCliente, customerRepository, customer, e_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -82,7 +104,7 @@ var CustomerController = /** @class */ (function () {
                     res.send(customer);
                     return [3 /*break*/, 4];
                 case 3:
-                    e_2 = _a.sent();
+                    e_3 = _a.sent();
                     res.status(404).json({ message: 'Cliente no encontrado.' });
                     return [3 /*break*/, 4];
                 case 4: return [2 /*return*/];
@@ -91,18 +113,21 @@ var CustomerController = /** @class */ (function () {
     }); };
     //new customer
     CustomerController.new = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var _a, Nombre, DNINIF, Telefono1, Email1, Fax1, Movil1, CodFormaPago, RE, DtoPP, DtoComercial, CodPostal, Localidad, Provincia, Direccion, Entidad, Oficina, DC, Cuenta, IBAN, BICSWIFT, Observaciones, customer, validationOpt, errors, customerRepository, e_3;
+        var _a, Nombre, NombreComercial, DNINIF, Telefono1, Email1, Email2, Email3, Fax1, Movil1, CodFormaPago, RE, DtoPP, DtoComercial, CodPostal, Localidad, Provincia, Direccion, Entidad, Oficina, DC, Cuenta, IBAN, BICSWIFT, Observaciones, CodComercial, EstadoCliente, customer, validationOpt, errors, customerRepository, e_4;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
-                    _a = req.body, Nombre = _a.Nombre, DNINIF = _a.DNINIF, Telefono1 = _a.Telefono1, Email1 = _a.Email1, Fax1 = _a.Fax1, Movil1 = _a.Movil1, CodFormaPago = _a.CodFormaPago, RE = _a.RE, DtoPP = _a.DtoPP, DtoComercial = _a.DtoComercial, CodPostal = _a.CodPostal, Localidad = _a.Localidad, Provincia = _a.Provincia, Direccion = _a.Direccion, Entidad = _a.Entidad, Oficina = _a.Oficina, DC = _a.DC, Cuenta = _a.Cuenta, IBAN = _a.IBAN, BICSWIFT = _a.BICSWIFT, Observaciones = _a.Observaciones;
+                    _a = req.body, Nombre = _a.Nombre, NombreComercial = _a.NombreComercial, DNINIF = _a.DNINIF, Telefono1 = _a.Telefono1, Email1 = _a.Email1, Email2 = _a.Email2, Email3 = _a.Email3, Fax1 = _a.Fax1, Movil1 = _a.Movil1, CodFormaPago = _a.CodFormaPago, RE = _a.RE, DtoPP = _a.DtoPP, DtoComercial = _a.DtoComercial, CodPostal = _a.CodPostal, Localidad = _a.Localidad, Provincia = _a.Provincia, Direccion = _a.Direccion, Entidad = _a.Entidad, Oficina = _a.Oficina, DC = _a.DC, Cuenta = _a.Cuenta, IBAN = _a.IBAN, BICSWIFT = _a.BICSWIFT, Observaciones = _a.Observaciones, CodComercial = _a.CodComercial, EstadoCliente = _a.EstadoCliente;
                     customer = new Customers_1.Customers();
                     customer.Nombre = Nombre;
+                    customer.NombreComercial = NombreComercial;
                     customer.DNINIF = DNINIF;
                     customer.Direccion = Direccion;
                     customer.DtoComercial = DtoComercial;
                     customer.DtoPP = DtoPP;
                     customer.Email1 = Email1;
+                    customer.Email2 = Email2;
+                    customer.Email3 = Email3;
                     customer.Entidad = Entidad;
                     customer.Fax1 = Fax1;
                     customer.IBAN = IBAN;
@@ -118,6 +143,8 @@ var CustomerController = /** @class */ (function () {
                     customer.DC = DC;
                     customer.Cuenta = Cuenta;
                     customer.BICSWIFT = BICSWIFT;
+                    customer.CodComercial = CodComercial;
+                    customer.EstadoCliente = EstadoCliente;
                     validationOpt = { validationError: { target: false, value: false } };
                     return [4 /*yield*/, class_validator_1.validate(customer, validationOpt)];
                 case 1:
@@ -134,8 +161,8 @@ var CustomerController = /** @class */ (function () {
                     _b.sent();
                     return [3 /*break*/, 5];
                 case 4:
-                    e_3 = _b.sent();
-                    return [2 /*return*/, res.status(409).json(e_3.message)];
+                    e_4 = _b.sent();
+                    return [2 /*return*/, res.status(409).json(e_4.message)];
                 case 5:
                     res.status(201).json({ message: 'Cliente creado correctamente.' });
                     return [2 /*return*/];
@@ -144,12 +171,12 @@ var CustomerController = /** @class */ (function () {
     }); };
     //update
     CustomerController.edit = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var IdCliente, _a, Nombre, DNINIF, Telefono1, Email1, Fax1, Movil1, CodFormaPago, RE, DtoPP, DtoComercial, CodPostal, Localidad, Provincia, Direccion, Entidad, Oficina, DC, Cuenta, IBAN, BICSWIFT, Observaciones, customerRepository, customer, e_4, validationOpt, errors, e_5;
+        var IdCliente, _a, Nombre, NombreComercial, DNINIF, Telefono1, Email1, Email2, Email3, Fax1, Movil1, CodFormaPago, RE, DtoPP, DtoComercial, CodPostal, Localidad, Provincia, Direccion, Entidad, Oficina, DC, Cuenta, IBAN, BICSWIFT, Observaciones, CodComercial, EstadoCliente, customerRepository, customer, e_5, validationOpt, errors, e_6;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     IdCliente = req.params.IdCliente;
-                    _a = req.body, Nombre = _a.Nombre, DNINIF = _a.DNINIF, Telefono1 = _a.Telefono1, Email1 = _a.Email1, Fax1 = _a.Fax1, Movil1 = _a.Movil1, CodFormaPago = _a.CodFormaPago, RE = _a.RE, DtoPP = _a.DtoPP, DtoComercial = _a.DtoComercial, CodPostal = _a.CodPostal, Localidad = _a.Localidad, Provincia = _a.Provincia, Direccion = _a.Direccion, Entidad = _a.Entidad, Oficina = _a.Oficina, DC = _a.DC, Cuenta = _a.Cuenta, IBAN = _a.IBAN, BICSWIFT = _a.BICSWIFT, Observaciones = _a.Observaciones;
+                    _a = req.body, Nombre = _a.Nombre, NombreComercial = _a.NombreComercial, DNINIF = _a.DNINIF, Telefono1 = _a.Telefono1, Email1 = _a.Email1, Email2 = _a.Email2, Email3 = _a.Email3, Fax1 = _a.Fax1, Movil1 = _a.Movil1, CodFormaPago = _a.CodFormaPago, RE = _a.RE, DtoPP = _a.DtoPP, DtoComercial = _a.DtoComercial, CodPostal = _a.CodPostal, Localidad = _a.Localidad, Provincia = _a.Provincia, Direccion = _a.Direccion, Entidad = _a.Entidad, Oficina = _a.Oficina, DC = _a.DC, Cuenta = _a.Cuenta, IBAN = _a.IBAN, BICSWIFT = _a.BICSWIFT, Observaciones = _a.Observaciones, CodComercial = _a.CodComercial, EstadoCliente = _a.EstadoCliente;
                     customerRepository = typeorm_1.getRepository(Customers_1.Customers);
                     _b.label = 1;
                 case 1:
@@ -158,11 +185,14 @@ var CustomerController = /** @class */ (function () {
                 case 2:
                     customer = _b.sent();
                     customer.Nombre = Nombre;
+                    customer.NombreComercial = NombreComercial;
                     customer.DNINIF = DNINIF;
                     customer.Direccion = Direccion;
                     customer.DtoComercial = DtoComercial;
                     customer.DtoPP = DtoPP;
                     customer.Email1 = Email1;
+                    customer.Email2 = Email2;
+                    customer.Email3 = Email3;
                     customer.Entidad = Entidad;
                     customer.Fax1 = Fax1;
                     customer.IBAN = IBAN;
@@ -178,9 +208,11 @@ var CustomerController = /** @class */ (function () {
                     customer.DC = DC;
                     customer.Cuenta = Cuenta;
                     customer.BICSWIFT = BICSWIFT;
+                    customer.CodComercial = CodComercial;
+                    customer.EstadoCliente = EstadoCliente;
                     return [3 /*break*/, 4];
                 case 3:
-                    e_4 = _b.sent();
+                    e_5 = _b.sent();
                     res.status(404).json({ message: 'No se ha devuelto ningún cliente.' });
                     return [3 /*break*/, 4];
                 case 4:
@@ -199,7 +231,7 @@ var CustomerController = /** @class */ (function () {
                     _b.sent();
                     return [3 /*break*/, 9];
                 case 8:
-                    e_5 = _b.sent();
+                    e_6 = _b.sent();
                     return [2 /*return*/, res.status(409).json({ message: 'Error guardando cliente.' })];
                 case 9:
                     res.status(201).json({ message: 'Cliente guardado correctamente.' });
@@ -208,7 +240,7 @@ var CustomerController = /** @class */ (function () {
         });
     }); };
     CustomerController.delete = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var IdCliente, customerRepository, customer, e_6;
+        var IdCliente, customerRepository, customer, e_7;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -222,7 +254,7 @@ var CustomerController = /** @class */ (function () {
                     customer = _a.sent();
                     return [3 /*break*/, 4];
                 case 3:
-                    e_6 = _a.sent();
+                    e_7 = _a.sent();
                     return [2 /*return*/, res.status(404).json({ message: 'Cliente inexistente.' })];
                 case 4:
                     // Remove customer

@@ -69,8 +69,8 @@ var AuthController = /** @class */ (function () {
                     if (!user.checkPassword(password)) {
                         return [2 /*return*/, res.status(400).json({ message: 'Usuario o contraseña incorrectos.' })];
                     }
-                    token = jwt.sign({ userId: user.id, username: user.username }, config_1.default.jwtSecret, { expiresIn: '1h' });
-                    res.json({ message: 'OK', token: token, userId: user.id, role: user.role });
+                    token = jwt.sign({ userId: user.id, username: user.username }, config_1.default.jwtSecret, { expiresIn: '3h' });
+                    res.json({ message: 'OK', token: token, userId: user.id, role: user.role, commercial: user.CodComercial, customer: user.CodCliente });
                     return [2 /*return*/];
             }
         });

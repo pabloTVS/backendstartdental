@@ -6,7 +6,7 @@ var CustomersController_1 = require("./../controller/CustomersController");
 var express_1 = require("express");
 var router = express_1.Router();
 // Get all product
-router.get('/', [jwt_1.checkJwt], CustomersController_1.CustomerController.getAllCustomer);
+router.get('/:CodComercial/:Role', [jwt_1.checkJwt], CustomersController_1.CustomerController.getAllCustomer);
 // Get one product
 router.get('/:IdCliente', [jwt_1.checkJwt, role_1.checkRole(['Admin'])], CustomersController_1.CustomerController.getById);
 // Create a new user

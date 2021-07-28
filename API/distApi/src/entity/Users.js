@@ -45,6 +45,14 @@ var Users = /** @class */ (function () {
         class_validator_1.IsNotEmpty(),
         __metadata("design:type", String)
     ], Users.prototype, "role", void 0);
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], Users.prototype, "CodCliente", void 0);
+    __decorate([
+        typeorm_1.Column(),
+        __metadata("design:type", Number)
+    ], Users.prototype, "CodComercial", void 0);
     Users = __decorate([
         typeorm_1.Entity(),
         typeorm_1.Unique(['username'])
