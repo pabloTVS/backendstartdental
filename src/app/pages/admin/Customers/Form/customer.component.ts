@@ -7,6 +7,7 @@ import { Payments } from '@shared/models/payments.interface'
 import { CustomersService } from '@pages/admin/services/customers.service';
 import { PaymentsService} from '@pages/admin/services/payments.service'
 
+
 export interface statesCustomers {
   value: number;
   viewValue: string;
@@ -35,6 +36,7 @@ export class CustomerComponent implements OnInit {
 
   selectedState: number;
   selectedCommercial: number;
+  
 
   stateCustomer: statesCustomers [] = [
     {value: 1, viewValue: 'Correcto'},
@@ -52,6 +54,8 @@ export class CustomerComponent implements OnInit {
               private paymSvc: PaymentsService,
               private route: ActivatedRoute,
               private fb: FormBuilder) { }
+  
+
 
               customersForm = this.fb.group({
                 Nombre: ['',[Validators.required,Validators.minLength(3),Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$')]],

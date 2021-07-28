@@ -23,6 +23,12 @@ export class Users {
   @IsNotEmpty()
   role: string;
 
+  @Column() 
+  CodCliente: number;
+
+  @Column()
+  CodComercial: number;
+
   hashPassword(): void {
     const salt = bcrypt.genSaltSync(10);
     this.password = bcrypt.hashSync(this.password, salt);

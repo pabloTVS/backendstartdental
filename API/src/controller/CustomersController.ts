@@ -6,18 +6,39 @@ import { Customers  } from '../entity/Customers';
 
 export class CustomerController {
     static getAllCustomer = async (req: Request, res: Response) => {
-
+        const {CodComercial,Role} = req.params;
         const customerRepository = getRepository(Customers);
-
-        let customer:any;
+        
+        if (CodComercial === 'null' || Role === 'Admin') //no hay comercial.
+        {
+          let customer:any;
+          try {
+           customer = await customerRepository.find();
+            res.send(customer);
+  
+          } catch (e) {
+            res.status(404).json({ message: e.message});
+          }
+  
+      }   
+      else {
+        let customer : Customers[];
+            
         try {
-         customer = await customerRepository.find();
-          res.send(customer);
+          customer = await customerRepository.createQueryBuilder().
+          select(["cust.IdCliente","cust.Nombre","cust.NombreComercial","cust.FechaAlta","cust.DNINIF","cust.Telefono1","cust.Email1","cust.Email2",
+          "cust.Email3","cust.Fax1","cust.Movil1","cust.CodFormaPago","cust.RE","cust.DtoPP","cust.DtoComercial","cust.CodPostal","cust.Localidad",
+          "cust.Provincia","cust.Direccion","cust.Entidad","cust.Oficina","cust.DC","cust.Cuenta","cust.IBAN","cust.BICSWIFT","cust.CodComercial","cust.EstadoCliente"]).
+          from(Customers,"cust").where("cust.CodComercial =:com ",{com: CodComercial}).getMany();
 
-        } catch (e) {
-          res.status(404).json({ message: e.message});
+          customer ? res.send(customer) :  res.status(404).json({ message: 'No se ha devuelto ningún valor.' });
         }
+        catch (e) {
+          res.status(400).json({message: e.message })
+        } 
+  }
     }
+
   //only customer
     static getById = async (req: Request, res: Response) => {
       const {IdCliente} = req.params;
@@ -155,6 +176,7 @@ export class CustomerController {
       customerRepository.delete(IdCliente);
       res.status(201).json({ message: ' Cliente borrado' });
     };
+  static comer: string;
 }
 
 export default CustomerController;

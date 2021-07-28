@@ -13,6 +13,20 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Nº </th>
             <td mat-cell *matCellDef="let element"> {{element.IdCliente}} </td>
       </ng-container>
+      
+      <ng-container matColumnDef="EstadoCliente">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+        <td mat-cell *matCellDef="let element"
+        [ngStyle]="{'color': element.EstadoCliente === 1 ? 'green' : (element.EstadoCliente === 2 ? 'orange' : 'orangered') }"
+        >                     
+        <mat-ul [ngSwitch] = "element.EstadoCliente">
+          <mat-li *ngSwitchCase="1">Correcto</mat-li>
+          <mat-li *ngSwitchCase="2">En riesgo</mat-li>
+          <mat-li *ngSwitchCase="3">Moroso</mat-li>
+        </mat-ul> 
+      </td>
+      </ng-container>
+
       <ng-container matColumnDef="Nombre">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
         <td mat-cell *matCellDef="let element"> {{element.Nombre}} </td>
@@ -57,29 +71,17 @@
         <td mat-cell *matCellDef="let element"> {{element.Direccion}} </td>
       </ng-container>
       
-      <ng-container matColumnDef="Acciones">
+      <ng-container matColumnDef="Acciones" >
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
         <td mat-cell *matCellDef="let element">
           <div class="table-button-row">
             <!--<button mat-flat-button color="accent" (click)="onOpenModal(element)">Editar</button>-->
             <a mat-flat-button color="primary" routerLink="/clientes/Form" [queryParams]="{Id: element.IdCliente}">Editar</a>
            <!--<app-customer></app-customer>--> 
-            <button mat-flat-button color="accent" (click)="onDelete(element.IdCliente)">Borrar</button>
+            <button mat-flat-button color="accent" [disabled]="role !== 'Admin'" (click)="onDelete(element.IdCliente)">Borrar</button>
           </div>
         </td>
       </ng-container>
-      <ng-container matColumnDef="EstadoCliente">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
-        <td mat-cell *matCellDef="let element"
-        [ngStyle]="{'color': element.EstadoCliente === 1 ? 'green' : (element.EstadoCliente === 2 ? 'orange' : 'orangered') }"
-        >                     
-        <mat-ul [ngSwitch] = "element.EstadoCliente">
-          <mat-li *ngSwitchCase="1">Correcto</mat-li>
-          <mat-li *ngSwitchCase="2">En riesgo</mat-li>
-          <mat-li *ngSwitchCase="3">Moroso</mat-li>
-        </mat-ul> 
-      </td>
-      </ng-container>     
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>

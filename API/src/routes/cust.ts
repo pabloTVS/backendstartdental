@@ -6,7 +6,7 @@ import { Router } from 'express';
 const router = Router();
 
 // Get all product
-router.get('/',[checkJwt], CustomerController.getAllCustomer);
+router.get('/:CodComercial/:Role',[checkJwt], CustomerController.getAllCustomer);
 
 // Get one product
 router.get('/:IdCliente',[checkJwt, checkRole(['Admin'])], CustomerController.getById);

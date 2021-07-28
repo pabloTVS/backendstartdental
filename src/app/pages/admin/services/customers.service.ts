@@ -14,8 +14,8 @@ export class CustomersService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Customer[]>{
-    return this.http.get<Customer[]>(`${environment.API_URL}/cust`)
+  getAll(codCom: number,role: string): Observable<Customer[]>{
+    return this.http.get<Customer[]>(`${environment.API_URL}/cust/${codCom}/${role}`)
     .pipe(catchError(this.handlerError));
   }
 

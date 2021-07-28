@@ -11,14 +11,16 @@ import {
 export class CustomersInterceptor implements HttpInterceptor {
 
   constructor(private authSvc: AuthService) {}
+  
 
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<any> {
+   
     if (req.url.includes('cust')) {
       const userValue = this.authSvc.userValue;
+      console.log(userValue);
+
       const authReq = req.clone({
-        setHeaders: {
-          auth: userValue.token,
-        },
+        setHeaders: {auth: userValue.token},        
       });
       return next.handle(authReq);
     }    

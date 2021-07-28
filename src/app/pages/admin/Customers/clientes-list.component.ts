@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { takeUntil } from 'rxjs/operators';
 
 import { CustomersService } from '../services/customers.service';
+import { AuthService } from '@app/pages/auth/auth.service';
 
 @Component({
   selector: 'app-clientes',
@@ -24,16 +25,26 @@ export class CustomersListComponent implements AfterViewInit, OnInit, OnDestroy 
 
   private destroy$ = new Subject<any>();
 
+  //codCom : number;
+  
+
+  userValue = this.authSvc.userValue;
+  codCom = this.userValue.commercial;
+  role = this.userValue.role;
+  
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator; 
 
   constructor(private custSvc: CustomersService,
     private spinnerSvc: SpinnerOverlayService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private authSvc: AuthService) { }
 
   ngOnInit(): void {
     this.spinner();
-    this.custSvc.getAll().subscribe((customers) =>{
+    console.log(this.codCom);
+    this.custSvc.getAll(this.codCom,this.role).subscribe((customers) =>{
       this.DSCustomer.data= customers;
       this.spinner();
     })
@@ -76,7 +87,7 @@ export class CustomersListComponent implements AfterViewInit, OnInit, OnDestroy 
         .subscribe((res) => {
           window.alert(res);
           // Update result after deleting the customer.
-          this.custSvc.getAll().subscribe((customer) => {
+          this.custSvc.getAll(this.codCom,this.role).subscribe((customer) => {
             this.DSCustomer.data = customer;
           });
         });

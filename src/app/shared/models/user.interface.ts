@@ -10,4 +10,6 @@ export interface UserResponse extends User {
   token: string;
   userId: number;
   role: Roles;
+  commercial: number;
+  customer: number;
 }
